@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Add Button - Cursor 재시작 후 수정 테스트</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="testInput" placeholder="테스트 입력...">
+        <button onclick="addTest()">Add Test</button>
+    </div>
+    <div id="itemsList">
+        <!-- 여기에 항목들이 추가됨 -->
+    </div>
+
+    <script>
+        console.log('스크립트 로드됨');
+
+        function addTest() {
+            console.log('Add 버튼 클릭됨');
+            const input = document.getElementById('testInput');
+            const text = input.value.trim();
+            
+            if (!text) {
+                console.log('입력값이 비어있음');
+                return;
+            }
+
+            console.log('입력된 텍스트:', text);
+
+            // DOM에 항목 추가
+            const itemDiv = document.createElement('div');
+            itemDiv.textContent = text;
+            document.getElementById('itemsList').appendChild(itemDiv);
+            
+            // 입력창 초기화
+            input.value = '';
+            console.log('항목 추가 완료');
+        }
+    </script>
+</body>
+</html>

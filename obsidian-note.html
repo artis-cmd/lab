@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obsidian Style Note</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #7c3aed;
+            --text-color: #1f2937;
+            --bg-color: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .note-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .note-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            border-right: 1px solid var(--border-color);
+            padding-right: 1rem;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu a {
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            display: block;
+            transition: background-color 0.2s;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: #f3f4f6;
+        }
+
+        .main-content {
+            padding: 1rem;
+        }
+
+        .note-section {
+            margin-bottom: 2rem;
+        }
+
+        .note-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .note-section p {
+            margin-bottom: 1rem;
+        }
+
+        .code-block {
+            background-color: #f3f4f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            margin: 1rem 0;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #e9d5ff;
+            color: var(--primary-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .note-content {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding-right: 0;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="note-header">
+            <h1 class="note-title">Obsidian Style Note</h1>
+            <div class="note-actions">
+                <button onclick="toggleDarkMode()">🌙</button>
+            </div>
+        </header>
+
+        <div class="note-content">
+            <nav class="sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#getting-started">Getting Started</a></li>
+                    <li><a href="#tips">Tips & Tricks</a></li>
+                </ul>
+            </nav>
+
+            <main class="main-content">
+                <section id="introduction" class="note-section">
+                    <h2>Introduction</h2>
+                    <p>Welcome to your Obsidian-style note! This is a local HTML note that mimics the design and functionality of Obsidian.md.</p>
+                    <div class="code-block">
+                        // Example code block
+                        function helloWorld() {
+                            console.log("Hello, Obsidian!");
+                        }
+                    </div>
+                </section>
+
+                <section id="features" class="note-section">
+                    <h2>Features</h2>
+                    <p>This note includes:</p>
+                    <ul>
+                        <li>Clean, modern design</li>
+                        <li>Responsive layout</li>
+                        <li>Dark mode support</li>
+                        <li>Code block highlighting</li>
+                    </ul>
+                    <span class="tag">feature</span>
+                    <span class="tag">design</span>
+                </section>
+
+                <section id="getting-started" class="note-section">
+                    <h2>Getting Started</h2>
+                    <p>To start using this note:</p>
+                    <ol>
+                        <li>Open the HTML file in your browser</li>
+                        <li>Edit the content as needed</li>
+                        <li>Save your changes</li>
+                    </ol>
+                </section>
+
+                <section id="tips" class="note-section">
+                    <h2>Tips & Tricks</h2>
+                    <p>Here are some tips for using this note effectively:</p>
+                    <ul>
+                        <li>Use tags to organize your content</li>
+                        <li>Create links between different sections</li>
+                        <li>Use code blocks for technical content</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            // Add dark mode styles dynamically
+            if (document.body.classList.contains('dark-mode')) {
+                document.documentElement.style.setProperty('--bg-color', '#1f2937');
+                document.documentElement.style.setProperty('--text-color', '#f3f4f6');
+                document.documentElement.style.setProperty('--border-color', '#374151');
+            } else {
+                document.documentElement.style.setProperty('--bg-color', '#ffffff');
+                document.documentElement.style.setProperty('--text-color', '#1f2937');
+                document.documentElement.style.setProperty('--border-color', '#e5e7eb');
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

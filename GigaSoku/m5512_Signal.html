@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移動平均線の説明</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS 파일 링크 -->
+    
+</head>
+<body onload="InitializeStaticMenu();">
+    <div id="STATICMENU">
+        <ul>
+            <li>
+                <img src="../image/icon/navi-01.gif" width="32" height="32" />
+                <strong>　Connect</strong>
+            </li>
+            <li>
+                <img src="../image/icon/gigabook.png" alt="Arrow" class="icon-24px" />
+                <a href="../main/m5000_Giga.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈👈ギガ速FX_index</a>
+            </li>
+            <div class="divider-dotted"></div>
+            <li>
+                <a href="../main/m5001_signal-card.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈Signal Card 20</a>
+                <p>#12_ <span class="concept">移動平均線</span></p>
+            </li>
+            <div class="divider-dotted"></div>
+            <!-- 바로 전 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.back()" style="display: inline-block; position: relative; z-index: 1;">🔙 前のページへ戻る</a>
+            </li>            
+            <!-- 다음 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.forward()" style="display: inline-block; position: relative; z-index: 1;">🔜 次のページへ進む</a>
+            </li>    
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="signal-card">
+            <div class="card-header">
+                <div class="card-title"><a href="../main/m5000_Giga.html" target="_self">FX Signal（シグナル） #12</a></div>
+                <h1 class="card-main-title">移動平均線</h1>
+            </div>
+            <div class="card-content">
+                <div class="rating-row">
+                    <span>重要度</span>
+                    <span class="star-rating">★★★★☆</span>
+                </div>
+                <div class="rating-row">
+                    <span>頻出度</span>
+                    <span class="star-rating">★★★★★</span>
+                </div>
+                <div class="rating-row">
+                    <span>エントリー根拠</span>
+                    <span class="star-rating">★★☆☆☆</span>
+                </div>
+                <div class="rating-row">
+                    <span>精度</span>
+                    <span class="star-rating">★★★☆☆</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="signal-description">
+            <p>「<span class="giga-highlight">移動平均線</span>」は、期間を設定して、その期間内のレートの平均値を計算し、その平均値を結んで線にしたものです。　英語では「Moving Average」と書くので、一般的に「<span class="giga-highlight">MA（エムエー）</span>」と呼ばれています。　</p>
+            <p>単純に「<span class="giga-highlight">「期間中の終値の合計 ÷ 期間数」</span>」で計算したものは「<span class="giga-highlight">単純移動平均線</span>」と言います。　英語では「Simple Moving Average」。　その頭文字をとって「<span class="giga-highlight">SMA（エスエムエー）</span>」と呼ばれます。　</p>
+            <p>本書でもこれ以降、移動平均線は MA、単純移動平均線は SMA と略して表記します。　</p>
+            <p>日足チャートの場合、<span class="giga-highlight">5sma</span> といえば 「 <span class="border-highlight">5日間 のレートの終値の合計 ÷ 5</span> 」で計算した平均値を次々結んで行った線になります。　</p>
+            <p><span class="giga-highlight"><span class="underline-dot-highlight sma-20">20sma</span></span> といえば、20日間のレートの終値の平均値を結んだ線です。　</p>
+            <p>私が取引のタイミングを計るのは ５分足チャート。　５分足チャートの <span class="underline-dot-highlight sma-20">20sma</span> は、現在のローソク足から数えて 20 本分のローソク足の終値の平均値を結んだ線になります。　5 分 × 20 本分ですから <span class="giga-highlight">100 分間のレート</span>の移動平均になります。　</p>
+            <p>リオン式 <span class="concept-zone">Zone</span> トレードで使う最も期間の短い MA は <span class="underline-dot-highlight sma-20">20sma</span> です。　より詳しい解説は第３章に <span class="tooltip">譲る<span class="tooltiptext">[ゆずる]<br>양보하다</span></span> として、ここでは MA の見方や MA を使って実際のトレードを行うための基本的な考え方について解説します。　</p>
+            <p>ローソク足だけを見ていると、時に大陽線や大陰線が出現したかと思うと、ヒゲの長い足が連続したり、陽線・陰線が <span class="tooltip">交互<span class="tooltiptext">[こうご]<br>かわるがわる。たがいちがい。<br>교대</span></span> に出たり、ひとつひとつの動きが不規則で、値動きの全体像を見失いかねません。　</p>
+            <p>それを回避するひとつの方法は、ローソク足の高値同士、安値同士を線で結ぶトレンドラインです。　トレンドラインを引いて、そのラインからローソク足がはみ出ないように全体を囲い込むことで、値動きの方向性 や 勢い が分かります。　</p>
+            <p>MA もトレンドライン同様、レートの<span class="giga-highlight">平均的な方向性 や 勢い</span>を読み取るために使います。　</p>
+            <p>MA は、色々なパターンで描かれて行きますから、視覚的にも相場の流れが<span class="tooltip">掴み<span class="tooltiptext">[つかみ]<br>手で握ること、つかむこと</span></span>やすいと思います。　</p>
+            <p>複数の期間の MA を表示することで、<span class="giga-highlight">短期 MA と長期 MA の並び</span>（位置関係）からもトレンドの変化や勢いを、より複合的に判断できます。　</p>
+            <p>ローソク足（レート）自体と MA の位置関係からもトレンドや勢いを判断できるので、さらにトレードの判断材料を増やして行けます。　</p>
+            <ul>
+                <li>　●　<span class="giga-highlight"><span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span></span></li>
+                <li>　●　<span class="giga-highlight">短期・長期 MA の並び</span></li>
+                <li>　●　<span class="giga-highlight">レートとの位置関係</span></li>
+            </ul>
+
+            <p>これらを MA から読み取ってエントリー根拠を固めて行きます（<span class="important">図2-17 </span> ）。　</p>
+            <div class="strategy-image"></div>
+                <img src="../image/kindle/giga-soku/m6513_a.png"  alt="図2-17　移動平均線（MA）の３つのポイント" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+                <p class="image-caption">図2-17　移動平均線（MA）の３つのポイント</p>
+            </div>
+
+        </div>
+    </div>
+    <p><br></p><p><br></p>
+    
+    <script src="../js/scripts.js" defer></script> <!-- JavaScript 파일 링크 -->
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+/* 전체 페이지 스타일 */
+/* ✅ 전체 레이아웃 */
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden; /* 기본적으로 스크롤 숨김 */
+
+    font-size: 14px;  /* 기본 글자 크기 */
+    font-weight: normal; /* 기본 글자 두께 */
+    font-family: Arial, sans-serif;
+}
+
+/* ✅ 왼쪽 프레임 전체 설정  (top + bottom 포함) */
+.left-frame {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 100vh;
+    /* border-right: 2px solid #ccc; */  /* 오른쪽 테두리 제거 */
+    overflow: hidden; /* 🚨 전체 프레임의 스크롤을 숨김 */
+
+    font-size: 13px; /* 왼쪽 프레임 기본 폰트 크기 */
+}
+
+
+/* ✅ 위쪽 프레임 (4) (top-frame) */
+.top-frame {
+    flex: 4;
+    min-height: 30%;  /* 최소 높이만 지정 */
+    max-height: 50%;  /* 최대 높이 지정 */
+
+    font-size: 13px;  /* 위쪽 프레임 글자 크기 */
+    font-weight: normal;
+}
+
+/* ✅ 아래쪽 프레임 (6) (bottom-frame) */
+.bottom-frame {
+    flex: 6;
+    min-height: 50%;
+    max-height: 70%;
+
+    font-size: 13px;  /* 아래쪽 프레임 글자 크기 */
+    font-weight: normal;
+}
+
+/* 특정 섹션 글자 크기 강조 */
+.menu-container a {
+    font-size: 14px;  /* 링크 글자 크기 */
+    font-weight: normal;  /* 🚨 기존 bold → normal로 변경 */
+}
+
+/* ✅ 브라우저 기본 스크롤을 완전히 하얗게 변경 */
+::-webkit-scrollbar {
+    width: 10px; /* 스크롤바 크기 */
+}
+
+::-webkit-scrollbar-track {
+    background: white !important; /* 🚨 바탕을 완전히 흰색으로 */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f7f7f7 !important; /* 🚨 엄청 연한 회색 (거의 흰색) */
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #eaeaea !important; /* 🚨 마우스 올리면 아주 연한 회색 */
+}
+
+
+
+/* ✅ 내부 iframe */
+/* ✅ iframe 공통 스타일 */
+.left-frame iframe, .main-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ✅ 메인 프레임 */
+.main-frame {
+    flex: 1;
+    height: 100vh;
+    padding: 10px;
+    overflow-y: auto; /* ✅ 필요 시 스크롤 */
+}
+
+/* ===== 사이드바 토글 관련 ===== */
+
+/* ✅ 사이드바 토글 버튼 */
+/* ✅ 기본 버튼 스타일 */
+.toggle-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 132, 255, 0.8);  /* Messenger 블루 */
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    font-size: 20px; /* 아이콘 크기 조정 */
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.4;
+}
+
+/* ✅ 마우스 올렸을 때 */
+.toggle-btn:hover {
+    background: rgba(0, 132, 255, 1);
+    opacity: 1;
+}
+
+/* ✅ 닫힘 상태 (빨간색 X 아이콘) */
+.left-frame.closed + .toggle-btn {
+    background: rgba(255, 67, 67, 0.8); /* 닫힐 때 빨간색 */
+}
+
+/* ✅ 사이드바 숨김 처리 */
+.left-frame.closed {
+    width: 0;
+    overflow: hidden;
+}
+
+/* ✅ 아이콘 스타일 */
+#toggle-icon {
+    font-weight: bold;
+}
+
+
+/* ✅ 메인 프레임 확장 */
+.main-frame.expanded {
+    margin-left: 0 !important;
+    width: 100%;
+}
+
+/* ===== Left-bottom (아래쪽 프레임) 스타일 ===== */
+
+/* ✅ Left-bottom (하단 프레임) 스타일 조정 */
+.bottom-frame {
+    flex: 3;
+    min-height: 30vh;  /* ✅ 최소 높이 설정 */
+    max-height: 50vh;  /* ✅ 최대 높이 설정 */
+    overflow: hidden;  /* ✅ iframe 내부에서만 스크롤 */
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ✅ Left-bottom 내부 iframe */
+.bottom-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    overflow-y: auto;  /* ✅ 내부에서 스크롤 가능하도록 설정 */
+}
+
+/* Left-bottom 내부 콘텐츠 (리스트 포함) */
+/* ✅ Left-bottom 내부 콘텐츠 */
+.bottom-content {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    overflow-y: auto;  /* ✅ 내부에서만 스크롤 */
+    max-height: 100%;
+}
+
+/* Left-bottom 내부 메뉴 스타일 */
+.menu-container {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-container li {
+    margin: 8px 0;
+}
+
+.menu-container li a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px;
+    display: block;
+    border-radius: 4px;
+    transition: background 0.2s ease-in-out;
+    font-weight: normal;  /* ✅ bold 제거 */
+}
+
+.menu-container li a:hover {
+    background: #f0f0f0;
+}
+
+/* 구분선 */
+.divider {
+    height: 1px;
+    background: #ccc;
+    margin: 10px 0;
+}
+

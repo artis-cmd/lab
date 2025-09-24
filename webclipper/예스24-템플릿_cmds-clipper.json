@@ -1,0 +1,99 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "예스24 템플릿_CMDS",
+	"behavior": "create",
+	"noteContentFormat": "{{\"A 3-bullet-point summary. use Korean language.\"|callout:(\"summary\", \"3줄 요약\", false)}}\n\n![image|240]({{image}})\n\n## 책소개\n\n{{selectorHtml:#infoset_introduce > div.infoSetCont_wrap > table > tbody > tr > td > div.infoWrap_txt|markdown}}\n\n## 목차\n\n{{selector:#infoset_toc > div.infoSetCont_wrap > div.infoWrap_txt > textarea|markdown}}\n\n## 책 속으로\n\n{{selector:#infoset_inBook > div.infoSetCont_wrap > div.infoWrap_txt > div.infoWrap_txtInner > textarea|markdown}}\n\n## 출판사 리뷰\n\n{{selector:#infoset_pubReivew > div.infoSetCont_wrap > div.infoWrap_txt > textarea|markdown}}\n",
+	"properties": [
+		{
+			"name": "title",
+			"value": "{{title|replace:\\\"- 예스24\\\":\\\"\\\"|trim}}",
+			"type": "text"
+		},
+		{
+			"name": "subtitle",
+			"value": "{{selector:#yDetailTopWrap > div.topColRgt > div.gd_infoTop > div > h3}}",
+			"type": "text"
+		},
+		{
+			"name": "source_url",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "author",
+			"value": "{{author|replace:\\\" 저| 역\\\":\\\"\\\"|trim|split:\\\"/\\\"|join|split:\\\",\\\"|wikilink|join}}",
+			"type": "multitext"
+		},
+		{
+			"name": "publisher",
+			"value": "{{selector:#yDetailTopWrap > div.topColRgt > div.gd_infoTop > span.gd_pubArea > span.gd_pub > a|wikilink}}",
+			"type": "multitext"
+		},
+		{
+			"name": "published",
+			"value": "{{schema:@Book:workExample[0].datePublished}}",
+			"type": "date"
+		},
+		{
+			"name": "created",
+			"value": "{{date}}",
+			"type": "date"
+		},
+		{
+			"name": "description",
+			"value": "{{description}}",
+			"type": "text"
+		},
+		{
+			"name": "cover",
+			"value": "{{image}}",
+			"type": "text"
+		},
+		{
+			"name": "isbn",
+			"value": "{{selector:#infoset_specific > div.infoSetCont_wrap > div > table > tbody > tr:nth-child(3) > td}}",
+			"type": "text"
+		},
+		{
+			"name": "totalPage",
+			"value": "{{selector:#infoset_specific > div.infoSetCont_wrap > div > table > tbody > tr:nth-child(2) > td|split:\\\"쪽\\\"|first|trim}}",
+			"type": "number"
+		},
+		{
+			"name": "category",
+			"value": "{{selector:#infoset_goodsCate > div.infoSetCont_wrap > dl > dd > ul > li:nth-child(1)|join|replace:\\\",\\\":\\\">\\\"|split:\\\">\\\"|wikilink|join}}",
+			"type": "multitext"
+		},
+		{
+			"name": "started",
+			"value": "{{date|date:\\\"YYYY-MM-DD\\\"}}",
+			"type": "date"
+		},
+		{
+			"name": "completed",
+			"value": "{{date|date:\\\"YYYY-MM-DD\\\"}}",
+			"type": "date"
+		},
+		{
+			"name": "status",
+			"value": "unread",
+			"type": "text"
+		},
+		{
+			"name": "myRate",
+			"value": "unrated",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "📘K-Books, {{\\\"3 tags about this page, comma separator.\\\"}}",
+			"type": "multitext"
+		}
+	],
+	"triggers": [
+		"https://www.yes24.com/"
+	],
+	"noteNameFormat": "{{title|replace:\"- 예스24\":\"\"|trim}}📗",
+	"path": "40. GROW Process/41. Gather/41-1. Book Metadata/To - 76. References (Yes24)",
+	"context": "![image|240]({{image}})\n\n## 책소개\n\n{{selectorHtml:#infoset_introduce > div.infoSetCont_wrap > table > tbody > tr > td > div.infoWrap_txt|markdown}}\n\n## 목차\n\n{{selector:#infoset_toc > div.infoSetCont_wrap > div.infoWrap_txt > textarea|markdown}}\n\n## 책 속으로\n\n{{selector:#infoset_inBook > div.infoSetCont_wrap > div.infoWrap_txt > div.infoWrap_txtInner > textarea|markdown}}\n\n## 출판사 리뷰\n\n{{selector:#infoset_pubReivew > div.infoSetCont_wrap > div.infoWrap_txt > textarea|markdown}}\n"
+}

@@ -1,0 +1,378 @@
+* {
+    box-sizing: border-box; /* 모든 요소에 적용 */
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    padding: 20px;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    margin-left: 0;
+}
+
+/* 🔹 상단 메뉴 스타일 (배경색을 화이트로 변경) */
+.top-menu-container {
+    width: 100%;
+    background-color: #FFFFFF; /* 배경색을 화이트로 변경 */
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #ddd; /* 경계선 추가 */
+}
+
+/* 상단 메뉴 스타일 */
+.top-menu {
+    display: flex;
+    gap: 15px;
+}
+
+.top-menu a {
+    color: #2c3e50; /* 기존 어두운 네이비에서 검정 계열로 변경 */
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.top-menu a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* 🔹 페이지 제목 (왼쪽 정렬) */
+.page-title {
+    text-align: left;
+    margin-top: 80px; /* 메뉴 아래 여백 */
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-left: 20px; /* 왼쪽 여백 추가 */
+}
+
+/* 제목도 왼쪽 정렬로 변경 */
+h1 {
+    text-align: left; /* 중앙 정렬에서 왼쪽 정렬로 변경 */
+    color: #333;
+    margin-left: 0;
+}
+
+h2 {
+    color: #444;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.page-title {
+    text-align: left;
+    margin-left: 20px; /* 왼쪽 여백 추가 */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+/* 상단 메뉴 스타일 */
+/* 🔹 top-menu 스타일 통일 */
+.top-menu-container {
+    background-color: white; /* 배경색: 화이트 */
+    padding: 10px 0;
+    border-bottom: 2px solid #ddd; /* 메뉴 하단 구분선 */
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    align-items: center;
+    width: 100%;
+}
+
+.top-menu {
+    display: flex;
+    gap: 15px; /* 메뉴 간격 */
+}
+
+.top-menu a {
+    text-decoration: none;
+    color: #333; /* 기본 텍스트 색상 */
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.top-menu a:hover {
+    color: #007bff; /* 마우스 호버 시 파란색 */
+}
+
+
+/* 컨텐츠 컨테이너를 왼쪽 정렬로 변경 */
+/* 🔹 content-container 크기 조정 */
+.content-container {
+    width: 100%;
+    max-width: 1200px; /* 다른 페이지와 동일한 최대 너비 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 0;
+}
+
+
+.inner-content {
+    width: 100%;
+    overflow: visible;
+    height: auto;
+    padding-top: 50px; /* 상단 메뉴 공간 확보 */
+}
+
+/* ==== 이모지 페이지 ===== */
+/* 모든 컨테이너에서 일관된 그리드 셀 크기 유지 */
+.emoji-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 80px); /* 고정 크기 셀 */
+    gap: 15px; /* 간격 조금 더 넓게 */
+    justify-content: start; /* 왼쪽 정렬 */
+}
+
+.emoji-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    
+    /* 크기 고정 */
+    width: 80px;  /* 너비 고정 */
+    height: 80px; /* 높이 고정 */
+    box-sizing: border-box; /* 테두리와 패딩을 너비에 포함 */
+}
+
+/* few-results 클래스가 적용된 경우에도 일관된 크기 유지 */
+.few-results .emoji-item {
+    width: 80px;
+    height: 80px;
+    flex: 0 0 80px; /* 크기 고정, 늘어나거나 줄어들지 않음 */
+}
+
+.emoji-item:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.emoji {
+    font-size: 24px;
+    margin-bottom: 5px;
+    text-align: center; /* 이모지 중앙 정렬 */
+}
+
+.emoji-name {
+    font-size: 10px;
+    text-align: center;
+    color: #666;
+    word-break: keep-all;
+    width: 100%;
+    overflow: hidden; /* 텍스트가 넘치면 숨김 */
+    text-overflow: ellipsis; /* 넘치는 텍스트는 ...으로 표시 */
+}
+
+
+/* 검색 결과가 한 개인 경우에도 왼쪽 정렬이 확실하게 적용되도록 */
+.category-section {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.category-section .emoji-container {
+    justify-items: start; /* 개별 그리드 아이템도 왼쪽 정렬 */
+}
+
+
+
+.copy-message {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    animation: fadeOut 2s forwards;
+    z-index: 1000;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* 검색 창 왼쪽 정렬 유지 */
+/* 검색창 스타일 약간 조정 */
+.search-box {
+    width: 100%;
+    padding: 10px;
+    padding-left: 36px; /* 버튼 위치에 맞게 조정 */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+.search-box:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+}
+
+/* 검색창 컨테이너 */
+/* 🔹 검색창 폭을 통일 */
+.search-container {
+    width: 100%;
+    max-width: 500px; /* 검색창 크기 고정 */
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* 검색창 왼쪽에 버튼 공간 확보 */
+.search-box {
+    width: 100%;
+    padding: 10px;
+    padding-left: 40px; /* 왼쪽에 버튼 공간 확보 */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* 클리어 버튼 스타일 */
+/* 클리어 버튼 스타일 개선 */
+.clear-button {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f1f1f1;
+    border: none;
+    color: #666;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 10;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.clear-button:hover {
+    background-color: #e0e0e0;
+    color: #333;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.clear-button:active {
+    background-color: #d0d0d0;
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* 검색 결과 카운트 스타일도 맞춤 */
+/* 검색 결과 카운트도 왼쪽 정렬 */
+.search-result-count {
+    width: 100%; /* 전체 너비 */
+    max-width: 400px; /* 최대 너비 */
+    margin: 10px 0;
+    padding: 8px 12px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    color: #333;
+    font-size: 14px;
+    text-align: left;
+    display: none;
+}
+
+.search-result-highlight {
+    color: #007bff; /* 강조할 색상 */
+    font-weight: bold;
+    font-size: 1.1em; /* 약간 크게 */
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 1200px) {
+    .emoji-container {
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .emoji-container {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+    
+    .content-container {
+        max-width: 100%;
+    }
+}
+
+/* dot 구분선 */
+.divider-dotted {
+    border: none;
+    border-top: 4px dotted #CCCCCC;
+}
+.notice-box {
+    background-color: #f8f9fa;
+    border-left: 4px solid #4CAF50;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 0 4px 4px 0;
+}
+
+.instruction-list {
+    line-height: 1.6;
+}
+
+.instruction-list li {
+    margin-bottom: 10px;
+}
+
+code {
+    background-color: #f1f1f1;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    font-size: 14px;
+    color: #ac1212; /* 새들 브라운(Saddle Brown) - 붉은 빛 도는 짙은 갈색 */
+}

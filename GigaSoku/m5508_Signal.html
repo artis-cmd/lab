@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ローソク足</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS 파일 링크 -->
+    
+</head>
+<body onload="InitializeStaticMenu();">
+    <div id="STATICMENU">
+        <ul>
+            <li>
+                <img src="../image/icon/navi-01.gif" width="32" height="32" />
+                <strong>　Connect</strong>
+            </li>
+            <li>
+                <img src="../image/icon/gigabook.png" alt="Arrow" class="icon-24px" />
+                <a href="../main/m5000_Giga.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈👈ギガ速FX_index</a>
+            </li>
+            <div class="divider-dotted"></div>
+            <li>
+                <a href="../main/m5001_signal-card.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈Signal Card 20</a>
+                <p>#08_ <span class="concept">ローソク足</span></p>
+            </li>
+            <div class="divider-dotted"></div>
+            <li><img src="../image/icon/필24투명.png" alt="Arrow" class="icon-24px">
+                <a href="../main/m5508_包み足・はらみ足.html" target="main-frame">👈 包み足・はらみ足 </a>
+            </li>
+            <div class="divider-dotted"></div>
+            <!-- 바로 전 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.back()" style="display: inline-block; position: relative; z-index: 1;">🔙 前のページへ戻る</a>
+            </li>            
+            <!-- 다음 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.forward()" style="display: inline-block; position: relative; z-index: 1;">🔜 次のページへ進む</a>
+            </li>    
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="signal-card">
+            <div class="card-header">
+                <div class="card-title"><a href="../main/m5000_Giga.html" target="_self">FX Signal（シグナル） #08</a></div>
+                <h1 class="card-main-title">ローソク足</h1>
+            </div>
+
+            <div class="card-content">
+                <div class="rating-row">重要度 <span class="star-rating">★★★★☆</span></div>
+                <div class="rating-row">頻出度 <span class="star-rating">★★★★★</span></div>
+                <div class="rating-row">エントリー根拠 <span class="star-rating">★★☆☆☆</span></div>
+                <div class="rating-row">精度 <span class="star-rating">★★☆☆☆</span></div>
+            </div>
+        </div>
+
+        <div class="signal-description">
+            <li><img src="../image/icon/필24투명.png" alt="Arrow" class="icon-24px">
+                <a href="../main/m5508_包み足・はらみ足.html" target="main-frame">👈 包み足・はらみ足 </a>
+            </li>
+
+            <p>ここまでトレードの直接の根拠になるサポートラインやレジスタンスラインの基本的な見方を説明してきました。　</p>
+            <p>こうしたラインは、レートが長期間値動きを繰り返さないと見えてきません。　</p>
+            <p>ラインを発見するためには、5分足を使った短期トレードでも、１時間足、４時間足、日足といった上位足チャートを見て、どこにどんな<span class="tooltip">節目<span class="tooltiptext">[ふしめ]<br>木材や竹の、節のある所。また比喩的に、物事の区切りとなる（大事な）所。<br>고비</span></span>があるか、<span class="tooltip">俯瞰的<span class="tooltiptext">[ふかんてき]<br>高いところから見下ろすような視点、広い視野で物事を捉えること</span></span>、大局的に全体像をとらえる必要があります。　</p>
+            <p>それに比べると、<span class="giga-highlight">時間経過とともに次々と新しい足が生まれるローソク足の変化</span>は種類が多過ぎて、パターン攻略の難易度は上がりますが、ローソク足がなければエントリー判断が出来ません（欧米ではラインチャートを使う人も多いようですが）。　</p>
+
+            <p>ここではローソク足の基本的な見方について、ポイントを絞って解説して行きますね。　</p>
+            <p>ローソク足1本の中にはその期間中のレートの始値・終値・高値・安値という4つの価格情報が入っています。　</p>
+            <p>始値より終値が上昇していれば陽線、一方、終値が始値より下がっていれば陰線と呼ばれます。　</p>
+            <p>私のRionチャートでは陰線を赤、陽線を青に設定しています。　</p>
+            <p><span class="important">図2-12 </span>に<span class="tooltip">示した<span class="tooltiptext">[しめした]</span></span>ように、</p>
+            <div class="note-pink">
+                <ul>
+                    <li>　●　<span class="giga-highlight">大陽線、大陰線は勢いが非常に強い</span></li>
+                    <li>　●　<span class="giga-highlight">実体部分が小さくなるほど値動きの勢いは弱い</span></li>
+                    <li>　●　<span class="giga-highlight">上ヒゲの長い線</span>は上昇したもののショーターが頑張って押し戻した形なので<span class="giga-highlight">弱い</span></li>
+                    <li>　●　<span class="giga-highlight">下ヒゲの長い線</span>は下落したもののロンガーが下支えした形なので<span class="giga-highlight">強い</span></li>
+                </ul>
+            </div>
+            <p>といった見方をします。　</p>
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/m6508_a.png" alt="ローソク足の見方と基本戦略" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+                <p>図2-12　ローソク足の見方と基本戦略</p>
+            </div>
+
+            <p>また、ローソク足は1本を単独で見るのではなく、<span class="giga-highlight">複数の組み合わせ</span>でも見て行きます。　</p>
+            <p>ローソク足は江戸時代の米相場の値動きを分析するために考案されたもので、<span class="giga-highlight">「酒田罫線（さかたけいせん）」</span>というローソク足の解読法を<span class="tooltip">示した<span class="tooltiptext">[しめした]</span></span>ものがありますので機会があれば是非、勉強しておてください。　</p>
+            <p>FXの場合、ほぼ24時間取引が行われているため、土日を挟む場合以外は、日足のローソク足に<span class="giga-highlight">「窓」</span>と呼ばれる空白が生じることは、まず、ありません（ <span class="tooltip">ごく稀に<span class="tooltiptext">[ごくまれに]<br>数や頻度がきわめて少ないさまを表す表現</span></span> 、FX会社が扱い切れない、約定できません！というほど国家レベルの変動が起きた時には、値が飛んで空白の窓が出来ますが、それも会社によります）。　</p>
+            <p>多くの場合、前の足の終値の位置から次の足の始値がスタートします。　よく出てくるローソク足の組み合わせには、<span class="important">図2-13 </span>のようなものがあります。　</p>
+
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/m6508_b.png" alt="ローソク足の特徴的な組み合わせと見方" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+                <p>図2-13　ローソク足の特徴的な組み合わせと見方</p>
+            </div>
+
+            <div class="note">
+                <ul>
+                    <li>　●　<span class="giga-highlight">大陽線を全て打ち消すような大陰線</span>は天井圏で出たら、強い下落 Signal（シグナル）。　</li>
+                    <li>逆に大底圏で大陰線を全て打ち消すような大陽線が出たら強い上昇の Signal（シグナル）。　</li>
+                    <br>
+                    <li>　●　2本のローソク足 の 2本目が1本目の値動きを完全に打ち消している形。　</li>
+                    <li><span class="giga-highlight">「<span class="tooltip">包み足<span class="tooltiptext">[つつみあし]</span></span>」</span> や <span class="giga-highlight">「<span class="tooltip">抱き足<span class="tooltiptext">[つつみあし]<br><img src="../image/icon/包み足1.png"  width="460" height="294"></span></span>」</span>と呼ばれる</li>
+                    <li><span class="giga-highlight">小陰線　→　大陽線</span>、<span class="giga-highlight">小陽線　→　大陰線</span>というパターンもあれば、
+                    <li>さらに<span class="tooltip">極端<span class="tooltiptext">[きょくたん]<br>一番の端(はし)。「両―」。普通の常識などからきわめて離れているさま。<br>극단</span></span>になった <span class="giga-highlight">大陰線　→　大々陽線</span>、<span class="giga-highlight">大陽線　→　大々陰線</span>という、より強い反転 Signal（シグナル）もあります。　</li>
+                    <br>
+                    <li>　●　1本目のローソク足の値幅の中に2本目のローソク足が完全に包まれる形。 　
+                    <li><span class="giga-highlight">「<span class="tooltip">はらみ足<span class="tooltiptext">[はらみあし]<br><img src="../image/icon/はらみ足1.png"  width="460" height="294"></span></span>」</span>と呼ばれる組み合わせで、相場が迷っている Signal（シグナル）</li>
+                    <br>
+                    <li>　●　ローソク足から値動きの強弱を読み取る分析法を欧米では <span class="giga-highlight">「Price Action（プライスアクション）」</span> と呼ぶ。</li>
+                </ul>
+            </div>
+            
+            <p>1本前のローソク足の高値を超えたものの、結局、前の足の始値を下回る値動きは <span class="giga-highlight">「リバーサル・ハイ」（弱気リバーサル）</span>と言います。　</p>
+            <p>形状としては、図2-13に<span class="tooltip">示した<span class="tooltiptext">[しめした]</span></span>ように<span class="tooltip">包み足<span class="tooltiptext">[つつみあし]</span></span>に近いパターンもあれば、2本目の陰線が非常に長い上ヒゲを伸ばして下落するケースもあります。　</p>
+            <p>逆に<span class="giga-highlight">「リバーサル・ロー」（強気リバーサル）</span>は、1本前の足の安値を下回ったものの、そこから急上昇して前の足の始値を超えて終わる値動きです。　強い上昇 Signal（シグナル）になります。　</p>
+        </div>
+    </div>
+    <p><br></p><p><br></p>
+
+    <script src="../js/scripts.js" defer></script> <!-- JavaScript 파일 링크 -->
+    
+</body>
+</html>

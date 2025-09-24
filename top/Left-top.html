@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <link rel="icon" href="../image/favicon/x-As.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../image/favicon/x-As.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Left Top Menu</title>
+    <link rel="stylesheet" href="../css/left-menu.css">
+</head>
+<body>
+    <div class="menu-container">
+        <h2 class="menu-title">
+            <img src="../image/logo/artis-paypay-combined1.png" alt="Artis & PayPay Securities" class="logo-img" />
+            <div class="language-toggle">
+                <button id="langToggle" onclick="toggleLanguage()" class="lang-toggle-btn">
+                    KR / EN
+                </button>
+                <button id="themeToggle" onclick="toggleTheme()" class="theme-toggle-btn">
+                    🌞 / 🌙
+                </button>
+            </div>
+        </h2>
+        
+        <ul class="menu-list">
+            <li class="menu-item">
+                <span class="menu-toggle" title="트레이딩 도구" data-kr="트레이딩 도구">📊 Trading Tools</span>
+                <ul class="submenu">
+                    <li class="submenu-group" title="분석 도구" data-kr="분석 도구">📈 Analysis Tools</li>
+                    <li><a href="https://jp.tradingview.com/chart/bcwJw95T/?symbol=FX%3AGBPAUD" target="_blank" rel="noopener" title="GBPAUD 차트 분석" data-kr="GBPAUD 차트 분석">📈 TradingView 【GBPAUD】</a></li>
+                    <li><a href="https://www.gaitame.com/markets/calendar/" target="main-frame" title="경제지표 달력" data-kr="경제지표 달력">📅 指標カレンダー</a></li>
+                    <li><a href="https://www.gaitame.com/markets/order/details.html?country=gbpaud" target="main-frame" title="외환 GBPAUD 주문정보" data-kr="외환 GBPAUD 주문정보">📊 外為【GBPAUD】注文情報</a></li>
+                    <li><a href="https://www.gaitame.com/markets/cfd/chart/xauusd.html" target="main-frame" title="금 현물 XAUUSD 주문정보" data-kr="금 현물 XAUUSD 주문정보">📊 金スポット【XAUUSD】注文情報</a></li>
+
+                    <li class="submenu-group" title="트레이딩 관리" data-kr="트레이딩 관리">📋 Trading Management</li>
+                    <li><a href="http://localhost:5000/main/m8103_checklist.html" target="main-frame" title="트레이드 체크리스트" data-kr="트레이드 체크리스트">✅ Trade CheckList</a></li>
+                    <li><a href="../main/m5101_trading-improvement-notes.html" target="main-frame" data-kr="트레이딩 개선 전략">📖 Trading Improvement Notes</a></li>
+                    <li><a href="../bottom/b0001_Pre-Management.html" target="bottom-frame" title="자금관리 - 매매 준비" data-kr="자금관리 - 매매 준비">📌 Pre-Management ⤵️</a></li>
+                    <li><a href="../main/m7701_XAUUSD-Trackrecord.html" target="main-frame" title="XAUUSD 트레이딩 기록" data-kr="XAUUSD 트레이딩 기록">📝 XAUUSD-Trackrecord</a></li>
+
+                    <li class="submenu-group" title="패턴 및 전략" data-kr="패턴 및 전략">🎯 Pattern & Strategy</li>
+                    <li><a href="../main/m6600_TK-ChartPattern.html" target="bottom-frame" title="도쿄장 대응 - 패턴 분석" data-kr="도쿄장 대응 - 패턴 분석">👀 Tokyo Pattern Analysis ⤵️</a></li>
+                    <li><a href="https://gall.dcinside.com/mgallery/board/lists/?id=xauusd" target="_blank" rel="noopener" title="XAUUSD 갤러리" data-kr="XAUUSD 갤러리">🔥 dc XAUUSD</a></li>
+
+                    <li class="submenu-group" title="AI 분석 시스템" data-kr="AI 분석 시스템">🤖 AI Analysis System</li>
+                    <li><a href="../main/m0003_CaptureName.html" target="main-frame" rel="noopener" title="캔들차트 복기 파일명 생성기 & 해석기" data-kr="캡쳐_이미지명">🚩 Capture img Name</a></li>
+                    <li><a href="../main/m0004_ArtisAsset_Dashboard.html" target="main-frame" title="artisAsset 대시보드 시작 페이지" data-kr="artisAsset 대시보드">🚀 artisAsset Dashboard</a></li>
+                    <li><a href="../dashboard/m0005_Live_Dashboard.html" target="main-frame" title="artisAsset 실시간 대시보드" data-kr="실시간 대시보드">📊 Live Dashboard</a></li>
+                    <li><a href="../main/m0006_ArtisAsset_Manual.html" target="main-frame" title="artisAsset 시스템 사용 메뉴얼" data-kr="사용 메뉴얼">📋 User Manual</a></li>
+                    <li><a href="http://localhost:8003/docs" target="main-frame" title="artisAsset API 문서" data-kr="API 문서">📖 API Documentation</a></li>
+
+      
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <span class="menu-toggle" title="생산성 시스템" data-kr="생산성 시스템">🛠️ Productivity System</span>
+                <ul class="submenu">
+                    <li class="submenu-group" title="옵시디언" data-kr="옵시디언">📚 Obsidian</li>
+                    <li><a href="../docs/obsidian_docs/do8173_PARA-Folder.html" target="main-frame" title="옵시디언 PARA 폴더 구조" data-kr="옵시디언 PARA 폴더 구조">📁 Obsidian PARA Folder</a></li>
+                    <li><a href="../docs/obsidian_docs/do8172_colorTable.html" target="main-frame" title="옵시디언 컬러 설정" data-kr="옵시디언 컬러 설정">🎨 Obsidian Color Setting</a></li>
+                    <li><a href="../docs/obsidian_docs/do8179_Obsidian_bk_Guide.html" target="main-frame" title="옵시디언 가이드" data-kr="옵시디언 가이드">🏆 Obsidian Guide</a></li>
+                    <li><a href="https://fastcampus.co.kr/classroom/245804" target="_blank" rel="noopener" data-kr="지식관리 끝판왕, 옵시디언 바이블">☑️ Obsidian Bible</a></li>
+
+                    <li class="submenu-group" title="작업 도구" data-kr="작업 도구">⚡ Working Tools</li>
+                    <li><a href="../docs/artis_docs/da8175_Keyboard-Manual.html" target="main-frame" title="키보드 매뉴얼" data-kr="키보드 매뉴얼">⌨️ Keyboard Manual</a></li>
+                    <li><a href="../docs/artis_docs/da8176_Keyboard-truble.html" target="main-frame" title="Alt키 트러블" data-kr="Alt키 트러블">⌨️ Alt Key truble</a></li>
+
+                    <li><a href="../main/m8102_emoji.html" target="main-frame" title="자주 사용하는 이모지" data-kr="자주 사용하는 이모지">🐼 Emoji List</a></li>
+                    <li><a href="../main/m8104_PromptList.html" target="main-frame" title="프롬프트 목록" data-kr="프롬프트 목록">📚 Prompt List</a></li>
+                    <li><a href="../docs/artis_docs/da8172_Eagle-Manual.html" target="main-frame" title="Eagle" data-kr="Eagle">🛠️ Eagle  메뉴얼</a></li>
+                    <li><a href="../docs/artis_docs/da8173_Generated-ai.html" target="main-frame" title="생성형 AI 서비스 모음" data-kr="생성형 AI 서비스 모음">🧠 생성형 AI 모음</a></li>
+
+                    <li><a href="https://ko.color-site.com/" target="main-frame" title="색상 사이트" data-kr="색상 사이트">🎨 color-site.com</a></li>
+                    <li><a href="https://colorhunt.co/" target="main-frame" title="색상 조합" data-kr="색상 조합">📊 color-hunt</a></li>
+
+                    <li class="submenu-group" title="프로젝트" data-kr="프로젝트">📋 Projects</li>
+                    <li><a href="../main/m9801_todolist.html" target="main-frame" title="할 일 목록" data-kr="할 일 목록">🚂 Todo List</a></li>
+                    <li><a href="https://artis.waveon.me" target="_blank" rel="noopener" title="웨이브온" data-kr="웨이브온">📱 Wave On</a></li>
+                    <li><a href="../docs/artis_docs/da8171_Github-Manual.html" target="main-frame" title="깃허브 매뉴얼" data-kr="깃허브 매뉴얼">🎲 Github Manual</a></li>
+                    <li><a href="../docs/artis_docs/da8174_github_backup_note.html" target="main-frame" title="깃허브 백업 노트" data-kr="깃허브 백업 노트">🗂️ Github Backup Note</a></li>
+                    <li><a href="../docs/flask_docs/flask_server_guide.html" target="main-frame" title="플라스크 서버 가이드" data-kr="플라스크 서버 가이드">🎲 Flask Server Guide</a></li>
+                    <li><a href="../docs/artis_docs/da8177_github-html_push-manual.html" target="main-frame" title="html_push-manual" data-kr="html_push">📇 html_push 메뉴얼</a></li> 
+                </ul>
+            </li>
+            
+            <li class="menu-item">
+                <span class="menu-toggle" title="학습 자료" data-kr="학습 자료">📚 Learning Resources</span>
+                <ul class="submenu">
+                    <li class="submenu-group" title="강의 자료" data-kr="강의 자료">👨‍🏫 Lecture Materials</li>
+                    <li><a href="../main/m5000_Giga.html" target="main-frame" title="기가속 FX 교재" data-kr="기가속 FX 교재">📕 Giga速FX Book</a></li>
+                    <li><a href="../bottom/Left-bottom.html" target="bottom-frame" title="Hunt 기본 & 플러스 강좌" data-kr="Hunt 기본 & 플러스 강좌">👨🏻‍🏫【講座】Hunt Basic & Plus</a></li>
+                    <li><a href="https://hunt.fxism.jp/mypage" target="_blank" rel="noopener" title="Hunt 강좌 사이트" data-kr="Hunt 강좌 사이트">👨🏻‍🏫【講座】Hunt Site</a></li>
+
+                    <li class="submenu-group" title="학습 도구" data-kr="학습 도구">📖 Learning Tools</li>
+                    <li><a href="../main/m1008_WordList.html" target="main-frame" title="단어 목록" data-kr="단어 목록">📑 Word List</a></li>
+                    <li><a href="file:///H:/H47_CandleMaster/artis/Candle_Documents/HTML/index.html" target="_blank" rel="noopener" title="캔들마스터 노트" data-kr="캔들마스터 노트">📊 CandleMaster Note</a></li>
+
+                    <li class="submenu-group" title="참고 자료" data-kr="참고 자료">🔍 Reference Materials</li>
+                    <li><a href="https://mail.kakao.com/" target="_blank" rel="noopener" title="카카오 메일" data-kr="카카오 메일">📧 Kakao Mail</a></li>
+                    <li><a href="https://taritali.com/client/list.php" target="_blank" rel="noopener" title="타리타리" data-kr="타리타리">�� Taritali</a></li>
+                    <li><a href="https://tradera.tistory.com/manage/posts/" target="_blank" rel="noopener" title="트레이더 블로그" data-kr="트레이더 블로그">🚩 Trader Blog</a></li>
+          
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+    <script src="../js/left-menu.js"></script>
+</body>
+</html>

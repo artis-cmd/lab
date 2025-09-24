@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>m8101_📢 Private-Search</title>
+    <link rel="icon" href="../image/favicon/x-As.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../image/favicon/x-As.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/search.css">
+</head>
+<body>
+
+    <!-- 📢 상단 메뉴 -->
+    <div class="top-menu-container">
+        <div class="top-menu">
+            <a href="m8101_Private-Search.html">🔍 Search</a>
+            <a href="m8104_PromptList.html">❓ Prompt List</a>
+            <a href="../hBook/hB3105_Prompt-kr.html">📗 Prompt 한글책</a>
+            <a href="m8102_emoji.html" target="_blank">🔗 🐼_blank</a>
+        </div>
+    </div>
+
+    <!-- 🔹 페이지 제목 -->
+    <div class="page-title">
+        <h3>m8101_【Private-Search】🤖 HTML 파일 검색 🔍</h3>
+    </div>
+
+    <!-- 🔹 검색창 -->
+    <div class="search-container">
+        <input type="text" id="searchBox" class="search-box" placeholder="파일명을 검색해 보세요...">
+        <!-- 검색 결과 개수 및 상태 표시 -->
+        <div id="result-summary" class="result-summary">
+            <strong id="searchResultCount"></strong>
+            <p id="search-state" class="search-state">
+                💡 진행 상태 <br>
+                - 현재 URL : <span id="currentUrl" style="color: #999;">-</span><br>
+                - 처리 상태 : <span id="processStatus" style="color: #999;">대기중</span><br>
+                - 검색 상태 : <span id="searchStatus" style="color: #999;">검색 전</span><br>
+                - 로딩 상태 : <span id="loadingStatus" style="color: #999;">대기중</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- 🔹 검색 결과 리스트 -->
+    <div class="category-section">
+        <h2>📂 검색 결과</h2>
+        <ul id="searchResults" class="search-results"></ul>
+    </div>
+
+    <!-- 🔹 JavaScript 로딩 -->
+    <script src="../js/search.js" defer></script>
+
+    <br><br><br>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <link rel="icon" href="../image/favicon/x-As.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../image/favicon/x-As.ico" type="image/x-icon">
+<head>
+    <meta charset="UTF-8">
+    <title>m9101_Private-Search</title>
+    <!-- ✅ 기존 -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+</head>
+<body>
+
+<!-- 🔹 상단 메뉴 -->
+<div class="top-menu-container">
+    <div class="top-menu">
+        <a href="m8101_Private-Search.html">🔍 Search</a>
+        <a href="m8104_PromptList.html">❓ Prompt List</a>
+        <a href="../hBook/hB3105_Prompt-kr.html">📗 Prompt 한글책</a>
+        <a href="m8102_emoji.html" target="_blank">🔗 🐼_blank</a>
+    </div>
+</div>
+
+<!-- 🔹 페이지 제목 추가 -->
+<div class="page-title">
+    <h2>m9101_【Private-Search】🤖 HTML 파일 검색 🔍</h2>
+</div>
+
+<!-- 🔹 검색창 -->
+<div class="search-container">
+    <input type="text" id="search-box" class="search-box" placeholder="검색어 입력..." onkeyup="searchFiles()">
+    <div id="result-summary" class="result-summary">
+        <strong id="search-count">⬆️ 검색어를 입력하세요.</strong>
+        <p id="no-results" class="no-results" style="display: none;">❌ 검색 결과가 없습니다.</p>
+        <p id="debug-info" style="color: #666; font-size: 0.9em;">
+            💡 진행 상태<br>
+            - 현재 URL: <span id="current-url" style="color: #999;">-</span><br>
+            - 처리 상태: <span id="process-status" style="color: #999;">대기중</span><br>
+            - 검색 결과: <span id="search-status" style="color: #999;">검색 전</span><br>
+            - 로딩 상태: <span id="loading-status" style="color: #999;">대기중</span>
+        </p>
+    </div>
+
+</div>
+
+<!-- 🔹 검색 결과 리스트 -->
+<div class="category-section">
+    <h2>📂 검색 결과</h2>
+    <ul id="search-results"></ul>
+</div>
+
+<!-- 🔹 JavaScript 로딩 -->
+<script defer>
+    // top-menu.html 을 불러와서 id=top-menu-placeholder 에 넣습니다.
+        fetch('../top-menu.html')
+            .then(response => response.text())
+            .then(html => document.getElementById('top-menu-placeholder').innerHTML = html);
+</script>
+<script src="../js/scripts.js" defer></script>
+
+<br><br><br>
+
+</body>
+</html>

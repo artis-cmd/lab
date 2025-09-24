@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>m8104_PromptList</title>
+    <link rel="icon" href="../image/favicon/x-As.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../image/favicon/x-As.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/prompt.css">
+</head>
+<body>
+    <!-- 📢 상단 메뉴 -->
+    <div class="top-menu-container">
+        <div class="top-menu">
+            <a href="m8101_Private-Search.html">🔍 Search</a>
+            <a href="m8104_PromptList.html">❓ Prompt List</a>
+            <a href="../hBook/hB3105_Prompt-kr.html">📗 Prompt 한글책</a>
+            <a href="m8102_emoji.html" target="_blank" rel="noopener noreferrer">🔗 🐼_blank</a>
+        </div>
+    </div>
+
+    <!-- 🔹 페이지 제목 -->
+    <div class="page-title">
+        <h2>m8104_【PromptList】🤖 프롬프트 모음 📝</h2>
+    </div>
+
+    <!-- 🔹 검색창 -->
+    <div class="search-container">
+        <input type="text" id="search-box" class="search-box" placeholder="프롬프트 검색..." onkeyup="searchPrompts()" aria-label="프롬프트 검색">
+        <div id="result-summary" class="result-summary">
+            <strong id="search-count">🔎 검색어를 입력하세요. 🚀 아래 List에서 찾아줍니다.</strong>
+            <p id="no-results" class="no-results" style="display: none;">❌ 검색 결과가 없습니다.</p>
+        </div>
+    </div>
+
+    <div class="category-section">
+        <h2>🤖 Prompt List 📑</h2>
+        <!-- 여기에 프롬프트 항목들이 들어갈 예정 -->
+         
+            <!-- prompt1 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)" role="button" tabindex="0">
+    <span>회의록 議事録 요점 정리 프롬프트</span>
+    <span class="ai-model">추천 AI모델: ChatGPT-4o 이상</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt1">
+## 요청 사항
+회의록 議事録 의 내용을 제약 조건에 따라 정리해주세요
+
+## 제약 조건
+- 회의록의 내용에 따라 정리할 것
+- 발화 내용에서 발화 의도를 포함한 하고 싶은 말을 추출할 것
+- 추출한 내용에서 연관된 것들을 종합해 하나의 요점으로 정리할 것
+- 각각의 요점은 100자 정도로 요약할 것
+- 명확하고 의미를 이해하기 쉬운 문장으로 만들 것
+- 요점을 Bulletpoint로 나타낼 것
+
+## 분석할 회의록
+`{여기에 회의록을 입력해주세요}`
+
+## 출력 형식
+아래 항목별로 요점을 정리해 주세요:
+1. 회의 목적
+2. 결정된 사항
+3. 이후 과제
+4. To do
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt1')">복사하기</button>
+</div>
+
+
+            <!-- prompt2 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)" role="button" tabindex="0">
+    <span>홍보용 글 작성하기 (블로그, 보도자료)</span>
+    <span class="ai-model">추천 AI모델: Claude</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt2">
+너는 `회사/업계`의 시니어 `직무명`으로서 `[글 종류 기재 (ex-블로그, 보도자료 등)]`을 작성해야해.  
+다음 예시를 참고해서 비슷한 톤 앤 매너로 새로운 주제의 글을 써보자.
+
+## 예시
+`[잘 쓴 글 예시 입력]`
+
+## 분석 및 새 글 작성 요청
+위의 예시 글을 잘 분석해서 톤앤매너와 글 양식을 파악했으면,  
+이제 `주제`에 관한 새로운 `[글(ex-블로그글, 보도자료)]`를 작성해줘.
+
+## 제약조건
+- 예시 문체를 그대로 차용해 작성할 것
+- 주제를 반영한 매력적인 제목을 만들 것 (단, 주제와 똑같은 제목은 안됨)
+
+## 안내사항
+예시와 최대한 비슷한 문체와 어조를 유지하되,  
+주제에 맞는 새로운 내용으로 채워넣기 바란다. 그리고 제약조건도 잊지 말고 꼭 지켜줘.
+
+## 출력 형식
+자, 그럼 시작해볼까?  
+완성된 글은 `<글>___</글>　` 태그로 감싸서 출력해줘
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt2')">복사하기</button>
+</div>
+
+<!-- prompt3 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)" role="button" tabindex="0">
+    <span>프로젝트 개요 작성 프롬프트</span>
+    <span class="ai-model">추천 AI모델: Claude, ChatGPT4 이상</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt3">
+## 역할 : 20년 이상의 경력을 가진 시니어 프로젝트 관리자
+
+## 요청 : [프로젝트 목표]을 위한 [프로젝트 내용]의 개요 작성
+
+## 필수 포함 내용 : 
+1. 프로젝트 배경 (`[배경을 적어주세요]`)
+2. 프로젝트 목표 및 마일스톤 (`[목표를 적어주세요]`)
+3. 프로젝트의 타임라인(`[프로젝트 시작, 종료일을 적어주세요]`)
+4. 타겟 고객 (`[누구를 대상으로 하는지 적어주세요]`)
+
+## 작성 스타일 : 
+- 깔끔하고 중학생도 이해할 수 있는 쉬운 단어 사용
+- 개조식 톤 앤 매너 유지 (예: "~했음", "~제고" 등으로 끝나는 보고서 말투)
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt3')">복사하기</button>
+</div>
+
+<!-- prompt4 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)" role="button" tabindex="0">
+    <span>문장 교정 프롬프트</span>
+    <span class="ai-model">추천 AI모델: ChatGPT-4o 이상</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt4">
+## 요청 사항
+입력된 문장의 문법적 오류를 검토하고 수정해주세요
+
+## 교정 대상
+`{교정할 문장 입력}`
+
+### 출력 형식
+1. 교정된 문장 전문
+2. 수정사항 정리표 : 
+
+| 위치 | 원문 | 수정 | 수정 사유 |
+|------|------|------|------|
+| | | | |
+
+#### 교정 항목
+ - 맞춤법 오류
+ - 탈자 / 오타
+ - 어미 불일치
+ - 문법적 오류
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt4')">복사하기</button>
+</div>
+
+
+<!-- prompt5 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)" role="button" tabindex="0">
+    <span>프롬프트 제작 도우미</span>
+    <span class="ai-model">추천 AI모델: ChatGPT-4o 이상</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt5">
+## 소개
+프로페셔널 프롬프트 엔지니어의 도움을 받아 효과적인 프롬프트를 작성합니다.
+
+## 요청 내용
+당신이 ChatGPT에게 부탁하고 싶은 작업을 입력하시면, 최적의 프롬프트를 생성해 드립니다.
+
+## 입력 양식
+### 작업 설명
+`여기에 부탁하고 싶은 것을 적어주세요`
+
+### 제약 조건
+`여기에 제약조건 3 ~ 5개를 나열해주세요`
+
+## 출력 형식
+생성된 프롬프트는 아래와 같은 구조로 제공됩니다:
+1. 프롬프트 제목
+2. 역할 설정
+3. 주요 지시사항
+4. 세부 요구사항
+5. 제약사항
+6. 출력 형식
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt5')">복사하기</button>
+</div>
+
+<!-- prompt6 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)" role="button" tabindex="0">
+    <span>정보를 체계적으로 정리하는 문서 작성 전문가 (마크다운 템플릿)</span>
+    <span class="ai-model">추천 AI모델: 범용</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt6">
+너는 정보를 체계적으로 정리하는 10년 이상 경력의 베테랑 문서 작성 전문가야.
+특히 마크다운(Markdown) 템플릿에 따라 Obsidian에 정보를 정확하고 일관되게 정리하는 역할을 맡고 있어.
+
+다음 형식에 맞춰 응답해줘. 
+반드시 마크다운(Markdown) 형식을 사용하고, 스타일은 아래 기준을 따라줘.
+        
+## 🧠 {{제목}}
+
+### ❓ 질문 내용  
+{{질문_내용}}
+
+### 💬 AI 응답 요약  
+- {{요약_포인트1}}  
+- {{요약_포인트2}}  
+
+### 📄 전체 내용  
+{{전체_응답_텍스트}}
+
+---
+
+출력 스타일 가이드 : 
+  - 모든 제목은 마크다운의 헤딩 문법 사용  
+  - 섹션 구분은 `##`, 하위 구분은 `###` 또는 `####`  
+  - 리스트는 `-` 기호 사용  
+  - 각 섹션 간에는 불필요한 빈 줄 없이 간결하게 출력할 것  
+  - 시각적 일관성을 위해 마크다운 문법 오류 없이 출력할 것
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt6')">복사하기</button>
+</div>
+
+<!-- prompt7 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)" role="button" tabindex="0">
+    <span>구글 문서 프롬프트 (외부 문서 참고)</span>
+    <span class="ai-model">참고 링크</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt7">
+아래 구글 문서에서 다양한 프롬프트 예시와 템플릿을 참고할 수 있습니다.
+
+[프롬프트 모음 Google Docs 바로가기](https://docs.google.com/document/d/1edpfp4u8eVFBiWJU1AIFXrvmBCdNdK47WptcXwX6UhE/edit?tab=t.0)
+
+## 활용 방법
+- 위 링크를 클릭하여 다양한 프롬프트 예시를 확인하세요.
+- 필요에 따라 복사하여 사용하거나, 본인의 목적에 맞게 수정해 활용할 수 있습니다.
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt7')">복사하기</button>
+</div>
+<!-- prompt7 섹션 끝 -->
+
+            <!-- prompt8 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)" role="button" tabindex="0">
+    <span>문서 기반 PPT 슬라이드 시각화 영어 프롬프트</span>
+    <span class="ai-model">추천 AI모델: GPT-4, Claude 3 등</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt8">
+You are a highly creative PPT designer.
+Please follow these steps:
+
+1. Document Analysis - Carefully read the attached document and extract the most important key facts, figures, and insights needed for visualization.
+
+<document> display your results </document>
+
+2. Slide Creation
+- only one slide.
+- Aspect Ratio: 16:9.
+- Theme Colors: purple, gray, white, light blue
+- Font: Noto Sans CJK KR.
+
+3. Data Visualization: please recommend and generate the most appropriate chart type (line, bar, pie, etc.) for each dataset.
+
+4. Output Formats:
+- A React component file (initial draft).
+- An SVG export suitable for later editing in PowerPoint. (I will edit myself)
+
+5. Overall Design Guidelines
+- Balance text and visuals with ample white space.
+- Establish a clear information hierarchy with headings and subheadings.
+- Include only essential content; remove unnecessary text.
+- Highlight statistics and key numbers so they're immediately visible.
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt8')">복사하기</button>
+</div>
+<!-- prompt8 섹션 끝 -->
+
+            <!-- prompt9 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)" role="button" tabindex="0">
+    <span>문서 기반 PPT 슬라이드 시각화 한국어 프롬프트</span>
+    <span class="ai-model">추천 AI모델: GPT-4, Claude 3 등</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt9">
+당신은 매우 창의적인 PPT 디자이너입니다.
+다음 단계를 따라 주세요:
+
+1. 문서 분석  
+첨부된 문서를 주의 깊게 읽고, 시각화에 필요한 가장 중요한 핵심 사실, 수치, 인사이트를 추출하세요.  
+<document> 분석 결과를 여기에 표시해 주세요 </document>
+
+2. 슬라이드 제작  
+- 슬라이드는 1장만 제작합니다.  
+- 화면 비율: 16:9  
+- 테마 색상: 보라색, 회색, 흰색, 연한 파란색  
+- 폰트: Noto Sans CJK KR 사용  
+
+3. 데이터 시각화  
+각 데이터셋에 가장 적합한 차트 유형(선형, 막대, 원형 등)을 추천하고 생성해 주세요.
+
+4. 결과물 형식  
+- 초기 초안용 React 컴포넌트 파일  
+- PowerPoint에서 추후 편집할 수 있도록 SVG 형식의 파일  
+
+5. 전반적인 디자인 가이드라인  
+- 텍스트와 시각 요소 사이에 충분한 여백을 두어 균형을 맞추세요.  
+- 제목과 부제목을 활용해 명확한 정보 계층 구조를 설정하세요.  
+- 필수 콘텐츠만 포함하고, 불필요한 텍스트는 제거하세요.  
+- 통계 수치와 핵심 숫자는 눈에 잘 띄도록 강조하세요.  
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt9')">복사하기</button>
+</div>
+<!-- prompt9 섹션 끝 -->
+
+            <!-- prompt10 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)" role="button" tabindex="0">
+    <span>한국어 프롬프트: 만든 슬라이드 디자인 수정하기</span>
+    <span class="ai-model">추천 AI모델: GPT-4, Claude 3 등</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt10">
+주어진 이미지를 바탕으로 제 PPT 슬라이드를 다시 디자인해 주세요. 아래의 사양에 따라 고급스럽고 전문적인 비즈니스 슬라이드를 디자인해 주세요:
+
+1. 콘텐츠 요구사항:
+- 회사 제품 슬라이드
+- 전문적이고 프리미엄한 비즈니스 느낌
+- 깔끔하고 현대적인 미적 감각
+
+2. 기술 사양:
+- 슬라이드는 하나만 필요합니다.
+- 화면 비율: 16:9 (와이드스크린)
+- 폰트: Noto Sans CJK KR
+- 반응형 디자인
+- 테마 색상: 세련된 색상 조합을 추천해 주세요.
+
+3. 디자인 요소:
+- 미니멀하면서도 임팩트 있는 레이아웃
+- 여백(네거티브 스페이스)의 전략적 사용
+- 전문적인 타이포그래피 계층 구조
+- 비즈니스에 적합한 은은한 시각적 요소
+- 프레젠테이션에 적용할 수 있도록 HTML/CSS 형식으로 디자인 제공
+
+여기에 이미지가 있습니다: <image>
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt10')">복사하기</button>
+</div>
+<!-- prompt10 섹션 끝 -->
+
+            <!-- prompt11 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)" role="button" tabindex="0">
+    <span>프롬프트: PDF 넣고 학회 포스터 디자인하기</span>
+    <span class="ai-model">추천 AI모델: GPT-4, Claude 3 등</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt11">
+You are a highly skilled academic content visualizer and creative poster designer. Your task is to read the attached academic PDF and transform it into an engaging one-page visual poster.
+
+Follow the steps below:
+
+1. PDF Analysis  
+   Carefully read the attached PDF (academic article on prompt engineering), and do the following:
+
+2. Extract Key Sentences  
+   Select the 5–7 most important original sentences that best summarize the core arguments or findings of the paper.
+
+3. Extract Graphs  
+   Identify and extract key charts/diagrams/figures used in the paper (either recreate them or summarize their insights).
+
+4. Summarize Key Insights  
+   Write short bullet-pointed insights (max 6 points) based on the paper's objectives, methods, findings, and conclusions.
+
+# Poster Creation  
+Design a single-slide academic poster that visually communicates the extracted insights:  
+- Aspect Ratio: 16:9 (landscape)  
+- Theme Colors: Purple (#800080), Gray (#A0A0A0), White (#FFFFFF), Lavender (#E6E6FA)  
+- Font: Times New Roman or Noto Sans CJK KR (depending on language)  
+
+# Visual Elements  
+For each figure or data insight, generate the most appropriate visualization (line, bar, pie chart, or infographic diagram).  
+Layout Suggestion:  
+- Title Section (top)  
+- Key Sentences (center-left)  
+- Visual Graph(s) (center-right)  
+- Insight Summary Box (bottom or side)  
+
+# Output Format  
+Generate the final outputs in the following formats:  
+- React Component (.jsx/.tsx) for web-based rendering  
+- SVG Export suitable for later editing in PowerPoint.  
+
+# Design Guidelines  
+- Use ample white space to maintain clarity  
+- Establish a clear visual hierarchy (Title > Key Points > Graphs > Summary)  
+- Highlight numerical insights and core claims prominently  
+- Maintain academic tone with creative visual communication.
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt11')">복사하기</button>
+</div>
+<!-- prompt11 섹션 끝 -->
+
+            <!-- prompt12 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)" role="button" tabindex="0">
+    <span>영어 프롬프트: 주제별 상세 정보 분류하기 (프로그램 작성처럼)</span>
+    <span class="ai-model">추천 AI모델: Gemini, GPT-4, Claude 3 등</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt12">
+Prompt:
+Respond to the following given topic.
+Gather the details as thoroughly as
+possible, then categorize them
+according to the following format:
+
+- Fact: { }
+- Your opinion: { }
+- Topic:
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt12')">복사하기</button>
+</div>
+<!-- prompt12 섹션 끝 -->
+
+            <!-- prompt13 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)" role="button" tabindex="0">
+    <span>한글 프롬프트: 주제별 상세 정보 분류하기 (프로그램 작성처럼)</span>
+    <span class="ai-model">추천 AI모델: Gemini, GPT-4, Claude 3 등</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt13">
+프롬프트:
+다음 주제에 대해 답변해줘. 가능한 한
+상세한 정보를 모아. 그리고 다음 형식에 따라
+분류해줘.
+
+- 사실: { }
+- 나의 견해: { }
+- 주제: 
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt13')">복사하기</button>
+</div>
+<!-- prompt13 섹션 끝 -->
+
+    </div>
+    <br><br><br>
+
+    <!-- 🔹 JavaScript 로딩 -->
+    <script src="../js/prompt.js" defer></script>
+
+</body>
+</html>

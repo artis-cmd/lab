@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복사 가능한 스타일 정보</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            margin: 20px;
+        }
+        
+        h2 {
+            margin-top: 40px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 0 0;
+            margin-bottom: 30px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        .message {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        /* 헤딩 내용 셀 배경색 */
+        .heading1-content { background-color: #E37092; color: white; }
+        .heading2-content { background-color: #42D0A1; color: white; }
+        .heading3-content { background-color: #98C3BD; color: white; }
+        .heading4-content { background-color: #F1D093; }
+        .heading5-content { background-color: #EE9086; color: white; }
+        .heading6-content { background-color: #AAAAAA; color: white; }
+        .text-content { background-color: #F5EBC3; }
+        
+        /* 색상 셀 */
+        .color-cell-1 { background-color: #E37092; }
+        .color-cell-2 { background-color: #42D0A1; }
+        .color-cell-3 { background-color: #98C3BD; }
+        .color-cell-4 { background-color: #F1D093; }
+        .color-cell-5 { background-color: #EE9086; }
+        .color-cell-6 { background-color: #AAAAAA; }
+        .color-cell-7 { background-color: #F5EBC3; }
+        
+        /* 번호 열 스타일 */
+        .num-col {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            width: 50px;
+        }
+        
+        /* 불렛 스타일 */
+        .bullet {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: inline-block;
+        }
+        
+        .label {
+            padding: 5px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .bullet-container {
+            display: inline-block;
+            margin-right: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Obsidian Color Setting</h1>
+    <p>셀을 클릭하면 내용이 클립보드에 복사됩니다.</p>
+    
+    <div id="copyMessage" class="message">복사되었습니다!</div>
+    
+    <h2>1. Heading Style Tabel - 헤딩 스타일 테이블</h2>
+    <table id="headingTable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Contents</th>
+                <th>Color</th>
+                <th>RGB</th>
+                <th>HEX</th>
+                <th>Font Size</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num-col">1</td>
+                <td class="heading1-content">Heading 1</td>
+                <td class="color-cell-1"></td>
+                <td>rgba(227, 112, 146, 1)</td>
+                <td>#E37092</td>
+                <td>1.7</td>
+            </tr>
+            <tr>
+                <td class="num-col">2</td>
+                <td class="heading2-content">Heading 2</td>
+                <td class="color-cell-2"></td>
+                <td>rgba(66, 208, 161, 1)</td>
+                <td>#42D0A1</td>
+                <td>1.4</td>
+            </tr>
+            <tr>
+                <td class="num-col">3</td>
+                <td class="heading3-content">Heading 3</td>
+                <td class="color-cell-3"></td>
+                <td>rgba(152, 195, 189, 1)</td>
+                <td>#98C3BD</td>
+                <td>1.25</td>
+            </tr>
+            <tr>
+                <td class="num-col">4</td>
+                <td class="heading4-content">Heading 4</td>
+                <td class="color-cell-4"></td>
+                <td>rgba(241, 208, 147, 1)</td>
+                <td>#F1D093</td>
+                <td>1.125</td>
+            </tr>
+            <tr>
+                <td class="num-col">5</td>
+                <td class="heading5-content">Heading 5</td>
+                <td class="color-cell-5"></td>
+                <td>rgba(238, 144, 134, 1)</td>
+                <td>#EE9086</td>
+                <td>1.0</td>
+            </tr>
+            <tr>
+                <td class="num-col">6</td>
+                <td class="heading6-content">Heading 6</td>
+                <td class="color-cell-6"></td>
+                <td>rgba(170, 170, 170, 1)</td>
+                <td>#AAAAAA</td>
+                <td>1.0</td>
+            </tr>
+            <tr>
+                <td class="num-col">7</td>
+                <td class="text-content">텍스트</td>
+                <td class="color-cell-7"></td>
+                <td>rgba(245, 235, 195, 1)</td>
+                <td>#F5EBC3</td>
+                <td>1.0</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2>2. 불렛 색상 정보</h2>
+    
+    <!-- 불렛 시각적 표시 -->
+    <div style="display: flex; flex-wrap: wrap; margin-bottom: 30px;">
+        <div class="bullet-container">
+            <div class="bullet" style="background-color: #FF3B21;"></div>
+            <div class="label">the Best Authority</div>
+        </div>
+        <div class="bullet-container">
+            <div class="bullet" style="background-color: #FF8C21;"></div>
+            <div class="label">to Be Cited</div>
+        </div>
+        <div class="bullet-container">
+            <div class="bullet" style="background-color: #FFDD21;"></div>
+            <div class="label">Important</div>
+        </div>
+        <div class="bullet-container">
+            <div class="bullet" style="background-color: #34D34A;"></div>
+            <div class="label">to Read</div>
+        </div>
+        <div class="bullet-container">
+            <div class="bullet" style="background-color: #45A7FF;"></div>
+            <div class="label">Viewed Roughly</div>
+        </div>
+        <div class="bullet-container">
+            <div class="bullet" style="background-color: #FF7AEA;"></div>
+            <div class="label">Interested</div>
+        </div>
+        <div class="bullet-container">
+            <div class="bullet" style="background-color: #BBBBBB;"></div>
+            <div class="label">Fully Done</div>
+        </div>
+    </div>
+    
+    <!-- 불렛 색상 정보 테이블 -->
+    <table id="bulletTable">
+        <thead>
+            <tr>
+                <th>분류</th>
+                <th>색상</th>
+                <th>HEX</th>
+                <th>RGB</th>
+                <th>설명</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>the Best Authority</td>
+                <td><div class="bullet" style="background-color: #FF3B21;"></div></td>
+                <td>#FF3B21</td>
+                <td>rgb(255, 59, 33)</td>
+                <td>빨간색 - 최고 권위</td>
+            </tr>
+            <tr>
+                <td>to Be Cited</td>
+                <td><div class="bullet" style="background-color: #FF8C21;"></div></td>
+                <td>#FF8C21</td>
+                <td>rgb(255, 140, 33)</td>
+                <td>주황색 - 인용 예정</td>
+            </tr>
+            <tr>
+                <td>Important</td>
+                <td><div class="bullet" style="background-color: #FFDD21;"></div></td>
+                <td>#FFDD21</td>
+                <td>rgb(255, 221, 33)</td>
+                <td>노란색 - 중요</td>
+            </tr>
+            <tr>
+                <td>to Read</td>
+                <td><div class="bullet" style="background-color: #34D34A;"></div></td>
+                <td>#34D34A</td>
+                <td>rgb(52, 211, 74)</td>
+                <td>녹색 - 읽을 예정</td>
+            </tr>
+            <tr>
+                <td>Viewed Roughly</td>
+                <td><div class="bullet" style="background-color: #45A7FF;"></div></td>
+                <td>#45A7FF</td>
+                <td>rgb(69, 167, 255)</td>
+                <td>파란색 - 대략 살펴봄</td>
+            </tr>
+            <tr>
+                <td>Interested</td>
+                <td><div class="bullet" style="background-color: #FF7AEA;"></div></td>
+                <td>#FF7AEA</td>
+                <td>rgb(255, 122, 234)</td>
+                <td>분홍색 - 관심 있음</td>
+            </tr>
+            <tr>
+                <td>Fully Done</td>
+                <td><div class="bullet" style="background-color: #BBBBBB;"></div></td>
+                <td>#BBBBBB</td>
+                <td>rgb(187, 187, 187)</td>
+                <td>회색 - 완전히 끝남</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const copyMessage = document.getElementById('copyMessage');
+            
+            function copyToClipboard(text) {
+                // 임시 textarea 요소 생성
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';  // 화면 밖으로 배치
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                
+                // 텍스트 선택 및 복사
+                textarea.select();
+                let success = false;
+                try {
+                    success = document.execCommand('copy');
+                } catch (err) {
+                    console.error('복사 실패:', err);
+                }
+                
+                // 임시 요소 제거
+                document.body.removeChild(textarea);
+                
+                // 결과 반환
+                return success;
+            }
+            
+            function showMessage() {
+                copyMessage.style.display = 'block';
+                setTimeout(function() {
+                    copyMessage.style.display = 'none';
+                }, 1500);
+            }
+            
+            // 모든 테이블에 클릭 이벤트 추가
+            document.querySelectorAll('table').forEach(table => {
+                table.addEventListener('click', function(e) {
+                    // 클릭된 요소가 td 내부에 있는 경우 가장 가까운 td 찾기
+                    const cell = e.target.closest('td');
+                    
+                    if (!cell) return; // td가 아니면 함수 종료
+                    
+                    // 셀의 텍스트 내용을 가져옴
+                    let textToCopy = cell.textContent.trim();
+                    
+                    // 헤딩 테이블의 색상 셀인 경우
+                    if (cell.classList.contains('color-cell-1') || 
+                        cell.classList.contains('color-cell-2') || 
+                        cell.classList.contains('color-cell-3') || 
+                        cell.classList.contains('color-cell-4') || 
+                        cell.classList.contains('color-cell-5') || 
+                        cell.classList.contains('color-cell-6') || 
+                        cell.classList.contains('color-cell-7')) {
+                        
+                        const row = cell.parentNode;
+                        const hexCell = row.querySelector('td:nth-child(5)');
+                        if (hexCell) {
+                            textToCopy = hexCell.textContent.trim();
+                        }
+                    }
+                    
+                    // 불렛 테이블의 색상 셀인 경우
+                    if (cell.querySelector('.bullet')) {
+                        const row = cell.parentNode;
+                        const hexCell = row.querySelector('td:nth-child(3)');
+                        if (hexCell) {
+                            textToCopy = hexCell.textContent.trim();
+                        }
+                    }
+                    
+                    // 클립보드에 복사
+                    if (copyToClipboard(textToCopy)) {
+                        showMessage();
+                    }
+                });
+            });
+        });
+    </script>
+    <br><br><br><br>
+
+</body>
+</html>

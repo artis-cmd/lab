@@ -1,0 +1,58 @@
+{
+	"schemaVersion": "1.0.0",
+	"name": "YouTube (Japanese)",
+	"behavior": "create",
+	"noteContentFormat": "**📅 Saved On :** {{time|date:\"YYYY-MM-DD HH:mm:ss\"}}\n\n![](https://i.ytimg.com/vi/{{url|replace:\"https://www.youtube.com/watch?v=\",\"\"}}/hqdefault.jpg)\n\n## 🧠 内容の説明\n{{\"この動画の内容を講義形式でわかりやすく日本語で説明してください。\"}}\n\n---\n\n### 🔗 参考リンク\n{{\"この動画に関連する参考リンクをマークダウン形式で列挙してください。\"}}\n\n### 📚 関連ノート候補\n- [[関連ノート1]]\n- [[関連ノート2]]\n\n---\n\n> [!info]- 元の引用\n{{content|blockquote}}\n\n---\n\n## 📝 字幕全文（日本語訳・タイムスタンプなし）\n{{\"このYouTube動画の全字幕をタイムスタンプなしで日本語に要約してください。\"}}\n\n\n",
+	"properties": [
+		{
+			"name": "title",
+			"value": "{{title}}",
+			"type": "text"
+		},
+		{
+			"name": "channel",
+			"value": "{{schema:@VideoObject:author}}",
+			"type": "text"
+		},
+		{
+			"name": "published",
+			"value": "{{schema:@VideoObject:uploadDate|date:\\\"YYYY-MM-DD\\\"}}",
+			"type": "date"
+		},
+		{
+			"name": "language",
+			"value": "{{\\\"この動画の主要言語をISO 639-1コードで指定してください（例: ja, ko, en）\\\"}}",
+			"type": "text"
+		},
+		{
+			"name": "description",
+			"value": "{{schema:@VideoObject:description}}",
+			"type": "text"
+		},
+		{
+			"name": "youtube_url",
+			"value": "{{url|split:\\\"&\\\"|first}}",
+			"type": "text"
+		},
+		{
+			"name": "duration",
+			"value": "{{\\\"この動画の長さを hh:mm:ss 形式で出力してください（例: 00:12:34）\\\"}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "{{\\\"この動画のテーマに関連するタグをアンダースコアで連結して日本語で書いてください。\\\"}}",
+			"type": "multitext"
+		},
+		{
+			"name": "clipdate",
+			"value": "{{time|date:\\\"YYYY-MM-DDTHH:mm:ssZ\\\"}}",
+			"type": "date"
+		}
+	],
+	"triggers": [
+		"https://www.youtube.com"
+	],
+	"noteNameFormat": "{{title}}_{{time}}",
+	"path": "00. Inbox/02. Youtube"
+}

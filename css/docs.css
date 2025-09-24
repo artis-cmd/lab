@@ -1,0 +1,105 @@
+/* ==================== 📄 DOCS 전용 스타일 ==================== */
+
+/* 기본 문서 스타일 */
+body {
+    font-family: 'Noto Sans KR', 'Noto Sans JP', sans-serif;
+    margin: 20px;
+    line-height: 1.8;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    font-size: 24px;  /* 전체 문서 타이틀 */
+    font-weight: bold;
+    color: #333;
+}
+
+h2 {
+    font-size: 20px;  /* 섹션 타이틀 */
+    font-weight: bold;
+    color: #222;
+    margin-top: 30px;
+    border-bottom: 2px solid #ddd; /* 하단 구분선 */
+    padding-bottom: 5px;
+}
+
+h3 {
+    font-size: 18px;  /* 소제목 */
+    font-weight: bold;
+    color: #444;
+    margin-top: 20px;
+}
+
+h4 {
+    font-size: 16px;  /* 세부 소제목 */
+    font-weight: bold;
+    color: #555;
+    margin-top: 15px;
+}
+
+
+/* 네비게이션 스타일 */
+/* ✅ 기존 왼쪽 네비게이션을 오른쪽으로 이동 */
+.docs-nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;  /* 왼쪽(left)에서 오른쪽(right)으로 변경 */
+    width: 220px;
+    background: white;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.docs-nav a {
+    display: block;
+    text-decoration: none;
+    color: #007bff;
+    padding: 6px 0;
+    font-weight: bold;
+}
+
+.docs-nav a:hover {
+    text-decoration: underline;
+}
+
+/* 문서 콘텐츠 스타일 */
+/* ✅ 기존 마진을 왼쪽에서 오른쪽으로 변경 */
+.docs-content {
+    margin-right: 260px;  /* 네비게이션 공간 확보 */
+    margin-left: 20px;    /* 왼쪽 마진 유지 */
+    padding: 20px;
+}
+
+/* 섹션 스타일 */
+.docs-section {
+    padding-top: 80px;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 40px;
+}
+
+/* 강조 스타일 */
+.highlight {
+    color: #e44d26;
+    font-weight: bold;
+}
+
+/* 코드 블록 스타일 */
+.docs-code {
+    background: #f4f4f4;
+    padding: 10px;
+    border-left: 4px solid #007bff;
+    font-family: monospace;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+/* 푸터 스타일 */
+.docs-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #777;
+}

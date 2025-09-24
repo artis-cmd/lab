@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>LycaonFX Twitter Page</title>
+    <style>
+    	.icon-img {
+            width: 100%;
+            height: auto;
+            max-width: 128px; /* 필요에 따라 최대 너비 설정 */
+            max-height: 38px; /* 필요에 따라 최대 높이 설정 */
+        }
+        .lecture_icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: 48px;
+            height: 48px;
+        }
+        body {
+            font-family: helvetica, meiryo, 'Malgun Gothic';
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 1000;
+        }
+        .twitter-container {
+            height: 900px; /* 원하는 높이로 조정 가능 */
+            overflow-y: scroll;
+            padding-top: 20px;
+        }
+        .twitter-timeline {
+            width: 100%;
+            height: 100%;
+        }
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    이 HTML 파일은 LycaonFX의 트위터 페이지를 보여줍니다.
+    트위터 타임라인 위젯을 사용하여 LycaonFX 계정의 트윗을 표시합니다.
+    -->
+    <div class="container">
+        <div class="header">
+            <h2><img src="../image/icon/x-twitter.gif" alt="Arrow" class="lecture_icon">　リオン@FXVtuber　►　@LycaonFX</h2>
+            <p lang="ko"><span class="highlight">X(旧Twitter)</span>에서 임베이드가 잘 안되기에 <span class="highlight"> 크롬 즐겨찾기 ↑↑ </span>를 이용하는게 좋다. <span class="highlight" lang="ja"></span></p>
+        </div>
+        <div class="twitter-container">
+            <a class="twitter-timeline" href="https://twitter.com/LycaonFX?ref_src=twsrc%5Etfw">Tweets by LycaonFX</a> 
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </div>
+</body>
+</html>

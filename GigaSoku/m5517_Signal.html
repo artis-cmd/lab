@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移動平均線の集束&拡散</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS 파일 링크 -->
+    
+</head>
+<body onload="InitializeStaticMenu();">
+    <div id="STATICMENU">
+        <ul>
+            <li>
+                <img src="../image/icon/navi-01.gif" width="32" height="32" />
+                <strong>　Connect</strong>
+            </li>
+            <li>
+                <img src="../image/icon/gigabook.png" alt="Arrow" class="icon-24px" />
+                <a href="../main/m5000_Giga.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈👈ギガ速FX_index</a>
+            </li>
+            <div class="divider-dotted"></div>
+            <li>
+                <a href="../main/m5001_signal-card.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈Signal Card 20</a>
+                <p>#17_ <span class="concept">移動平均線の集束&拡散</span></p>
+            </li>
+            <div class="divider-dotted"></div>
+            <!-- 바로 전 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.back()" style="display: inline-block; position: relative; z-index: 1;">🔙 前のページへ戻る</a>
+            </li>            
+            <!-- 다음 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.forward()" style="display: inline-block; position: relative; z-index: 1;">🔜 次のページへ進む</a>
+            </li>    
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="signal-card">
+            <div class="card-header">
+                <div class="card-title"><a href="../main/m5000_Giga.html" target="_self">FX Signal（シグナル） #17</a></div>
+                <h1 class="card-main-title">移動平均線の集束&拡散</h1>
+            </div>
+            <div class="card-content">
+                <div class="rating-row">
+                    <span>重要度</span>
+                    <span class="star-rating">★★★★★</span>
+                </div>
+                <div class="rating-row">
+                    <span>頻出度</span>
+                    <span class="star-rating">★☆☆☆☆</span>
+                </div>
+                <div class="rating-row">
+                    <span>エントリー根拠</span>
+                    <span class="star-rating">★★★★☆</span>
+                </div>
+                <div class="rating-row">
+                    <span>精度</span>
+                    <span class="star-rating">★★★★☆</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="signal-description">
+            <h2>移動平均線（MA）の 集束 と 拡散 について</h2>
+            <p>MAを使った値動き予測で、初心者の方にも非常に分かりやすいのが、</p>
+            <p><span class="giga-highlight">短期・長期MAが狭い価格帯に集まった後、パッと 上 か 下 に離れて拡散して行く動き</span>です。　</p>
+            <br>
+
+            <h3>MAの動きの特徴</h3>
+            <ul>
+                <li>MAはレートの平均値であるため、レートが上や下に勢いよく動いている時は、期間の短いMAが期間の長いMAからどんどん離れて行く動きが加速します。　</li>
+                <li>一方、レートの勢いが <span class="tooltip">鈍って<span class="tooltiptext">[にぶって]<br>にぶくなる。 するどさがなくなる。</span></span> 同じ価格帯にいる時間が長くなれば、<span class="giga-highlight">短期と長期の平均値も近づいてくる</span>ため、両者は接近して来るようになります。　</li>
+            </ul>
+
+            <p>MA同士の間隔の集束・拡散は<span class="giga-highlight">トレンドの勢いの加速・失速を見抜くための判断材料</span>となります。　</p>
+
+            <h2><span class="tooltip">実践<span class="tooltiptext">[じっせん] <br>実際の情況のもとでそれを行うこと。<br>실천</span></span>例：図2-22の解説</h2>
+            <p><span class="important">図2-22 </span>は<span class="important-black"> ポンドオージー（GBPAUD）</span><img src="../image/icon/flag/파호_icon_s.png" class="align-middle">の ５分足チャートに</p>
+            <p><span class="underline-dot-highlight sma-20">20sma</span>、<span class="underline-dot-highlight sma-75">75sma</span>、<span class="underline-dot-highlight sma-200">200sma</span>、<span class="giga-highlight"><span class="underline-dot-highlight sma-240">240sma</span>（= １時間足チャートの 20sma ）</span> などを表示したものです。　</p>
+
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/m6517_a.png" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+                <p class="image-caption">図2-22　　 MA、上位足MAの集束・拡散の実践例</p>
+            </div>
+
+            <div class="note">
+                <h3>ポイント解説</h3>
+                <ul>
+                    <li>図2-22の中央あたりでレートが横ばいで <span class="tooltip">乱高下<span class="tooltiptext">[らんこうげ] <br>相場などが短期間のうちに激しく上下に動くことを意味します。</span></span> している <span class="giga-highlight"> <span class="important">①</span> の <span class="concept-zone">Zone</span> 内のMA同士の距離</span>に注目してください。　</li>
+                    <li><span class="giga-highlight">非常に狭い値幅内</span>に <span class="underline-dot-highlight sma-20">20sma</span>、<span class="underline-dot-highlight sma-75">75sma</span>、<span class="underline-dot-highlight sma-200">200sma</span>、<span class="underline-dot-highlight sma-240">240sma</span>が集結。　この状況がMAの集束です。　</li>
+                    <li>平均値をとる期間が違うMAが １か所に集まるのは、値動きが横ばいで長く<span class="tooltip">推移<span class="tooltiptext">[すいい]<br>추이</span></span>し続けることで起こります。　</li>
+                    <li>その状態から<span class="important">②</span> の <span class="concept-zone">Zone</span> でレートが大きく急落。　MAもその動きに合わせて拡散しています。　</li>
+                </ul>
+    
+            </div>
+            <div class="divider-dotted"></div>
+            <div class="note-pink">
+                <h3>トレード戦略</h3>
+                <p>このMA拡散の動きに合わせてショートすれば、急落を利益に変えることが出来ます。　</p>
+                <p>このことが分かっていると、長短MAが横ばいで<span class="tooltip">推移<span class="tooltiptext">[すいい]<br>추이</span></span> して狭い価格帯に密集し始めたら　</p>
+                <p><span class="giga-highlight">「この後、MAが拡散するような大きな動きが起こるのではないか」</span>とあらかじめ構えておくことが出来ます。　</p>
+            </div>
+            <div class="divider-dotted"></div>
+            <div class="note-green">
+                <h3>注意点</h3>
+                <p>MAの 集束 と 拡散 は分かりやすいエントリーチャンスになります。　ただし、
+                    この「MAの束を抜けるか、束に絡み合ったままか、束の上に乗ってしまうか」の判断を間違えると、最悪の<span class="tooltip">事態<span class="tooltiptext">[じたい]<br>事の有様・成行き。<br>사태</span></span>になることもありますので、
+                    早過ぎるエントリーはしないようにしてください。　特に、そこに大きな時間足のMAも位置しているような時は要注意です。　</p>
+            </div>
+            
+        </div>
+    </div>
+    <p><br></p><p><br></p>
+
+    <script src="../js/scripts.js" defer></script> <!-- JavaScript 파일 링크 -->
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>artisAsset Live Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- 헤더 -->
+        <header class="dashboard-header">
+            <h1>🕯️ artisAsset Live Dashboard</h1>
+            <div class="header-controls">
+                <button id="refreshBtn" class="btn btn-primary">🔄 새로고침</button>
+                <button id="analyzeBtn" class="btn btn-success">🚀 분석 실행</button>
+                <a href="http://localhost:8003/docs" target="_blank" class="btn btn-outline">📖 API 문서</a>
+                <a href="../main/m0003_CaptureName.html" class="btn btn-outline">📝 파일명 도구</a>
+                <div class="auto-refresh">
+                    <label for="autoRefresh">자동 갱신:</label>
+                    <select id="autoRefresh">
+                        <option value="0">비활성화</option>
+                        <option value="10">10초</option>
+                        <option value="30">30초</option>
+                        <option value="60">1분</option>
+                        <option value="300">5분</option>
+                        <option value="600" selected>10분</option>
+                        <option value="custom">사용자 지정</option>
+                    </select>
+                    <div class="custom-refresh" id="customRefreshDiv" style="display: none;">
+                        <input type="text" id="customRefreshHours" maxlength="2" placeholder="00" style="width: 50px;" value="00">
+                        <span>:</span>
+                        <input type="text" id="customRefreshMinutes" maxlength="2" placeholder="01" style="width: 50px;" value="01">
+                        <span>:</span>
+                        <input type="text" id="customRefreshSeconds" maxlength="2" placeholder="00" style="width: 50px;" value="00">
+                        <button id="applyCustomRefresh" class="btn btn-outline" style="padding: 2px 8px; font-size: 0.8rem;">적용</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 분석 상태 표시 영역 -->
+        <div class="analysis-status-section" id="analysisStatus" style="display: none;">
+            <div class="status-notification">
+                <div class="status-icon" id="statusIcon">🔄</div>
+                <div class="status-content">
+                    <div class="status-title" id="statusTitle">분석 진행 중...</div>
+                    <div class="status-message" id="statusMessage">선택된 파일들을 분석하고 있습니다.</div>
+                    <div class="status-timestamp" id="statusTimestamp"></div>
+                </div>
+                <button class="status-close" id="statusClose" onclick="hideAnalysisStatus()">×</button>
+            </div>
+        </div>
+
+        <!-- 메인 콘텐츠 -->
+        <main class="dashboard-main">
+            <!-- 파일 현황 섹션 -->
+            <section class="file-status-section">
+                <h2>📁 파일 현황</h2>
+                <div class="status-grid">
+                    <div class="status-card input-card">
+                        <div class="card-header">
+                            <h3>🔍 분석 대기</h3>
+                            <span class="count" id="inputCount">-</span>
+                        </div>
+                        <div class="file-list" id="inputFilesList">
+                            <div class="loading">데이터 로딩 중...</div>
+                        </div>
+                        <div class="card-actions">
+                            <button id="uploadBtn" class="btn btn-outline">📤 파일 업로드</button>
+                        </div>
+                    </div>
+                    
+                    <div class="status-card output-card">
+                        <div class="card-header">
+                            <h3>📊 분석 완료</h3>
+                            <span class="count" id="outputCount">-</span>
+                        </div>
+                        <div class="file-list" id="outputFilesList">
+                            <div class="loading">데이터 로딩 중...</div>
+                        </div>
+                        <div class="card-actions">
+                            <button id="viewReportsBtn" class="btn btn-outline">📋 리포트 보기</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 분석 이력 섹션 -->
+            <section class="analysis-history-section">
+                <h2>📈 분석 이력</h2>
+                <div class="history-container">
+                    <div class="history-filters">
+                        <input type="date" id="dateFilter" class="filter-input">
+                        <select id="statusFilter" class="filter-input">
+                            <option value="">전체</option>
+                            <option value="completed">완료</option>
+                            <option value="processing">처리중</option>
+                            <option value="error">오류</option>
+                        </select>
+                        <button id="clearFilters" class="btn btn-outline">필터 초기화</button>
+                    </div>
+                    <div class="history-timeline" id="analysisTimeline">
+                        <div class="loading">분석 이력 로딩 중...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 통계 요약 섹션 -->
+            <section class="stats-section">
+                <h2>📊 통계 요약</h2>
+                <div class="stats-grid" id="statsGrid">
+                    <div class="stat-card">
+                        <h3>오늘 분석</h3>
+                        <div class="stat-value" id="todayAnalysis">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>이번 주 분석</h3>
+                        <div class="stat-value" id="weekAnalysis">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>총 분석 수</h3>
+                        <div class="stat-value" id="totalAnalysis">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>성공률</h3>
+                        <div class="stat-value" id="successRate">-%</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 최근 리포트 섹션 -->
+            <section class="recent-reports-section">
+                <h2>📋 최근 리포트</h2>
+                <div class="reports-container" id="recentReports">
+                    <div class="loading">최근 리포트 로딩 중...</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 모달 -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">리포트 상세</h3>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 리포트 내용이 여기에 표시됩니다 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 업로드 모달 -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>파일 업로드</h3>
+                <button class="close-btn" id="closeUploadModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <p>차트 이미지 파일을 드래그하여 놓거나 클릭하여 선택하세요</p>
+                    <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+                    <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">파일 선택</button>
+                </div>
+                <div class="upload-progress" id="uploadProgress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">업로드 중...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api-client.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

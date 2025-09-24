@@ -1,0 +1,621 @@
+/* ✅ 1. 색상 및 테마 개선　*/
+/* 강조색 변수 정의 */
+:root {
+    --primary-color: #00A2FF;    /* 약간 밝은 변형 #00A2FF*/
+    --secondary-color: #0084FF;  /* Facebook Messenger 파란색 */
+    --topbar-light: #FBFBFB;     /* 거의 흰색 */
+    --peach: #FFD4D4;
+    --yellow: #FFFFE8;
+    --light-green: #CDE990;
+    --olive-green: #AACB73;
+    --light-blue: #B1F0F7;
+    --text-dark: #333333;
+    --text-light: #FFFFFF;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --danger-color: #ff4d4d;     /* 위험/삭제 액션용 */
+    --danger-hover: #cc0000;     /* 위험/삭제 버튼 호버 */
+    --border-color: #ccc;        /* 테두리 색상 */
+    --border-hover: #999999;     /* 테두리 호버 색상 */
+    --button-bg: #f0f0f0;        /* 버튼 배경색 */
+    --button-border: #e0e0e0;    /* 버튼 테두리색 */
+    --button-hover: #e6e6e6;     /* 버튼 호버색 */
+}
+  
+/* ✅ 상단 바 스타일 */
+.top-bar {
+    background-color: var(--topbar-light);
+    color: var(--text-dark);
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 변경: space-between에서 flex-start로 */
+    flex-wrap: wrap; /* 추가: 작은 화면에서 래핑 가능하도록 */
+    gap: 20px; /* 추가: 요소 사이의 간격 설정 */
+    height: 80px; /* 고정 높이 설정 */
+    overflow: hidden; /* 내부 콘텐츠가 넘칠 경우 숨김 */
+}
+
+/* 로고와 제목 부분 */
+.top-bar .logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 20px; /* 추가: 로고와 다른 요소 사이 간격 */
+}
+
+/* 제목 스타일 */
+.top-bar h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.logo-image {
+    height: 38px; /* 로고 높이 */
+    width: auto; /* 비율 유지를 위해 너비는 자동으로 설정 */
+    display: block; /* 블록 요소로 표시 */
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+}
+
+.top-bar.logged-in {
+    background-color: #FBFBFB !important;
+    color: #333333 !important;
+}
+  
+.top-bar.logged-out {
+    background-color: #aaaaaa !important;
+    color: white !important;
+}
+
+/* ✅ 버튼 스타일 공통 */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+  
+button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* 상단 버튼 스타일 (로그인/로그아웃/초기화) */
+#authorize_button, #signout_button, .reset-button {
+    padding: 6px 16px;
+    font-size: 14px;
+    min-width: 80px;
+    height: 32px;
+    margin-right: 10px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 로그인/로그아웃 버튼 색상 */
+#authorize_button, #signout_button {
+    background-color: #C5BAFF;
+}
+
+#authorize_button:hover, #signout_button:hover {
+    background-color: #C4D9FF;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* ✅ 초기화 버튼 색상 */
+.reset-button {
+    background-color: #ff5f5f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reset-button:hover {
+    background-color: #d63031; /* 🔥 더 진한 붉은색 background-color: var(--danger-hover); */
+    
+    transform: translateY(-1px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}
+  
+/* ✅ 셀렉트 박스 스타일 */
+select {
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+  
+#bgColorSelect, #widthSelect {
+    width: 140px;
+}
+  
+select::after {
+    content: '▼';
+    font-size: 12px;
+    color: #555;
+    margin-left: 10px;
+}
+  
+select:hover {
+    border-color: #888;
+}
+  
+select:focus {
+    outline: 2px solid #888;
+}
+  
+/* ✅ 아이콘 스타일 */
+.icon, .icon-24px {
+    display: inline-block;
+    vertical-align: middle;
+}
+  
+.icon {
+    width: 64px;
+    height: 64px;
+}
+  
+.icon-24px {
+    width: 24px;
+    height: 24px;
+}
+  
+/* ✅ 컨트롤 영역 스타일 */
+.select-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-left: auto; /* 추가: 오른쪽으로 밀기 */
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.select-container strong {
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* 시트에서 가져오기 버튼 그룹 */
+.load-button-group {
+    margin-left: 0; /* 변경: auto에서 0으로 */
+    margin-right: auto; /* 추가: 간격 조절 */
+}
+
+#bgColorSelect {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+  
+#bgColorSelect:hover {
+    border-color: #666;
+}
+  
+/* ✅ 체크리스트 컨테이너 */
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding-left: 10px;
+    gap: 10px;
+}
+  
+/* ✅ 체크리스트 박스 */
+.checklist-box {
+    min-width: 300px;    /* 최소 너비 유지 */
+    max-width: none;     /* 최대 너비 제한 없음 */
+    width: auto;         /* JavaScript에서 설정한 값이 반영되도록 함 */
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-height: 200px; /* 550px에서 200px로 줄임 */
+    height: auto; /* 내용에 맞게 자동 조절 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+}
+
+.checklist-box:last-child {
+    margin-right: 0;
+}
+  
+.checklist-box h2 {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+  
+/* ✅ 체크리스트 배경색 */
+.checklist-box:nth-child(1) {
+    background-color: var(--peach);
+}
+  
+.checklist-box:nth-child(2) {
+    background-color: var(--yellow);
+}
+  
+.checklist-box:nth-child(3) {
+    background-color: var(--light-blue);
+}
+  
+/* ✅ 입력 폼 */
+.checklist-box form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+  
+.checklist-box input {
+    width: calc(100% - 80px);
+    height: 36px;
+    font-size: 14px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+  
+.checklist-box button {
+    width: 70px;
+    height: 36px;
+    font-size: 14px;
+}
+  
+/* ✅ 버튼 컨테이너 */
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    flex-shrink: 0;
+}
+  
+.buttons button {
+    flex: 1;
+    text-align: center;
+}
+  
+/* ✅ 리스트 스타일 */
+.checklist-box ul {
+    max-height: 400px; /* 600px에서 400px로 줄임 */
+    overflow-y: auto;
+    padding-left: 0;
+    margin-left: 0;
+    text-align: left;
+    list-style-position: inside;
+    flex-grow: 1; /* 내용에 따라 확장 */
+}
+  
+.checklist-box ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid var(--border-color);
+    gap: 10px;
+}
+
+.checklist-box ul li:last-child {
+    border-bottom: 2px solid var(--border-hover);
+}
+  
+.checklist-box ul li span {
+    text-align: left !important;
+    display: flex;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+  
+/* ✅ 스크롤바 */
+.checklist-box ul::-webkit-scrollbar {
+    width: 6px;
+}
+  
+.checklist-box ul::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 4px;
+}
+  
+/* ✅ 체크된 항목 영역 */
+#checkedItemsContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 30px 0; /* 하단 여백 추가 */
+    padding-left: 10px;
+    gap: 10px;
+}
+  
+/* ✅ 체크된 항목 박스 스타일 */
+.checked-box {
+    min-height: 100px; /* 150px에서 100px로 줄임 */
+    border: 1.5px dashed #888;
+}
+  
+.checked-box ul {
+    max-height: 300px;
+}
+  
+.checked-box ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid var(--border-color);
+    gap: 10px;
+}
+
+/* ✅ 체크된 항목 배경색 */
+.checked-box:nth-child(1) {
+    background-color: rgba(255, 212, 212, 0.7);
+}
+  
+.checked-box:nth-child(2) {
+    background-color: rgba(255, 255, 232, 0.7);
+}
+  
+.checked-box:nth-child(3) {
+    /* background-color: rgba(205, 233, 144, 0.7); */
+    background-color: rgba(177, 240, 247, 0.7); /* 연한 블루 */
+}
+  
+/* ✅ 체크리스트 버튼 스타일 */
+.edit-button, .check-button, .restore-button, .delete-button {
+    margin-left: 5px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background-color: var(--button-bg);
+    border: 1px solid var(--button-border);
+    color: var(--text-dark);
+    white-space: nowrap;
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-button:hover, .check-button:hover, .restore-button:hover, .delete-button:hover {
+    background-color: var(--button-hover);
+}
+
+/* Edit/Check 버튼 */
+.edit-button, .check-button {
+    min-width: 70px;
+    padding: 6px 8px;
+    font-size: 13px;
+}
+
+/* Restore/Delete 버튼 */
+.restore-button, .delete-button {
+    min-width: 80px;
+    padding: 2px 4px;
+    font-size: 10px;
+}
+
+/* 버튼 내 이모지와 텍스트 간격 */
+.edit-button span, .check-button span {
+    margin-left: 3px;
+}
+
+.restore-button span, .delete-button span {
+    margin-left: 1px;
+}
+
+/* ✅ 애니메이션 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+  
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(10px); }
+}
+  
+li {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+  
+.removing {
+    animation: fadeOut 0.3s ease-in forwards;
+}
+
+/* ✅ 페이지 하단 여백 */
+.footer-space {
+    height: 80px;
+    width: 100%;
+}
+
+/* ✅ 그림자 선 */
+.shadow-line {
+    height: 3px;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
+}
+
+/* ✅ 로그인한 상태에서만 작동 */
+.load-button {
+    background-color: #4285F4;
+    color: white;
+    padding: 6px 16px;
+    font-size: 14px;
+    min-width: 120px;
+    height: 32px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    margin-left: 10px; /* 추가: 로고와의 간격 조정 */
+}
+  
+.load-button:hover {
+    background-color: #3367D6;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* ✅ 시트 선택 다이얼로그 스타일 */
+.sheet-selector-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.sheet-selector-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    max-width: 90%;
+}
+
+.sheet-selector-content h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 18px;
+}
+
+.sheet-select {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+.sheet-selector-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.confirm-button, .cancel-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.confirm-button {
+    background-color: #4285F4;
+    color: white;
+}
+
+.confirm-button:hover {
+    background-color: #3367D6;
+}
+
+.cancel-button {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.cancel-button:hover {
+    background-color: #e4e4e4;
+}
+
+/* 추가: 왼쪽 컨트롤 영역 및 오른쪽 컨트롤 영역 설정 */
+.left-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 왼쪽 정렬 유지 */
+    gap: 20px; /* 버튼과 이미지 사이 간격 추가 */
+    height: 100%;
+}
+
+.right-controls {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* ✅ 트렌드 이미지 컨테이너 */
+.trend-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+    height: 80px;
+    margin-left: 20px; /* 좌측 여백 추가 */
+}
+
+
+
+/* 트렌드 이미지 스타일 */
+.trend-image {
+    max-width: 100%;
+    max-height: 100%;
+    display: none;  /* 기본적으로 숨김 */
+}
+
+/* 활성화된 트렌드 이미지만 표시 */
+    .trend-image.active {
+    display: block;
+}
+

@@ -1,0 +1,44 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "bk_GenAI Clipper (ChatGPT)",
+	"behavior": "create",
+	"noteContentFormat": "{{\"A 3-bullet-point summary. use Korean language.\"|callout:(\"summary\", \"3줄 요약\", false)}}\n\n{{\"Write aphorism at the bottom. The author is `[[구요한]]`, please. in korean with humor and insights. Use emdash for author\"|callout:(\"Quote\")}}\n\n## Recommended Follow-up Questions\n{{\"After reading the content, please provide user guidance or questions for the next steps. In markdown bullet point\"}}\n\n# ChatGPT's Last Words\n{{content}}\n\n# References\n- ",
+	"properties": [
+		{
+			"name": "title",
+			"value": "{{title}}",
+			"type": "text"
+		},
+		{
+			"name": "created",
+			"value": "{{date}}",
+			"type": "date"
+		},
+		{
+			"name": "tags",
+			"value": "clippings, ChatGPT, {{\\\"Generate and list tags related to the content of {{content}}, connected by commas, with no spaces in tags, and capitalize the first letter of words when necessary, exclude CMDS\\\"}}",
+			"type": "multitext"
+		},
+		{
+			"name": "CMDS",
+			"value": "[[📚 492 Prompts]], [[📚 520 ChatGPT]]",
+			"type": "multitext"
+		},
+		{
+			"name": "source",
+			"value": "[[ChatGPT]]",
+			"type": "text"
+		},
+		{
+			"name": "source_url",
+			"value": "{{url}}",
+			"type": "text"
+		}
+	],
+	"triggers": [
+		"https://chatgpt.com/"
+	],
+	"noteNameFormat": "{{\"Summarize the content in 5 words or less\"}}",
+	"path": "00. Inbox/06. GenAI Chats",
+	"context": "{{content}}"
+}

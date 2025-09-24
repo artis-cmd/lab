@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel 파일 보기</title>
+        <style>
+        .excel_icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: 48px;
+            height: 48px;
+        }
+        a.copy-link {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+        </style>
+</head>
+<body>
+    <h2><img src="../image/icon/onedrive_48px.png" alt="Arrow" class="excel_icon">
+		<a href="https://onedrive.live.com/?id=A902173C7E101ADA%21243768&cid=A902173C7E101ADA" target="_blank">OneDrive</a>　≫　
+		<img src="../image/icon/excel48px.png" alt="Arrow" class="excel_icon">　Excel 파일 보기</h2>
+    <h3>　　DeskTop　≫　E:\OneDrive\E00_Trading\　　<a class="copy-link" onclick="copyToClipboard('E:\\OneDrive\\E00_Trading\\')">클릭하면 디렉토리 복사</a></h3>
+    <h4>　　　　20240616_Excel-取引基本手順.xlsx</h4>
+    <p><strong>ページのFile名　：</strong>　H:\05_Documents\HTML\main\m0000_エントリー基本手順.html　</p>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("클립보드에【파일 위치】가 복사 되었습니다!");
+            }).catch(err => {
+                console.error("복사 실패:", err);
+                alert("복사에 실패했습니다.");
+            });
+        }
+    </script>
+
+
+    <iframe src="https://onedrive.live.com/embed?resid=A902173C7E101ADA%21243766&authkey=!AHnWdb1Z6G2kTho&em=2" width="1280" height="800" frameborder="0" scrolling="no"></iframe>
+</body>
+</html>

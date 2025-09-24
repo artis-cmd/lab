@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artis Asset 資産運用</title>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Meiryo', 'Malgun Gothic';
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        a:hover {
+            color: blue;
+            font-weight: bold;
+        }
+        .highlight {
+            color: red;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        hr {
+            border: 0;
+            border-bottom: 1px dotted #888;
+            margin: 10px 0;
+        }
+        /* 펼침 목록 스타일 */
+        .submenu {
+            display: none;
+            padding-left: 20px;
+        }
+        .submenu a {
+            display: block;
+            margin-bottom: 5px;
+        }
+        /* 메뉴가 펼쳐질 때 보여주는 스타일 */
+        .submenu.open {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Artis Asset 資産運用</h1>
+
+<ul>
+    <li><span class="highlight" onclick="toggleMenu('menu1')">■ 外部 Site (NEWS, Chart) 연결 ▼</span></li>
+    <ul id="menu1" class="submenu">
+        <li><a href="#">外為どっとコム_指標カレンダー _main</a></li>
+        <li><a href="https://www.gaitame.com/markets/calendar/" target="main-frame">
+                    <img src="../image/icon/gaitame-001.png" alt="Arrow" width="102" height="18"> _指標カレンダー<img src="../image/icon/arrow64px.png" width="24" height="24">_main</a></li>
+        <li><a href="#">TradingView 【#00_GBPAUD】_外</a></li>
+        <li><a href="#">TariTali 履歴一覧 _外</a></li>
+        <li><a href="#">[waveon] Open Check List _外</a></li>
+    </ul>
+    <hr>
+    <li><span class="highlight" onclick="toggleMenu('menu2')">■ 【講座】BOOK + Lecture ▼</span></li>
+    <ul id="menu2" class="submenu">
+        <li><a href="#">リオン式 <span class="concept-zone">Zone</span> トレード _講座サイト</a></li>
+        <li><a href="#">講座 1 Hunt_Basic</a></li>
+        <li><a href="#">講座 2 Hunt_Plus</a></li>
+        <li><a href="#">m5101_trading-improvement-notes</a></li>
+        <li><a href="#">DayTrader-目次</a></li>
+        <li><a href="#">DayTrader-0104a 確認中</a></li>
+    </ul>
+    <hr>
+    <li><span class="highlight" onclick="toggleMenu('menu3')">■ 【X】Rion 추적 ▼</span></li>
+    <ul id="menu3" class="submenu">
+        <li><a href="#">X(旧 Twitter) 검색</a></li>
+        <li><a href="#">【X】페이지 작성중</a></li>
+    </ul>
+    <hr>
+    <li><span class="highlight" onclick="toggleMenu('menu4')">■ old 資料 ▼</span></li>
+    <ul id="menu4" class="submenu">
+        <li><a href="#">(旧) CandleMasterノート</a></li>
+        <li><a href="#">【外部】waveon Open Check List</a></li>
+    </ul>
+</ul>
+
+<script>
+    function toggleMenu(menuId) {
+        var menu = document.getElementById(menuId);
+        menu.classList.toggle('open');
+    }
+</script>
+
+</body>
+</html>

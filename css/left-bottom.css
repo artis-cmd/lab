@@ -1,0 +1,110 @@
+/* 기본 스타일 */
+body {
+    margin: 0;
+    padding: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #fff5f7;
+}
+
+/* 메뉴 컨테이너 */
+.menu-container {
+    width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+/* 드롭다운 스타일 */
+.dropdown {
+    margin: 8px 12px;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3c4043;
+    background-color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    border-left: 3px solid #e84393;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-toggle:hover {
+    background-color: #e6f3ff;
+    border-left-color: #1a73e8;
+    box-shadow: 0 2px 8px rgba(29,161,242,0.10);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 드롭다운 컨텐츠 */
+.dropdown-content {
+    display: none;
+    padding-left: 18px;
+    margin-left: 5px;
+}
+
+.dropdown.open .dropdown-content {
+    display: block;
+}
+
+/* 메뉴 링크 스타일 */
+.dropdown-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-content li {
+    padding: 3px 0;
+}
+
+.dropdown-content a {
+    text-decoration: none;
+    color: #3c4043;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #e6f3ff;
+    color: #1a73e8;
+    transform: translateX(2px);
+    text-decoration: none;
+}
+
+/* 구분선 */
+.divider {
+    /* border-bottom: 1px solid rgba(232, 67, 147, 0.2); */
+    margin: 8px 0;
+    display: none;  /* 구분선 완전히 숨기기 */
+}
+
+/* 스크롤바 스타일링 */
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #fff5f7;
+    border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgba(232, 67, 147, 0.4);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: rgba(232, 67, 147, 0.6);
+} 

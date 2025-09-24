@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <link rel="icon" href="../image/favicon/x-As.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../image/favicon/x-As.ico" type="image/x-icon">
+<head>
+    <meta charset="UTF-8">
+    <title>m9104 🤖_Prompt List</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- 🔹 상단 메뉴 -->
+<div class="top-menu-container">
+    <div class="top-menu">
+        <a href="m8101_Private-Search.html">🔍 Search</a>
+        <a href="m8104_PromptList.html">❓ Prompt List</a>
+        <a href="../hBook/hB3105_Prompt-kr.html">📗 Prompt 한글책</a>
+        <a href="m8102_emoji.html" target="_blank">🔗 🐼_blank</a>
+    </div>
+</div>
+
+<!-- 🔹 페이지 제목 -->
+<div class="page-title">
+    <h2>m9104_ 🤖 Prompt Search 🔍</h2>
+</div>
+
+<!-- 🔹 검색창 -->
+<div class="search-container">
+    <input type="text" id="search-box" class="search-box" placeholder="프롬프트 검색..." onkeyup="searchPrompts()">
+    <div id="result-summary" class="result-summary">
+        <strong id="search-count">🔎 검색어를 입력하세요.  🚀 아래 List에서 찾아줍니다. </strong>
+
+        <p id="no-results" class="no-results" style="display: none;">❌ 검색 결과가 없습니다.</p>  
+
+    </div>
+</div>
+
+<div class="category-section">
+    <h2>🤖 Prompt List 📑</h2>
+
+            <!-- prompt1 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)">
+    <span>회의록 議事録 프롬프트</span>
+    <span class="ai-model">추천 AI모델: ChatGPT-4o 이상</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt1">
+# 회의록 議事録 요점 정리 프롬프트
+## 요청 사항
+회의록 議事録 의 내용을 제약 조건에 따라 정리해주세요
+
+## 제약 조건
+- 회의록의 내용에 따라 정리할 것
+- 발화 내용에서 발화 의도를 포함한 하고 싶은 말을 추출할 것
+- 추출한 내용에서 연관된 것들을 종합해 하나의 요점으로 정리할 것
+- 각각의 요점은 100자 정도로 요약할 것
+- 명확하고 의미를 이해하기 쉬운 문장으로 만들 것
+- 요점을 Bulletpoint로 나타낼 것
+
+## 분석할 회의록
+`{여기에 회의록을 입력해주세요}`
+
+## 출력 형식
+아래 항목별로 요점을 정리해 주세요:
+1. 회의 목적
+2. 결정된 사항
+3. 이후 과제
+4. To do
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt1')">복사하기</button>
+</div>
+
+
+            <!-- prompt2 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)">
+    <span>홍보용 글 작성하기 (블로그, 보도자료)</span>
+    <span class="ai-model">추천 AI모델: Claude</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt2">
+# 홍보용 글 작성하기 (블로그, 보도자료)
+
+너는 `회사/업계`의 시니어 `직무명`으로서 `[글 종류 기재 (ex-블로그, 보도자료 등)]`을 작성해야해.  
+다음 예시를 참고해서 비슷한 톤앤매너로 새로운 주제의 글을 써보자.
+
+## 예시
+`[잘 쓴 글 예시 입력]`
+
+## 분석 및 새 글 작성 요청
+위의 예시 글을 잘 분석해서 톤앤매너와 글 양식을 파악했으면,  
+이제 `주제`에 관한 새로운 `[글(ex-블로그글, 보도자료)]`를 작성해줘.
+
+## 제약조건
+- 예시 문체를 그대로 차용해 작성할 것
+- 주제를 반영한 매력적인 제목을 만들 것 (단, 주제와 똑같은 제목은 안됨)
+
+## 안내사항
+예시와 최대한 비슷한 문체와 어조를 유지하되,  
+주제에 맞는 새로운 내용으로 채워넣기 바란다. 그리고 제약조건도 잊지 말고 꼭 지켜줘.
+
+## 출력 형식
+자, 그럼 시작해볼까?  
+완성된 글은 `<글></글>` 태그로 감싸서 출력해줘
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt2')">복사하기</button>
+</div>
+
+<!-- prompt3 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)">
+    <span>프로젝트 개요 프롬프트</span>
+    <span class="ai-model">추천 AI모델: Claude, ChatGPT4 이상</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt3">
+# 프로젝트 개요 프롬프트  
+## 역할: 20년 이상의 경력을 가진 시니어 프로젝트 관리자
+
+## 요청: [프로젝트 목표]을 위한 [프로젝트 내용]의 개요 작성
+
+## 필수 포함 내용:
+1. 프로젝트 배경 (`[배경을 적어주세요]`)
+2. 프로젝트 목표 및 마일스톤 (`[목표를 적어주세요]`)
+3. 프로젝트의 타임라인(`[프로젝트 시작, 종료일을 적어주세요]`)
+4. 타겟 고객 (`[누구를 대상으로 하는지 적어주세요]`)
+
+## 작성 스타일:
+- 깔끔하고 중학생도 이해할 수 있는 쉬운 단어 사용
+- 개조식 톤앤매너 유지 (예: "~했음", "~제고" 등으로 끝나는 보고서 말투)
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt3')">복사하기</button>
+</div>
+
+<!-- prompt4 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)">
+    <span>문장 교정 프롬프트</span>
+    <span class="ai-model">추천 AI모델: ChatGPT-4o 이상</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt4">
+# 문장 교정 프롬프트  
+## 요청 사항
+입력된 문장의 문법적 오류를 검토하고 수정해주세요
+
+## 교정 대상
+`{교정할 문장 입력}`
+
+### 출력 형식
+1. 교정된 문장 전문
+2. 수정사항 정리표:
+
+| 위치 | 원문 | 수정 | 수정 사유 |
+|------|------|------|-----------|
+| | | | |
+
+#### 교정 항목
+- 맞춤법 오류
+- 탈자/오타
+- 어미 불일치
+- 문법적 오류
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt4')">복사하기</button>
+</div>
+
+
+<!-- prompt5 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)">
+    <span>프롬프트 제작 도우미</span>
+    <span class="ai-model">추천 AI모델: ChatGPT-4o 이상</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt5">
+# 프롬프트 제작 도우미
+## 소개
+프로페셔널 프롬프트 엔지니어의 도움을 받아 효과적인 프롬프트를 작성합니다.
+
+## 요청 내용
+당신이 ChatGPT에게 부탁하고 싶은 작업을 입력하시면, 최적의 프롬프트를 생성해 드립니다.
+
+## 입력 양식
+### 작업 설명
+`여기에 부탁하고 싶은 것을 적어주세요`
+
+### 제약 조건
+`여기에 제약조건 3~5개를 나열해주세요`
+
+## 출력 형식
+생성된 프롬프트는 아래와 같은 구조로 제공됩니다:
+1. 프롬프트 제목
+2. 역할 설정
+3. 주요 지시사항
+4. 세부 요구사항
+5. 제약사항
+6. 출력 형식
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt5')">복사하기</button>
+</div>
+
+<!-- prompt6 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)">
+    <span>문학적인 글쓰기 도우미</span>
+    <span class="ai-model">추천 AI모델: Claude</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt6">
+# 조금은 문학적인 글쓰기 도우미
+당신은 문학가입니다.  
+다음 문장을 주어진 조건에 맞게 재구성해 주세요 :  
+
+'오늘 아침, 커피 한 잔을 들고 발코니에 나갔어요.  
+상쾌한 공기와 함께 하루를 시작하니 머리가 맑아지는 기분이었죠.  
+잠시 뒤 새들이 지저귀는 소리를 들으며 평화로운 시간을 보냈어요.'  
+
+## 맥락
+- 이 문장은 '방구석 문학가'라는 개인 블로그의 일상 글 도입부입니다.
+
+## 톤과 스타일
+- '**유시민**'의 문체를 연상시키는 명확하고 논리적인 문장 구조를 유지하면서도 서정성을 담은 감각적인 글.
+- 구체적 행동과 감각적 묘사.
+- 사색적 문장을 덧붙여 깊이를 갖춘 스타일.
+- 한국적인 정서를 살리기 위해 한국적인 단어와 한국 문학 톤으로 작성.
+
+## 조건
+1. 너무 어려운 단어는 쓰지 않되 그렇다고 너무 쉬운 단어도 쓰지 않을 것.
+2. 평온함과 여유로움이 느껴지는 장면 연출.
+3. 재구성된 문장은 블로그 독자가 '감각적인 몰입감'을 느낄 수 있도록 구성.
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt6')">복사하기</button>
+</div>
+
+<!-- prompt7 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)">
+    <span>Excel Documents scan Prompt</span>
+    <span class="ai-model">추천 AI모델: ChatGPT-4o</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt7">
+# 엑셀 문서 스캔 ChatGPT 프롬프트📝
+## Response
+### Instructions
+1. Answer in table format. 
+2. Please make sure there are no omissions and verify each entry for accuracy before finalizing the response.
+3. This image contains handwritten text.  
+   Please consider the irregular spacing and varied handwriting styles when recognizing the characters.
+
+## Prompt
+- You are an Optical Character Recognition machine.  
+- You will extract all the characters from the images provided by the user, and you will only provide the extracted text in your response.  
+- Do not use code interpreter but try to extract text manually.  
+- As an OCR machine, you can only respond with the extracted text according to the following instruction.
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt7')">복사하기</button>
+</div>
+
+<!-- prompt8 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)">
+    <span>음성 녹음 파일에서 문서 생성 Prompt</span>
+    <span class="ai-model">추천 AI모델: ChatGPT-4o</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt8">
+### **프롬프트: 음성 녹음 파일에서 문서 생성하기**  
+You are a **professional document editor and meeting summarization expert**. Your task is to transform raw, unstructured transcript data extracted from an audio recording into a structured, coherent, and professional document.  
+
+Follow these steps:  
+
+1. **Analyze the transcript**: Identify key topics, discussions, and action items. Remove unnecessary filler words, repetitions, and irrelevant parts.  
+2. **Organize the content**: Structure the document into clear sections, such as **Introduction, Key Discussions, Decisions Made, Action Items, and Summary**.  
+3. **Enhance readability**: Use concise sentences, bullet points for clarity, and ensure logical flow between ideas. Maintain a formal or business-appropriate tone.  
+4. **Highlight critical points**: Emphasize important insights, deadlines, and assigned responsibilities using bold text or bullet points.  
+5. **Ensure grammatical accuracy and consistency**: Edit for grammar, spelling, and style to create a polished, professional document.  
+
+**Additional Instructions:**  
+- If the text contains multiple speakers, identify them and format accordingly.  
+- If numerical data, dates, or deadlines are mentioned, ensure they are formatted properly.  
+- If specific names, locations, or terminology are unclear, flag them for review rather than making assumptions.  
+
+**Output Format:**  
+Generate the output in a structured format with proper headings, bullet points, and summary paragraphs for clarity.  
+
+Take a deep breath and let’s work this out in a step-by-step way to ensure accuracy and professionalism.  
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt8')">복사하기</button>
+</div>
+
+<!-- prompt9 섹션 시작 -->
+<div class="prompt-item" onclick="togglePrompt(this)">
+    <span>편집자의 OCR to MarkDown Prompt</span>
+    <span class="ai-model">추천 AI모델: Claude, ChatGPT-4o</span>
+</div>
+
+<!-- 🔹 상세 내용 (기본적으로 숨김) -->
+<div class="prompt-content" style="display: none;">
+    <pre class="markdown-section" id="prompt9">
+# OCR to MarkDown 편집 프롬프트📝
+당신은 한국에서 가장 유명한 출판사에 근무하는 15년차 편집자 입니다.  
+책의 저자로부터 개행과 띄어쓰기가 제대로 되지 않은 텍스트를 받았습니다.  
+앞으로 공유하는 텍스트 내용을 확인 후 다음과 같이 편집해 주세요.
+
+---
+
+### **작업 지침**  
+
+1. **내용 유지**  
+    - 모든 챕터는 {{CHAPTER_COUNT}}개로 나뉘어져 있습니다.  
+    - 이 내용을 나눠서 당신에게 공유할 것입니다.  
+    - 내용을 그대로 유지하면서 요약하지 않습니다.  
+
+2. **MarkDown 형식으로 편집**  
+    - 편집은 MarkDown 형식으로 진행해주세요.  
+    - 편집 결과는 obsidian 같은 MarkDown 관리 툴에서 사용할 수 있도록 합니다.  
+
+3. **중복 개행 제거**  
+    - 연속된 줄바꿈(예: `\n\n\n` → `\n\n`)을 최대 2번으로 통일합니다.  
+    - 단, "{{CHAPTER_HEADER}}" 또는 숫자 목록(예: "{{STEP_FORMAT}}") 다음의 개행은 유지합니다.  
+
+4. **불필요한 공백 제거**  
+    - 문장 중간의 연속된 공백(예: `  ` → ` `)을 단일 공백으로 수정합니다.  
+    - 특수 문자 앞뒤의 공백(예: `" 문장` → `"문장`)을 제거합니다.  
+
+5. **문단 정렬**  
+    - 문단 시작 부분의 들여쓰기 공백을 제거합니다.  
+    - 문단 사이는 한 줄씩만 띄웁니다.  
+
+6. **일관된 기호 사용**  
+    - 따옴표(`“”`, `‘’`, `"`)를 `“”`로 통일합니다.  
+    - 대시(`-`, `–`, `—`)를 `-`로 통일합니다.  
+
+7. **목록 형식 일관성**  
+    - 번호 목록(예: `1.`, `2.`) 뒤의 공백을 일정하게 맞춥니다(예: `1. `).  
+    - 불릿 포인트(`•`, `○`)를 `•`로 통일합니다.  
+
+8. **특수 문자 검수**  
+    - `…`을 `…`로, `??`를 `?`로 수정합니다.  
+    - 괄호(`()`, `[]`, `{}`) 내부의 공백을 제거합니다(예: `( 예시 )` → `(예시)`).  
+
+9. **수동 검토**  
+    - 시/인용문 등 예외적인 개행은 원본 형식을 유지합니다.  
+    - 오타(예: "{{TYPO_EXAMPLE}}")를 수정합니다.  
+
+---
+
+### **템플릿에 적용할 변수 목록**  
+✅ **{{YEARS}}** → 편집자의 경력 (예: "10" → "10년차 편집자")  
+✅ **{{CHAPTER_COUNT}}** → 챕터 개수 (예: "xx" → "12개")  
+✅ **{{CHAPTER_HEADER}}** → 챕터 구분 방식 (예: "CHAPTER", "제1장")  
+✅ **{{STEP_FORMAT}}** → 목록의 단계 형식 (예: "1단계", "Step 1")  
+✅ **{{TYPO_EXAMPLE}}** → 수정할 오타 예시 (예: `"되셨으면 합니다"` → `"되었으면 합니다"`)  
+
+---
+
+이제 이 템플릿을 사용하면 **Markdown 형식으로 편집해야 하는 다양한 문서 작업에 활용**할 수 있습니다! 😊
+    </pre>
+    <button class="copy-button" onclick="copyPrompt('prompt9')">복사하기</button>
+</div>
+            <!-- prompt9 섹션 끝 -->
+<br><br><br>
+
+
+
+
+
+    <script src="../js/scripts.js"></script>
+
+</body>
+</html>

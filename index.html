@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<link rel="icon" href="image\favicon\/x-As.ico" type="image/x-icon">
+<link rel="shortcut icon" href="image\favicon\/x-As.ico" type="image/x-icon">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>©️Asset Management💴🏡</title>
+    <link rel="stylesheet" href="css/layout.css">  <!-- 새로운 CSS 적용 -->
+</head>
+<body>
+
+    <!-- 사이드바 토글 버튼 -->
+    <button id="toggle-sidebar" class="toggle-btn">
+        <span id="toggle-icon">☰</span>
+    </button>
+
+    <!-- 왼쪽 프레임 (top + bottom) -->
+    <div class="left-frame" id="left-frame">
+        <div class="top-frame">
+            <iframe src="top/Left-top.html" name="left-top"></iframe>
+        </div>
+        <div class="bottom-frame">
+            <iframe src="bottom/Left-bottom.html" name="bottom-frame"></iframe>  <!-- ✅ name="bottom-frame" 추가 -->
+        </div>
+    </div>
+
+    <!-- 메인 프레임 -->
+    <div class="main-frame" id="main-frame">
+        <iframe src="main/m8001_index-main01.html" name="main-frame"></iframe>
+    </div>
+
+    <script src="js/sidebar.js"></script> <!-- 새로운 JS 적용 -->
+</body>
+</html>

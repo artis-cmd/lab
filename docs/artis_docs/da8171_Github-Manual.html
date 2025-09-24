@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Manual</title>
+    <script>
+        // GitHub Pages의 baseURL을 감지하는 함수
+        function getBaseUrl() {
+            const isGitHubPages = window.location.hostname.includes('github.io');
+            return isGitHubPages ? '/HTML' : '';
+        }
+        
+        // 리소스 경로 수정
+        window.addEventListener('DOMContentLoaded', function() {
+            const baseUrl = getBaseUrl();
+            if (baseUrl) {
+                document.querySelectorAll('link[rel="stylesheet"], script[src], link[rel="icon"], link[rel="shortcut icon"]').forEach(el => {
+                    const currentPath = el.getAttribute('href') || el.getAttribute('src');
+                    if (currentPath.startsWith('../../../')) {
+                        const newPath = baseUrl + currentPath.substring(8);
+                        if (el.hasAttribute('href')) el.href = newPath;
+                        if (el.hasAttribute('src')) el.src = newPath;
+                    }
+                });
+            }
+        });
+    </script>
+    <link rel="icon" href="../../../image/favicon/x-As.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../image/favicon/x-As.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../css/ai-docs.css">
+    <script src="../../../js/ai-docs.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>목차</h3>
+            <ul>
+                <li><a href="#section7">7️⃣ 저장소 공개/비공개 설정</a></li>
+                <li><a href="#section8">8️⃣ 협업자 관리하기</a></li>
+                <li><a href="#section9">9️⃣ 브랜치 관리하기</a></li>
+                <li><a href="#section10">🔟 문제 해결하기</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="step" id="section7">
+                    <div class="step-description">
+                        <h3>저장소 가시성 변경</h3>
+                            <img src="../../image/docs/artis_docs/github/private-d.png" alt="저장소 공개 설정">
+                        <h4>1. 새 저장소 생성 시 설정하기</h4>
+                        <ol>
+                            <li>GitHub에 로그인 후 오른쪽 상단의 '+' 아이콘을 클릭하고 'New repository' 선택</li>
+                            <li>저장소 이름과 설명 입력</li>
+                            <li>'Visibility' 섹션에서 'Public' 또는 'Private' 선택
+                                <ul>
+                                    <li><strong>Public</strong>: 모든 사람이 볼 수 있고 복제할 수 있음</li>
+                                    <li><strong>Private</strong>: 초대된 사람만 접근 가능</li>
+                                </ul>
+                            </li>
+                            <li>'Create repository' 버튼 클릭</li>
+                        </ol>
+
+                        <h4>2. 기존 저장소의 가시성 변경하기</h4>
+                        <ol>
+                            <li>저장소의 'Settings' 탭에서 'Danger Zone' 섹션으로 이동</li>
+                            <li>'Change visibility' 버튼 클릭</li>
+                            <li>새로운 가시성 선택:
+                                <ul>
+                                    <li><strong>Public</strong>: 모든 사람이 볼 수 있음</li>
+                                    <li><strong>Private</strong>: 초대된 사람만 볼 수 있음</li>
+                                </ul>
+                            </li>
+                            <li>저장소 이름을 입력하여 확인</li>
+                        </ol>
+
+                        <h4>3. 저장소 가시성 변경 시 주의사항</h4>
+                        <ul>
+                            <li><strong>Private에서 Public으로 변경</strong>: 모든 사람이 코드를 볼 수 있게 됩니다. 민감한 정보가 포함되어 있지 않은지 확인하세요.</li>
+                            <li><strong>Public에서 Private으로 변경</strong>: 기존에 공개되었던 코드는 더 이상 공개되지 않지만, 이전에 복제된 저장소는 여전히 존재합니다.</li>
+                            <li><strong>조직(Organization) 저장소</strong>: 조직 소유의 저장소는 조직 관리자만 가시성을 변경할 수 있습니다.</li>
+                        </ul>
+
+                        <h4>4. 비공개 저장소의 장점</h4>
+                        <ul>
+                            <li>코드를 비공개로 유지하면서도 Git의 버전 관리 기능 활용 가능</li>
+                            <li>협업자만 초대하여 함께 작업 가능</li>
+                            <li>무료 계정에서도 무제한 비공개 저장소 생성 가능</li>
+                            <li>필요할 때 언제든지 공개로 전환 가능</li>
+                        </ul>
+
+                        <div class="note">
+                            ⚠️ Note: Private에서 Public으로 변경 시 모든 사람이 코드를 볼 수 있게 됩니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step" id="section8">
+                <div class="step-title">8️⃣ 협업자 관리하기</div>
+                <div class="step-content">
+                    <div class="step-image">
+                        <img src="../../image/docs/artis_docs/スクリーンショット 2025-04-04 101810.png" alt="협업자 관리">
+                    </div>
+                    <div class="step-description">
+                        <h3>협업자 추가 및 권한 설정</h3>
+                        <ol>
+                            <li>저장소의 'Settings' 탭에서 'Collaborators' 메뉴 선택</li>
+                            <li>'Add people' 버튼 클릭</li>
+                            <li>협업자 추가 방법:
+                                <ul>
+                                    <li>GitHub 사용자명으로 검색</li>
+                                    <li>이메일 주소로 초대</li>
+                                </ul>
+                            </li>
+                            <li>권한 레벨 설정:
+                                <ul>
+                                    <li>Read: 읽기만 가능</li>
+                                    <li>Write: 코드 수정 가능</li>
+                                    <li>Admin: 모든 권한</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <div class="tip">
+                            💡 Tip: 팀 프로젝트의 경우 Organization을 만들어 관리하면 더 효율적입니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step" id="section9">
+                <div class="step-title">9️⃣ 브랜치 관리하기</div>
+                <div class="step-content">
+                    <div class="step-image">
+                        <img src="../../image/docs/artis_docs/スクリーンショット 2025-04-04 101901.png" alt="브랜치 관리" style="width:80% !important; height:auto;">
+                    </div>
+                    <div class="step-description">
+                        <h3>브랜치 생성 및 관리</h3>
+                        <ol>
+                            <li>저장소의 'Code' 탭에서 'main' 브랜치 옆의 드롭다운 메뉴 클릭</li>
+                            <li>새 브랜치 생성:
+                                <div class="command">
+                                    git checkout -b feature/new-feature
+                                </div>
+                            </li>
+                            <li>브랜치 작업 후 main 브랜치로 병합:
+                                <div class="command">
+                                    git checkout main<br>
+                                    git merge feature/new-feature
+                                </div>
+                            </li>
+                        </ol>
+                        <div class="tip">
+                            💡 Tip: 각 기능이나 버그 수정은 별도의 브랜치에서 작업하는 것이 좋습니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step" id="section10">
+                <div class="step-title">🔟 문제 해결하기</div>
+                <div class="step-content">
+                    <div class="step-image">
+                        <img src="../../image/docs/artis_docs/スクリーンショット 2025-04-04 102350.png" alt="문제 해결" style="width:80% !important; height:auto;">
+                    </div>
+                    <div class="step-description">
+                        <h3>일반적인 Git 문제 해결</h3>
+                        <ol>
+                            <li>변경사항 되돌리기:
+                                <div class="command">
+                                    git checkout -- [파일명]
+                                </div>
+                            </li>
+                            <li>마지막 커밋 취소:
+                                <div class="command">
+                                    git reset --hard HEAD~1
+                                </div>
+                            </li>
+                            <li>원격 저장소 강제 업데이트:
+                                <div class="command">
+                                    git push -f origin main
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br><br><br>
+
+</body>
+</html> 

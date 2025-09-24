@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m8106_one 🐞 emoji 모음 📋</title>
+
+    <style>
+        /* === CSS 통합 === */
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 🔹 상단 메뉴 스타일 */
+        .top-menu-container {
+            background-color: white;
+            padding: 12px 0;
+            border-bottom: 2px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .top-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 15px;
+            padding: 5px 10px;
+        }
+
+        .top-menu a:hover {
+            color: #007bff;
+        }
+
+        /* 🔹 페이지 제목 */
+        .page-title {
+            text-align: left;
+            margin-left: 20px;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .page-title h2 {
+            font-size: 28px;
+        }
+
+        /* 🔹 검색창 */
+        .search-container {
+            width: 380px;  /* 420px에서 380px로 수정 */
+            margin: 20px 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        /* 🔹 검색 지우기 버튼 */
+        .clear-button {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* 🔹 검색 결과 */
+        .search-result-count {
+            width: 380px;  /* 검색창과 동일한 폭으로 맞춤 */
+            max-width: 480px;
+            margin: 10px 0 10px 20px; /* 왼쪽으로 20px 마진 추가, auto 제거 */
+            padding: 8px 12px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            color: #333;
+            font-size: 14px;
+            text-align: left;
+            display: block;
+        }
+
+        /* 🔹 이모지 컨테이너 */
+        /* 기존 grid 스타일을 찾아서 미디어쿼리 추가 */
+        .emoji-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 기본적으로 4개씩 표시 */
+            gap: 8px;
+            padding: 10px;
+        }
+
+        /* 모바일 화면용 미디어쿼리 추가 */
+        @media screen and (max-width: 768px) {
+            .emoji-container {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .emoji-category {
+                margin: 10px 5px;
+            }
+
+            .search-container,
+            .search-result-count {
+                width: 380px;
+            }
+        }
+        
+        /* 🔹 이모지 개별 아이템 */
+        .emoji-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: auto;  /* 고정 너비 제거 */
+            height: auto; /* 고정 높이 제거 */
+            border: 1px solid #ccc;
+            margin: 2px;
+            padding: 8px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .emoji-item.hidden {
+            display: none !important;
+        }
+
+        .emoji-item:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+        }
+
+        .emoji {
+            margin-bottom: 5px;
+            text-align: center;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .emoji-name {
+            font-size: 11px;
+            text-align: center;
+            color: #666;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 🔹 반응형 디자인 */
+        @media (max-width: 768px) {
+            .emoji-container {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            }
+        }
+
+        .popup-message {
+            position: fixed;
+            bottom: 600px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(57, 255, 20, 0.9);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
+        }
+
+        /* 3초 후 사라지는 애니메이션 */
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .category-section {
+            display: block;
+        }
+
+        .category-section.hidden {
+            display: none;
+        }
+
+        .emoji-count {
+            font-size: 0.9em;
+            color: #666;
+            margin-left: 10px;
+        }
+
+        /* 반응형 디자인 수정 */
+        @media screen and (min-width: 768px) {
+            /* 태블릿/데스크톱 */
+            .emoji-container {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 12px;
+                padding: 15px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            /* 작은 모바일 화면 */
+            .emoji-container {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 6px;
+                padding: 8px;
+            }
+
+            .emoji-item {
+                padding: 6px;
+            }
+
+            .emoji {
+                font-size: 20px;
+            }
+
+            .emoji-name {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 🔹 페이지 제목 -->
+<div class="page-title">
+    <h2>m8106_one 🐞 자주 쓰는 Emoji 모음 📋 <span class="emoji-count"></span></h2>
+</div>
+
+<!-- 🔹 검색 기능 -->
+<div class="search-container">
+    <input type="text" id="searchEmoji" class="search-box" placeholder="이모지 검색...">
+    <button id="clearSearch" class="clear-button">✖</button>
+</div>
+
+<!-- 🔹 검색 결과 개수 표시 -->
+<span id="copyCount" class="hide">1</span>
+
+<div id="copyMessage" class="copy-message hide"></div>
+<span id="copyCount2" class="hide">0</span> <!-- 초기 복사 횟수 0 -->
+
+<div id="searchResultCount" class="search-result-count">🔎 검색어를 입력하세요.</div>
+
+<!-- 🔹 팝업 메시지 박스 -->
+<div id="popupMessage" class="popup-message">POPUP【絵文字】가 복사되었습니다~~💌</div>
+
+
+<!-- 🔹 이모지 리스트 -->
+<div class="section category-section">
+    <h2>숫자 / 특수문자</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('0️⃣')"><div class="emoji">0️⃣</div><div class="emoji-name">숫자 0</div></div>
+        <div class="emoji-item" onclick="copyEmoji('1️⃣')"><div class="emoji">1️⃣</div><div class="emoji-name">숫자 1</div></div>
+        <div class="emoji-item" onclick="copyEmoji('2️⃣')"><div class="emoji">2️⃣</div><div class="emoji-name">숫자 2</div></div>
+        <div class="emoji-item" onclick="copyEmoji('3️⃣')"><div class="emoji">3️⃣</div><div class="emoji-name">숫자 3</div></div>
+        <div class="emoji-item" onclick="copyEmoji('4️⃣')"><div class="emoji">4️⃣</div><div class="emoji-name">숫자 4</div></div>
+        <div class="emoji-item" onclick="copyEmoji('5️⃣')"><div class="emoji">5️⃣</div><div class="emoji-name">숫자 5</div></div>
+        <div class="emoji-item" onclick="copyEmoji('6️⃣')"><div class="emoji">6️⃣</div><div class="emoji-name">숫자 6</div></div>
+        <div class="emoji-item" onclick="copyEmoji('7️⃣')"><div class="emoji">7️⃣</div><div class="emoji-name">숫자 7</div></div>
+        <div class="emoji-item" onclick="copyEmoji('8️⃣')"><div class="emoji">8️⃣</div><div class="emoji-name">숫자 8</div></div>
+        <div class="emoji-item" onclick="copyEmoji('9️⃣')"><div class="emoji">9️⃣</div><div class="emoji-name">숫자 9</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔟')"><div class="emoji">🔟</div><div class="emoji-name">숫자 10</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🆔')"><div class="emoji">🆔</div><div class="emoji-name">ID</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🆗')"><div class="emoji">🆗</div><div class="emoji-name">OK</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🈶')"><div class="emoji">🈶</div><div class="emoji-name">유 한자</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🉐')"><div class="emoji">🉐</div><div class="emoji-name">득 한자</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🈹')"><div class="emoji">🈹</div><div class="emoji-name">할인 한자</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🈲')"><div class="emoji">🈲</div><div class="emoji-name">금지 한자</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🈴')"><div class="emoji">🈴</div><div class="emoji-name">합격 한자</div></div>
+        <div class="emoji-item" onclick="copyEmoji('㊙️')"><div class="emoji">㊙️</div><div class="emoji-name">비밀 한자</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🈚')"><div class="emoji">🈚</div><div class="emoji-name">無し</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🆙')"><div class="emoji">🆙</div><div class="emoji-name">UP!</div></div>
+
+        <div class="emoji-item" onclick="copyEmoji('🅰️')"><div class="emoji">🅰️</div><div class="emoji-name">A형</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🅱️')"><div class="emoji">🅱️</div><div class="emoji-name">B형</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🆎')"><div class="emoji">🆎</div><div class="emoji-name">AB형</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔤')"><div class="emoji">🔤</div><div class="emoji-name">알파벳</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⚙️')"><div class="emoji">⚙️</div><div class="emoji-name">설정 設定</div></div>
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>Mac 키보드 아이콘</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('⌘')"><div class="emoji">⌘</div><div class="emoji-name">Command</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⌥')"><div class="emoji">⌥</div><div class="emoji-name">Option</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⌃')"><div class="emoji">⌃</div><div class="emoji-name">Control</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⇧')"><div class="emoji">⇧</div><div class="emoji-name">Shift</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⇪')"><div class="emoji">⇪</div><div class="emoji-name">Caps Lock</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⎋')"><div class="emoji">⎋</div><div class="emoji-name">Escape</div></div>
+        <div class="emoji-item" onclick="copyEmoji('↩')"><div class="emoji">↩</div><div class="emoji-name">Return</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⌫')"><div class="emoji">⌫</div><div class="emoji-name">Delete</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⌦')"><div class="emoji">⌦</div><div class="emoji-name">Forward Delete</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⇥')"><div class="emoji">⇥</div><div class="emoji-name">Tab</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⇤')"><div class="emoji">⇤</div><div class="emoji-name">Back Tab</div></div>
+        <div class="emoji-item" onclick="copyEmoji('↖')"><div class="emoji">↖</div><div class="emoji-name">Home</div></div>
+        <div class="emoji-item" onclick="copyEmoji('↘')"><div class="emoji">↘</div><div class="emoji-name">End</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⇞')"><div class="emoji">⇞</div><div class="emoji-name">Page Up</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⇟')"><div class="emoji">⇟</div><div class="emoji-name">Page Down</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⏏')"><div class="emoji">⏏</div><div class="emoji-name">Eject</div></div>
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>공통 키보드 키</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('␣')"><div class="emoji">␣</div><div class="emoji-name">Space</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⏎')"><div class="emoji">⏎</div><div class="emoji-name">Enter</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⎋')"><div class="emoji">⎋</div><div class="emoji-name">Escape</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⇥')"><div class="emoji">⇥</div><div class="emoji-name">Tab</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🌐')"><div class="emoji">🌐</div><div class="emoji-name">Fn</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⊞')"><div class="emoji">⊞</div><div class="emoji-name">Windows</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⎇')"><div class="emoji">⎇</div><div class="emoji-name">Alt</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⇪')"><div class="emoji">⇪</div><div class="emoji-name">Caps Lock</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⎀')"><div class="emoji">⎀</div><div class="emoji-name">Insert</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⎙')"><div class="emoji">⎙</div><div class="emoji-name">Print Screen</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⎉')"><div class="emoji">⎉</div><div class="emoji-name">Pause / Break</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔢')"><div class="emoji">🔢</div><div class="emoji-name">Num Lock</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⬆')"><div class="emoji">⬆</div><div class="emoji-name">Arrow Up</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⬇')"><div class="emoji">⬇</div><div class="emoji-name">Arrow Down</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⬅')"><div class="emoji">⬅</div><div class="emoji-name">Arrow Left</div></div>
+        <div class="emoji-item" onclick="copyEmoji('➡')"><div class="emoji">➡</div><div class="emoji-name">Arrow Right</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⇞')"><div class="emoji">⇞</div><div class="emoji-name">Page Up</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⇟')"><div class="emoji">⇟</div><div class="emoji-name">Page Down</div></div>
+        <div class="emoji-item" onclick="copyEmoji('↖')"><div class="emoji">↖</div><div class="emoji-name">Home</div></div>
+        <div class="emoji-item" onclick="copyEmoji('↘')"><div class="emoji">↘</div><div class="emoji-name">End</div></div>
+    </div>
+</div>
+
+
+<div class="section category-section">
+    <h2>도형</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🔴')"><div class="emoji">🔴</div><div class="emoji-name">빨간 원</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔵')"><div class="emoji">🔵</div><div class="emoji-name">파란 원</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔶')"><div class="emoji">🔶</div><div class="emoji-name">큰 주황색 마름모</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔷')"><div class="emoji">🔷</div><div class="emoji-name">큰 파란색 마름모</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔸')"><div class="emoji">🔸</div><div class="emoji-name">작은 주황색 마름모</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔹')"><div class="emoji">🔹</div><div class="emoji-name">작은 파란색 마름모</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔺')"><div class="emoji">🔺</div><div class="emoji-name">빨간색 위쪽 삼각형</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔻')"><div class="emoji">🔻</div><div class="emoji-name">빨간색 아래쪽 삼각형</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💠')"><div class="emoji">💠</div><div class="emoji-name">점이 찍힌 다이아몬드 모양</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔘')"><div class="emoji">🔘</div><div class="emoji-name">라디오 버튼</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🧩')"><div class="emoji">🧩</div><div class="emoji-name">퍼즐 조각</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📇')"><div class="emoji">📇</div><div class="emoji-name">index, 인덱스</div></div>
+
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>수학 / 기호 관련</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('#️⃣')"><div class="emoji">#️⃣</div><div class="emoji-name">해시태그</div></div>
+        <div class="emoji-item" onclick="copyEmoji('*️⃣')"><div class="emoji">*️⃣</div><div class="emoji-name">별표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('➕')"><div class="emoji">➕</div><div class="emoji-name">더하기</div></div>
+        <div class="emoji-item" onclick="copyEmoji('➖')"><div class="emoji">➖</div><div class="emoji-name">빼기</div></div>
+        <div class="emoji-item" onclick="copyEmoji('➗')"><div class="emoji">➗</div><div class="emoji-name">나누기</div></div>
+        <div class="emoji-item" onclick="copyEmoji('✖️')"><div class="emoji">✖️</div><div class="emoji-name">곱하기</div></div>
+        <div class="emoji-item" onclick="copyEmoji('✚')"><div class="emoji">✚</div><div class="emoji-name">십자가 플러스</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💯')"><div class="emoji">💯</div><div class="emoji-name">100점</div></div>
+        <div class="emoji-item" onclick="copyEmoji('❌')"><div class="emoji">❌</div><div class="emoji-name">엑스</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⭕')"><div class="emoji">⭕</div><div class="emoji-name">동그라미</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🚫')"><div class="emoji">🚫</div><div class="emoji-name">금지</div></div>
+        <div class="emoji-item" onclick="copyEmoji('❎')"><div class="emoji">❎</div><div class="emoji-name">체크 마크</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📌')"><div class="emoji">📌</div><div class="emoji-name">핀</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔍')"><div class="emoji">🔍</div><div class="emoji-name">왼쪽 돋보기</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔎')"><div class="emoji">🔎</div><div class="emoji-name">오른쪽 돋보기</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔔')"><div class="emoji">🔔</div><div class="emoji-name">종</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⚠️')"><div class="emoji">⚠️</div><div class="emoji-name">경고</div></div>
+        <div class="emoji-item" onclick="copyEmoji('❗')"><div class="emoji">❗</div><div class="emoji-name">느낌표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('❓')"><div class="emoji">❓</div><div class="emoji-name">물음표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⁉️')"><div class="emoji">⁉️</div><div class="emoji-name">느낌표 물음표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('‼️')"><div class="emoji">‼️</div><div class="emoji-name">이중 느낌표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('〽️')"><div class="emoji">〽️</div><div class="emoji-name">파트 기호</div></div>
+        <div class="emoji-item" onclick="copyEmoji('©️')"><div class="emoji">©️</div><div class="emoji-name">저작권</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💭')"><div class="emoji">💭</div><div class="emoji-name">생각 말풍선</div></div>
+
+        <div class="emoji-item" onclick="copyEmoji('📢')"><div class="emoji">📢</div><div class="emoji-name">확성기</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💡')"><div class="emoji">💡</div><div class="emoji-name">전구</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🆕')"><div class="emoji">🆕</div><div class="emoji-name">NEW</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🆗')"><div class="emoji">🆗</div><div class="emoji-name">OK</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔄')"><div class="emoji">🔄</div><div class="emoji-name">새로고침</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔁')"><div class="emoji">🔁</div><div class="emoji-name">반복</div></div>
+        <div class="emoji-item" onclick="copyEmoji('♻️')"><div class="emoji">♻️</div><div class="emoji-name">재활용</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎵')"><div class="emoji">🎵</div><div class="emoji-name">음표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎶')"><div class="emoji">🎶</div><div class="emoji-name">음악</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔗')"><div class="emoji">🔗</div><div class="emoji-name">Link 링크</div></div>
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>시간 관련</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('⏰')"><div class="emoji">⏰</div><div class="emoji-name">알람 시계</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⏱️')"><div class="emoji">⏱️</div><div class="emoji-name">스톱워치</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⏲️')"><div class="emoji">⏲️</div><div class="emoji-name">타이머</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕰️')"><div class="emoji">🕰️</div><div class="emoji-name">탁상시계</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕛')"><div class="emoji">🕛</div><div class="emoji-name">12시</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕧')"><div class="emoji">🕧</div><div class="emoji-name">12시 30분</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕐')"><div class="emoji">🕐</div><div class="emoji-name">1시</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕜')"><div class="emoji">🕜</div><div class="emoji-name">1시 30분</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕑')"><div class="emoji">🕑</div><div class="emoji-name">2시</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕝')"><div class="emoji">🕝</div><div class="emoji-name">2시 30분</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕒')"><div class="emoji">🕒</div><div class="emoji-name">3시</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕞')"><div class="emoji">🕞</div><div class="emoji-name">3시 30분</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕓')"><div class="emoji">🕓</div><div class="emoji-name">4시</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕟')"><div class="emoji">🕟</div><div class="emoji-name">4시 30분</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕔')"><div class="emoji">🕔</div><div class="emoji-name">5시</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕠')"><div class="emoji">🕠</div><div class="emoji-name">5시 30분</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕕')"><div class="emoji">🕕</div><div class="emoji-name">6시</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📅')"><div class="emoji">📅</div><div class="emoji-name">달력</div></div>
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>기술 / 디지털</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🤖')"><div class="emoji">🤖</div><div class="emoji-name">로봇</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💻')"><div class="emoji">💻</div><div class="emoji-name">노트북</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📱')"><div class="emoji">📱</div><div class="emoji-name">휴대폰</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🖥️')"><div class="emoji">🖥️</div><div class="emoji-name">컴퓨터</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⌨️')"><div class="emoji">⌨️</div><div class="emoji-name">키보드</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🖱️')"><div class="emoji">🖱️</div><div class="emoji-name">마우스</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💾')"><div class="emoji">💾</div><div class="emoji-name">플로피디스크</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔌')"><div class="emoji">🔌</div><div class="emoji-name">플러그</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔋')"><div class="emoji">🔋</div><div class="emoji-name">배터리</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📡')"><div class="emoji">📡</div><div class="emoji-name">위성안테나</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎮')"><div class="emoji">🎮</div><div class="emoji-name">게임패드</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📟')"><div class="emoji">📟</div><div class="emoji-name">무선호출기</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🛠️')"><div class="emoji">🛠️</div><div class="emoji-name">도구</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⚙️')"><div class="emoji">⚙️</div><div class="emoji-name">톱니바퀴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔧')"><div class="emoji">🔧</div><div class="emoji-name">렌치</div></div>
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>문서 / 기록</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🧩')"><div class="emoji">🧩</div><div class="emoji-name">구성 요소</div></div>
+
+        <div class="emoji-item" onclick="copyEmoji('📘')"><div class="emoji">📘</div><div class="emoji-name">파란책, 한국책</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📕')"><div class="emoji">📕</div><div class="emoji-name">빨간책, 일본책</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📗')"><div class="emoji">📗</div><div class="emoji-name">녹색책</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📚')"><div class="emoji">📚</div><div class="emoji-name">책 더미</div></div>
+
+        <div class="emoji-item" onclick="copyEmoji('🏷')"><div class="emoji">🏷</div><div class="emoji-name">라벨, Label</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📝')"><div class="emoji">📝</div><div class="emoji-name">메모</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📄')"><div class="emoji">📄</div><div class="emoji-name">문서</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📑')"><div class="emoji">📑</div><div class="emoji-name">책갈피</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📰')"><div class="emoji">📰</div><div class="emoji-name">신문</div></div>
+
+        <div class="emoji-item" onclick="copyEmoji('📒')"><div class="emoji">📒</div><div class="emoji-name">노트북</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📋')"><div class="emoji">📋</div><div class="emoji-name">클립보드</div></div>
+        <div class="emoji-item" onclick="copyEmoji('✏️')"><div class="emoji">✏️</div><div class="emoji-name">연필</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📖')"><div class="emoji">📖</div><div class="emoji-name">펼친책</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📓')"><div class="emoji">📓</div><div class="emoji-name">공책</div></div>
+        <div class="emoji-item" onclick="copyEmoji('✍️')"><div class="emoji">✍️</div><div class="emoji-name">글쓰기</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📜')"><div class="emoji">📜</div><div class="emoji-name">두루마리</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🗂️')"><div class="emoji">🗂️</div><div class="emoji-name">카드인덱스</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📁')"><div class="emoji">📁</div><div class="emoji-name">파일폴더</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📂')"><div class="emoji">📂</div><div class="emoji-name">열린폴더</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📇')"><div class="emoji">📇</div><div class="emoji-name">index, 인덱스</div></div>
+
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>트레이딩 / 금융 관련 / 통화 기호</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('💰')"><div class="emoji">💰</div><div class="emoji-name">돈주머니</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💴')"><div class="emoji">💴</div><div class="emoji-name">엔화</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💵')"><div class="emoji">💵</div><div class="emoji-name">달러</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💶')"><div class="emoji">💶</div><div class="emoji-name">유로</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💷')"><div class="emoji">💷</div><div class="emoji-name">파운드</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💸')"><div class="emoji">💸</div><div class="emoji-name">날아가는 돈</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💳')"><div class="emoji">💳</div><div class="emoji-name">신용카드</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🪙')"><div class="emoji">🪙</div><div class="emoji-name">동전</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📈')"><div class="emoji">📈</div><div class="emoji-name">상승 차트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📉')"><div class="emoji">📉</div><div class="emoji-name">하락 차트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📊')"><div class="emoji">📊</div><div class="emoji-name">막대 그래프</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💹')"><div class="emoji">💹</div><div class="emoji-name">엔화 상승</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💱')"><div class="emoji">💱</div><div class="emoji-name">환전</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💲')"><div class="emoji">💲</div><div class="emoji-name">달러 기호</div></div>
+        <div class="emoji-item" onclick="copyEmoji('✨')"><div class="emoji">✨</div><div class="emoji-name">반짝임</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏦')"><div class="emoji">🏦</div><div class="emoji-name">은행</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏧')"><div class="emoji">🏧</div><div class="emoji-name">ATM</div></div>
+    </div>
+</div>
+
+
+
+<div class="section category-section">
+    <h2>커뮤니케이션</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('💬')"><div class="emoji">💬</div><div class="emoji-name">말풍선</div></div>
+        <div class="emoji-item" onclick="copyEmoji('✉️')"><div class="emoji">✉️</div><div class="emoji-name">봉투</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📨')"><div class="emoji">📨</div><div class="emoji-name">받은편지</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📧')"><div class="emoji">📧</div><div class="emoji-name">이메일</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🗨️')"><div class="emoji">🗨️</div><div class="emoji-name">왼쪽 말풍선</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📢')"><div class="emoji">📢</div><div class="emoji-name">확성기</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🧩')"><div class="emoji">🧩</div><div class="emoji-name">문제 해결의 조각</div></div>
+
+        <div class="emoji-item" onclick="copyEmoji('📣')"><div class="emoji">📣</div><div class="emoji-name">메가폰</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💌')"><div class="emoji">💌</div><div class="emoji-name">러브레터</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📤')"><div class="emoji">📤</div><div class="emoji-name">발신함</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📥')"><div class="emoji">📥</div><div class="emoji-name">수신함</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔔')"><div class="emoji">🔔</div><div class="emoji-name">종</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📮')"><div class="emoji">📮</div><div class="emoji-name">우체통</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📯')"><div class="emoji">📯</div><div class="emoji-name">우편 나팔</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📫')"><div class="emoji">📫</div><div class="emoji-name">닫힌 우편함</div></div>
+        <div class="emoji-item" onclick="copyEmoji('👀')"><div class="emoji">👀</div><div class="emoji-name">눈</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🌈')"><div class="emoji">🌈</div><div class="emoji-name">무지개</div></div>
+
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>방향 / 이동</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🚀')"><div class="emoji">🚀</div><div class="emoji-name">로켓</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🛸')"><div class="emoji">🛸</div><div class="emoji-name">비행접시</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⬆️')"><div class="emoji">⬆️</div><div class="emoji-name">위쪽 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('➡️')"><div class="emoji">➡️</div><div class="emoji-name">오른쪽 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⬇️')"><div class="emoji">⬇️</div><div class="emoji-name">아래쪽 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⬅️')"><div class="emoji">⬅️</div><div class="emoji-name">왼쪽 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('↗️')"><div class="emoji">↗️</div><div class="emoji-name">오른쪽 위 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('↘️')"><div class="emoji">↘️</div><div class="emoji-name">오른쪽 아래 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('↙️')"><div class="emoji">↙️</div><div class="emoji-name">왼쪽 아래 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('↖️')"><div class="emoji">↖️</div><div class="emoji-name">왼쪽 위 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('↕️')"><div class="emoji">↕️</div><div class="emoji-name">위아래 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('↔️')"><div class="emoji">↔️</div><div class="emoji-name">양방향 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔄')"><div class="emoji">🔄</div><div class="emoji-name">새로고침</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⤴️')"><div class="emoji">⤴️</div><div class="emoji-name">오른쪽 위 굽은 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⤵️')"><div class="emoji">⤵️</div><div class="emoji-name">오른쪽 아래 굽은 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔃')"><div class="emoji">🔃</div><div class="emoji-name">시계방향 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔙')"><div class="emoji">🔙</div><div class="emoji-name">뒤로 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔚')"><div class="emoji">🔚</div><div class="emoji-name">끝 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔛')"><div class="emoji">🔛</div><div class="emoji-name">켜기 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔜')"><div class="emoji">🔜</div><div class="emoji-name">곧 화살표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔝')"><div class="emoji">🔝</div><div class="emoji-name">위로 화살표</div></div>
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>강조 / 표시</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🌈')"><div class="emoji">🌈</div><div class="emoji-name">무지개</div></div>
+        <div class="emoji-item" onclick="copyEmoji('✨')"><div class="emoji">✨</div><div class="emoji-name">반짝임</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💫')"><div class="emoji">💫</div><div class="emoji-name">별 반짝임</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⭐')"><div class="emoji">⭐</div><div class="emoji-name">별</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🌟')"><div class="emoji">🌟</div><div class="emoji-name">빛나는 별</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🆚')"><div class="emoji">🆚</div><div class="emoji-name">VS</div></div>
+        <div class="emoji-item" onclick="copyEmoji('❗')"><div class="emoji">❗</div><div class="emoji-name">느낌표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('❓')"><div class="emoji">❓</div><div class="emoji-name">물음표</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💭')"><div class="emoji">💭</div><div class="emoji-name">생각 말풍선</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔥')"><div class="emoji">🔥</div><div class="emoji-name">불</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⚡')"><div class="emoji">⚡</div><div class="emoji-name">번개</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎯')"><div class="emoji">🎯</div><div class="emoji-name">과녁</div></div>
+        <div class="emoji-item" onclick="copyEmoji('📌')"><div class="emoji">📌</div><div class="emoji-name">핀</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔆')"><div class="emoji">🔆</div><div class="emoji-name">밝기</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💎')"><div class="emoji">💎</div><div class="emoji-name">보석</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎨')"><div class="emoji">🎨</div><div class="emoji-name">팔레트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('✅')"><div class="emoji">✅</div><div class="emoji-name">체크 표시</div></div>
+        <div class="emoji-item" onclick="copyEmoji('☑️')"><div class="emoji">☑️</div><div class="emoji-name">체크박스</div></div>
+        <div class="emoji-item" onclick="copyEmoji('✔️')"><div class="emoji">✔️</div><div class="emoji-name">체크</div></div>
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>감정 / 표정</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('😊')"><div class="emoji">😊</div><div class="emoji-name">웃는 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('😄')"><div class="emoji">😄</div><div class="emoji-name">활짝 웃는 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🥰')"><div class="emoji">🥰</div><div class="emoji-name">사랑스러운 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('😎')"><div class="emoji">😎</div><div class="emoji-name">선글라스 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🤔')"><div class="emoji">🤔</div><div class="emoji-name">생각하는 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🤗')"><div class="emoji">🤗</div><div class="emoji-name">안아주는 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('😅')"><div class="emoji">😅</div><div class="emoji-name">식은땀 웃는 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('😂')"><div class="emoji">😂</div><div class="emoji-name">웃음 눈물 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🥹')"><div class="emoji">🥹</div><div class="emoji-name">참는 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('😭')"><div class="emoji">😭</div><div class="emoji-name">엉엉 우는 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('😤')"><div class="emoji">😤</div><div class="emoji-name">콧김 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('😮‍💨')"><div class="emoji">😮‍💨</div><div class="emoji-name">한숨 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🫡')"><div class="emoji">🫡</div><div class="emoji-name">경례 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🤩')"><div class="emoji">🤩</div><div class="emoji-name">별 눈 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('😍')"><div class="emoji">😍</div><div class="emoji-name">하트 눈 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🥳')"><div class="emoji">🥳</div><div class="emoji-name">파티 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('😌')"><div class="emoji">😌</div><div class="emoji-name">안도하는 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('😪')"><div class="emoji">😪</div><div class="emoji-name">졸린 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('😴')"><div class="emoji">😴</div><div class="emoji-name">자는 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🤫')"><div class="emoji">🤫</div><div class="emoji-name">쉿 얼굴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🤭')"><div class="emoji">🤭</div><div class="emoji-name">손으로 가린 웃음</div></div>
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>하트 / 사랑</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('❤️')"><div class="emoji">❤️</div><div class="emoji-name">빨간 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🧡')"><div class="emoji">🧡</div><div class="emoji-name">주황 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💛')"><div class="emoji">💛</div><div class="emoji-name">노란 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💚')"><div class="emoji">💚</div><div class="emoji-name">초록 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💙')"><div class="emoji">💙</div><div class="emoji-name">파란 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💜')"><div class="emoji">💜</div><div class="emoji-name">보라 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🖤')"><div class="emoji">🖤</div><div class="emoji-name">검은 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🤍')"><div class="emoji">🤍</div><div class="emoji-name">하얀 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🤎')"><div class="emoji">🤎</div><div class="emoji-name">갈색 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💖')"><div class="emoji">💖</div><div class="emoji-name">반짝이는 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💗')"><div class="emoji">💗</div><div class="emoji-name">커지는 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💓')"><div class="emoji">💓</div><div class="emoji-name">두근거리는 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💝')"><div class="emoji">💝</div><div class="emoji-name">리본 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💘')"><div class="emoji">💘</div><div class="emoji-name">화살 하트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('💕')"><div class="emoji">💕</div><div class="emoji-name">두 하트</div></div>
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>알파벳 (대문자)</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🇦')"><div class="emoji">🇦</div><div class="emoji-name">Regional Indicator A</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇧')"><div class="emoji">🇧</div><div class="emoji-name">Regional Indicator B</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇨')"><div class="emoji">🇨</div><div class="emoji-name">Regional Indicator C</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇩')"><div class="emoji">🇩</div><div class="emoji-name">Regional Indicator D</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇪')"><div class="emoji">🇪</div><div class="emoji-name">Regional Indicator E</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇫')"><div class="emoji">🇫</div><div class="emoji-name">Regional Indicator F</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇬')"><div class="emoji">🇬</div><div class="emoji-name">Regional Indicator G</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇭')"><div class="emoji">🇭</div><div class="emoji-name">Regional Indicator H</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇮')"><div class="emoji">🇮</div><div class="emoji-name">Regional Indicator I</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇯')"><div class="emoji">🇯</div><div class="emoji-name">Regional Indicator J</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇰')"><div class="emoji">🇰</div><div class="emoji-name">Regional Indicator K</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇱')"><div class="emoji">🇱</div><div class="emoji-name">Regional Indicator L</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇲')"><div class="emoji">🇲</div><div class="emoji-name">Regional Indicator M</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇳')"><div class="emoji">🇳</div><div class="emoji-name">Regional Indicator N</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇴')"><div class="emoji">🇴</div><div class="emoji-name">Regional Indicator O</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇵')"><div class="emoji">🇵</div><div class="emoji-name">Regional Indicator P</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇶')"><div class="emoji">🇶</div><div class="emoji-name">Regional Indicator Q</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇷')"><div class="emoji">🇷</div><div class="emoji-name">Regional Indicator R</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇸')"><div class="emoji">🇸</div><div class="emoji-name">Regional Indicator S</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇹')"><div class="emoji">🇹</div><div class="emoji-name">Regional Indicator T</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇺')"><div class="emoji">🇺</div><div class="emoji-name">Regional Indicator U</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇻')"><div class="emoji">🇻</div><div class="emoji-name">Regional Indicator V</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇼')"><div class="emoji">🇼</div><div class="emoji-name">Regional Indicator W</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇽')"><div class="emoji">🇽</div><div class="emoji-name">Regional Indicator X</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇾')"><div class="emoji">🇾</div><div class="emoji-name">Regional Indicator Y</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇿')"><div class="emoji">🇿</div><div class="emoji-name">Regional Indicator Z</div></div>
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>깃발 / Flag</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🚩')"><div class="emoji">🚩</div><div class="emoji-name">세모 붉은 깃발</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏴')"><div class="emoji">🏴</div><div class="emoji-name">검은 깃발</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏳️')"><div class="emoji">🏳️</div><div class="emoji-name">흰 깃발</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏳️‍🌈')"><div class="emoji">🏳️‍🌈</div><div class="emoji-name">무지개 깃발</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏳️‍⚧️')"><div class="emoji">🏳️‍⚧️</div><div class="emoji-name">트랜스젠더 깃발</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏴‍☠️')"><div class="emoji">🏴‍☠️</div><div class="emoji-name">해적 깃발</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎌')"><div class="emoji">🎌</div><div class="emoji-name">교차된 깃발</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏁')"><div class="emoji">🏁</div><div class="emoji-name">체커 깃발</div></div>
+    </div>
+</div>
+
+
+<div class="section category-section">
+    <h2>국가 코드</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🇰🇷')"><div class="emoji">🇰🇷</div><div class="emoji-name">한국, 대한민국</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇯🇵')"><div class="emoji">🇯🇵</div><div class="emoji-name">일본</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇺🇸')"><div class="emoji">🇺🇸</div><div class="emoji-name">미국</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇨🇳')"><div class="emoji">🇨🇳</div><div class="emoji-name">중국</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇩🇪')"><div class="emoji">🇩🇪</div><div class="emoji-name">독일</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇬🇧')"><div class="emoji">🇬🇧</div><div class="emoji-name">영국</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇫🇷')"><div class="emoji">🇫🇷</div><div class="emoji-name">프랑스</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇨🇦')"><div class="emoji">🇨🇦</div><div class="emoji-name">캐나다</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇦🇺')"><div class="emoji">🇦🇺</div><div class="emoji-name">호주</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇮🇳')"><div class="emoji">🇮🇳</div><div class="emoji-name">인도</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇷🇺')"><div class="emoji">🇷🇺</div><div class="emoji-name">러시아</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇪🇸')"><div class="emoji">🇪🇸</div><div class="emoji-name">스페인</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇮🇹')"><div class="emoji">🇮🇹</div><div class="emoji-name">이탈리아</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇧🇷')"><div class="emoji">🇧🇷</div><div class="emoji-name">브라질</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇿🇦')"><div class="emoji">🇿🇦</div><div class="emoji-name">남아프리카공화국</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇲🇽')"><div class="emoji">🇲🇽</div><div class="emoji-name">멕시코</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇦🇷')"><div class="emoji">🇦🇷</div><div class="emoji-name">아르헨티나</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇹🇷')"><div class="emoji">🇹🇷</div><div class="emoji-name">터키</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇸🇦')"><div class="emoji">🇸🇦</div><div class="emoji-name">사우디아라비아</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇦🇪')"><div class="emoji">🇦🇪</div><div class="emoji-name">아랍에미리트</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇮🇩')"><div class="emoji">🇮🇩</div><div class="emoji-name">인도네시아</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇲🇾')"><div class="emoji">🇲🇾</div><div class="emoji-name">말레이시아</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇹🇭')"><div class="emoji">🇹🇭</div><div class="emoji-name">태국</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇻🇳')"><div class="emoji">🇻🇳</div><div class="emoji-name">베트남</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇵🇭')"><div class="emoji">🇵🇭</div><div class="emoji-name">필리핀</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇸🇬')"><div class="emoji">🇸🇬</div><div class="emoji-name">싱가포르</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇰🇿')"><div class="emoji">🇰🇿</div><div class="emoji-name">카자흐스탄</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇳🇬')"><div class="emoji">🇳🇬</div><div class="emoji-name">나이지리아</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇵🇰')"><div class="emoji">🇵🇰</div><div class="emoji-name">파키스탄</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇨🇭')"><div class="emoji">🇨🇭</div><div class="emoji-name">스위스</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇳🇱')"><div class="emoji">🇳🇱</div><div class="emoji-name">네덜란드</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇳🇴')"><div class="emoji">🇳🇴</div><div class="emoji-name">노르웨이</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇸🇪')"><div class="emoji">🇸🇪</div><div class="emoji-name">스웨덴</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇩🇰')"><div class="emoji">🇩🇰</div><div class="emoji-name">덴마크</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇫🇮')"><div class="emoji">🇫🇮</div><div class="emoji-name">핀란드</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇨🇴')"><div class="emoji">🇨🇴</div><div class="emoji-name">콜롬비아</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇨🇱')"><div class="emoji">🇨🇱</div><div class="emoji-name">칠레</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🇵🇹')"><div class="emoji">🇵🇹</div><div class="emoji-name">포르투갈</div></div>
+    </div>
+</div>
+
+<!-- 지도 및 지리 -->
+<div class="section category-section">
+    <h2>지도 및 지리</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🌍')"><div class="emoji">🌍</div><div class="emoji-name">지구 (유럽/아프리카)</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🌎')"><div class="emoji">🌎</div><div class="emoji-name">지구 (아메리카)</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🌏')"><div class="emoji">🌏</div><div class="emoji-name">지구 (아시아/오세아니아)</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🗺️')"><div class="emoji">🗺️</div><div class="emoji-name">세계 지도</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🗾')"><div class="emoji">🗾</div><div class="emoji-name">일본 지도</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏔️')"><div class="emoji">🏔️</div><div class="emoji-name">눈 덮인 산</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⛰️')"><div class="emoji">⛰️</div><div class="emoji-name">산</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🌋')"><div class="emoji">🌋</div><div class="emoji-name">화산</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏝️')"><div class="emoji">🏝️</div><div class="emoji-name">무인도</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏜️')"><div class="emoji">🏜️</div><div class="emoji-name">사막</div></div>
+    </div>
+</div>
+
+<!-- 건물 및 장소 -->
+<div class="section category-section">
+    <h2>건물 및 장소</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🏠')"><div class="emoji">🏠</div><div class="emoji-name">집</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏡')"><div class="emoji">🏡</div><div class="emoji-name">정원이 있는 집</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏢')"><div class="emoji">🏢</div><div class="emoji-name">사무용 건물</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏣')"><div class="emoji">🏣</div><div class="emoji-name">우체국</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏥')"><div class="emoji">🏥</div><div class="emoji-name">병원</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏦')"><div class="emoji">🏦</div><div class="emoji-name">은행</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏨')"><div class="emoji">🏨</div><div class="emoji-name">호텔</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏫')"><div class="emoji">🏫</div><div class="emoji-name">학교</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏛️')"><div class="emoji">🏛️</div><div class="emoji-name">고전적인 건물</div></div>
+        <div class="emoji-item" onclick="copyEmoji('⛪')"><div class="emoji">⛪</div><div class="emoji-name">교회</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕌')"><div class="emoji">🕌</div><div class="emoji-name">모스크</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🕍')"><div class="emoji">🕍</div><div class="emoji-name">유대교 회당</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏯')"><div class="emoji">🏯</div><div class="emoji-name">일본 성</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏰')"><div class="emoji">🏰</div><div class="emoji-name">서양식 성</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🗽')"><div class="emoji">🗽</div><div class="emoji-name">자유의 여신상</div></div>
+    </div>
+</div>
+
+<!-- 육로 여행 -->
+<div class="section category-section">
+    <h2>육로 여행</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🚂')"><div class="emoji">🚂</div><div class="emoji-name">기차</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🚆')"><div class="emoji">🚆</div><div class="emoji-name">고속 열차</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🚊')"><div class="emoji">🚊</div><div class="emoji-name">트램</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🚌')"><div class="emoji">🚌</div><div class="emoji-name">버스</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🚎')"><div class="emoji">🚎</div><div class="emoji-name">전기 버스</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🚗')"><div class="emoji">🚗</div><div class="emoji-name">자동차</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🚕')"><div class="emoji">🚕</div><div class="emoji-name">택시</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🚙')"><div class="emoji">🚙</div><div class="emoji-name">SUV</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🚜')"><div class="emoji">🚜</div><div class="emoji-name">트랙터</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🚲')"><div class="emoji">🚲</div><div class="emoji-name">자전거</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🛴')"><div class="emoji">🛴</div><div class="emoji-name">킥보드</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🛹')"><div class="emoji">🛹</div><div class="emoji-name">스케이트보드</div></div>
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>스포츠</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🎟️')"><div class="emoji">🎟️</div><div class="emoji-name">티켓</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏆')"><div class="emoji">🏆</div><div class="emoji-name">트로피</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏀')"><div class="emoji">🏀</div><div class="emoji-name">농구</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏈')"><div class="emoji">🏈</div><div class="emoji-name">미식축구공</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🏉')"><div class="emoji">🏉</div><div class="emoji-name">럭비공</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎾')"><div class="emoji">🎾</div><div class="emoji-name">테니스</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎳')"><div class="emoji">🎳</div><div class="emoji-name">볼링</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎣')"><div class="emoji">🎣</div><div class="emoji-name">낚싯대</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎽')"><div class="emoji">🎽</div><div class="emoji-name">러닝 셔츠</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎿')"><div class="emoji">🎿</div><div class="emoji-name">스키</div></div>
+    </div>
+</div>
+
+<div class="section category-section">
+    <h2>게임 및 여가</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🔫')"><div class="emoji">🔫</div><div class="emoji-name">물총</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎱')"><div class="emoji">🎱</div><div class="emoji-name">당구</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🔮')"><div class="emoji">🔮</div><div class="emoji-name">수정 구슬</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎮')"><div class="emoji">🎮</div><div class="emoji-name">비디오 게임</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎰')"><div class="emoji">🎰</div><div class="emoji-name">슬롯 머신</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎲')"><div class="emoji">🎲</div><div class="emoji-name">주사위</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🤹')"><div class="emoji">🤹</div><div class="emoji-name">조커</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎭')"><div class="emoji">🎭</div><div class="emoji-name">가면</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🎨')"><div class="emoji">🎨</div><div class="emoji-name">팔레트</div></div>
+    </div>
+</div>
+
+
+<div class="section category-section">
+    <h2>동물</h2>
+    <div class="emoji-container">
+        <div class="emoji-item" onclick="copyEmoji('🐶')"><div class="emoji">🐶</div><div class="emoji-name">강아지</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐱')"><div class="emoji">🐱</div><div class="emoji-name">고양이</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐭')"><div class="emoji">🐭</div><div class="emoji-name">쥐</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐹')"><div class="emoji">🐹</div><div class="emoji-name">햄스터</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐰')"><div class="emoji">🐰</div><div class="emoji-name">토끼</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🦊')"><div class="emoji">🦊</div><div class="emoji-name">여우</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐻')"><div class="emoji">🐻</div><div class="emoji-name">곰</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐼')"><div class="emoji">🐼</div><div class="emoji-name">판다</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐨')"><div class="emoji">🐨</div><div class="emoji-name">코알라</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐯')"><div class="emoji">🐯</div><div class="emoji-name">호랑이</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🦁')"><div class="emoji">🦁</div><div class="emoji-name">사자</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐮')"><div class="emoji">🐮</div><div class="emoji-name">소</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐷')"><div class="emoji">🐷</div><div class="emoji-name">돼지</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐸')"><div class="emoji">🐸</div><div class="emoji-name">개구리</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐵')"><div class="emoji">🐵</div><div class="emoji-name">원숭이</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🦒')"><div class="emoji">🦒</div><div class="emoji-name">기린</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🦘')"><div class="emoji">🦘</div><div class="emoji-name">캥거루</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🦔')"><div class="emoji">🦔</div><div class="emoji-name">고슴도치</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐙')"><div class="emoji">🐙</div><div class="emoji-name">문어</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🦋')"><div class="emoji">🦋</div><div class="emoji-name">나비</div></div>
+        <div class="emoji-item" onclick="copyEmoji('🐞')"><div class="emoji">🐞</div><div class="emoji-name">무당벌레</div></div>
+    </div>
+</div>
+<br><br><br><br><br>
+
+
+<script>
+    // JavaScript 코드 통합
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log("✅ DOM이 로드되었습니다.");
+
+        const searchInput = document.getElementById('searchEmoji');
+        const searchResultCount = document.getElementById('searchResultCount');
+        const categorySections = document.querySelectorAll('.category-section');
+        const clearButton = document.getElementById('clearSearch');
+
+        if (!searchInput || !searchResultCount) {
+            console.error("❌ 검색 입력창 또는 결과 표시 요소를 찾을 수 없습니다.");
+            return;
+        }
+
+        console.log("✅ 검색 입력창을 찾았습니다.");
+
+        // 검색어 지우기 버튼 이벤트
+        if (clearButton) {
+            clearButton.addEventListener('click', function() {
+                searchInput.value = '';
+                searchInput.dispatchEvent(new Event('input'));
+                searchInput.focus();
+            });
+        }
+
+        // 🔹 검색 실행 시 필터링 적용
+        searchInput.addEventListener('input', function (e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            console.log("🔍 검색어 입력됨:", searchTerm);
+
+            let matchCount = 0;
+
+            categorySections.forEach(section => {
+                let sectionVisible = false;
+                let emojisInSection = section.querySelectorAll('.emoji-item');
+
+                emojisInSection.forEach(item => {
+                    const emojiText = item.querySelector('.emoji').textContent.toLowerCase();
+                    const emojiName = item.querySelector('.emoji-name').textContent.toLowerCase();
+
+                    if (emojiText.includes(searchTerm) || emojiName.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                        sectionVisible = true;
+                        matchCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                section.style.display = sectionVisible ? 'block' : 'none';
+            });
+
+            console.log("📌 검색 후 남은 이모지 개수:", matchCount);
+
+            if (searchResultCount) {
+                if (searchTerm === '') {
+                    searchResultCount.textContent = '🔎 검색어를 입력하세요.';
+                } else if (matchCount === 0) {
+                    searchResultCount.textContent = '😕 검색 결과가 없습니다.';
+                } else {
+                    searchResultCount.textContent = `🔍 ${matchCount}개의 결과가 있습니다.`;
+                }
+            }
+        });
+
+        // 🔹 이모지 클릭 이벤트 (검색 후에도 유지)
+        document.addEventListener('click', function (event) {
+            let target = event.target.closest('.emoji-item');
+            if (target) {
+                let emojiElement = target.querySelector('.emoji');
+                if (emojiElement) {
+                    let emoji = emojiElement.textContent.trim();
+                    console.log(`🔍 클릭한 이모지: ${emoji}`);
+                    copyEmoji(emoji);
+                } else {
+                    console.warn("⚠ 클릭한 요소에서 이모지를 찾지 못함!");
+                }
+            }
+        });
+
+        // 총 이모지 개수 계산 및 표시
+        const totalEmojis = document.querySelectorAll('.emoji-item').length;
+        const emojiCount = document.querySelector('.emoji-count');
+        if (emojiCount) {
+            emojiCount.textContent = `(총 ${totalEmojis}개)`;
+        }
+    });
+
+    // ✅ 안전한 복사 함수
+    function copyEmoji(emoji) {
+        if (!emoji) {
+            console.error("❌ 복사할 이모지가 없습니다! emoji 값이 undefined입니다.");
+            return;
+        }
+
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+            navigator.clipboard.writeText(emoji).then(() => {
+                console.log(`✅ 클립보드 복사 성공: ${emoji}`);
+                showPopupMessage(emoji);
+            }).catch(err => {
+                console.error("❌ 클립보드 복사 실패, execCommand 방식으로 시도:", err);
+                fallbackCopy(emoji);
+            });
+        } else {
+            console.warn("⚠ navigator.clipboard가 지원되지 않음. execCommand 방식 사용.");
+            fallbackCopy(emoji);
+        }
+    }
+
+    // ✅ execCommand("copy")를 이용한 복사 (HTTP에서도 동작)
+    function fallbackCopy(emoji) {
+        let tempInput = document.createElement("textarea");
+        tempInput.value = emoji;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+
+        console.log(`✅ execCommand로 복사 성공: ${emoji}`);
+        showPopupMessage(emoji);
+    }
+
+    // ✅ 복사 성공 메시지 표시
+    function showPopupMessage(emoji) {
+        let popup = document.getElementById("popupMessage");
+        if (!popup) return;
+
+        popup.innerHTML = `【${emoji}】가 복사되었습니다~~💌`;
+        popup.style.display = "block";
+        setTimeout(() => {
+            popup.style.opacity = "1";
+        }, 50);
+
+        setTimeout(() => {
+            popup.style.opacity = "0";
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 500);
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>

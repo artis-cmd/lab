@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移動平均線の<span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span></title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS 파일 링크 -->
+    
+</head>
+<body onload="InitializeStaticMenu();">
+    <div id="STATICMENU">
+        <ul>
+            <li>
+                <img src="../image/icon/navi-01.gif" width="32" height="32" />
+                <strong>　Connect</strong>
+            </li>
+            <li>
+                <img src="../image/icon/gigabook.png" alt="Arrow" class="icon-24px" />
+                <a href="../main/m5000_Giga.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈👈ギガ速FX_index</a>
+            </li>
+            <div class="divider-dotted"></div>
+            <li>
+                <a href="../main/m5001_signal-card.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈Signal Card 20</a>
+                <p>#13_ <span class="concept">移動平均線の<span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span></span></p>
+            </li>
+            <div class="divider-dotted"></div>
+            <!-- 바로 전 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.back()" style="display: inline-block; position: relative; z-index: 1;">🔙 前のページへ戻る</a>
+            </li>            
+            <!-- 다음 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.forward()" style="display: inline-block; position: relative; z-index: 1;">🔜 次のページへ進む</a>
+            </li>    
+        </ul>
+    </div>
+
+    
+    <div class="container">
+        <div class="signal-card">
+            <div class="card-header">
+                <div class="card-title"><a href="../main/m5000_Giga.html" target="_self">FX Signal（シグナル） #13</a></div>
+                <h1 class="card-main-title">移動平均線の<span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span></h1>
+            </div>
+            <div class="card-content">
+                <div class="rating-row">
+                    <span>重要度</span>
+                    <span class="star-rating">★★★☆☆</span>
+                </div>
+                <div class="rating-row">
+                    <span>頻出度</span>
+                    <span class="star-rating">★★★★★</span>
+                </div>
+                <div class="rating-row">
+                    <span>エントリー根拠</span>
+                    <span class="star-rating">★★☆☆☆</span>
+                </div>
+                <div class="rating-row">
+                    <span>精度</span>
+                    <span class="star-rating">★★★☆☆</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="signal-description">
+            <p>MA はレートの平均値なので、MA が右肩上がりということはその期間中、レートの平均値がどんどん高くなって上昇している状態を表しています。　</p>
+
+            <h2>図2-17 移動平均線（MA）の3つのポイント</h2>
+            <div class="strategy-image"></div>
+                <img src="../image/kindle/giga-soku/m6513_a.png"  alt="図2-17　移動平均線（MA）の３つのポイント" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+                <p class="image-caption">図2-17　移動平均線（MA）の３つのポイント</p>
+            </div>
+
+            <p><span class="highlight">移動平均線（MA）は</span></p>
+            <ul>
+                <li><span class="important"><span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span>：</span> 右肩上がりか右肩下がりか</li>
+                <li><span class="important">並び：</span> 短期MAと長期MAのどちらが上にあるか</li>
+                <li><span class="important">レートとの位置関係：</span> レートがMAの上か下か</li>
+            </ul>
+            <p><span class="highlight">に注目する</span></p>
+
+            <div class="note">
+                <ul>
+                    <li>　●　<span class="giga-highlight">MA が右肩上がりなら上昇トレンド</span></li>
+                    <li>　●　<span class="giga-highlight">MA が右肩下がりなら下降トレンド</span></li>
+                    <li>　●　<span class="giga-highlight">MA が横ばいならトレンドのないレンジ相場</span></li>
+                </ul>
+            </div>
+            <p><span class="important-black"> ポンドオージー（GBPAUD）</span><img src="../image/icon/flag/파호_icon_s.png" class="align-middle">の ５分足チャート</p>
+            <p>2022年 11月 23日 ～ 24日 の<span class="important-black"> ポンドオージー（GBPAUD）</span><img src="../image/icon/flag/파호_icon_s.png" class="align-middle">５分足チャート</p>
+
+            <p>MA の向きでまずトレンドの方向を把握して、<span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span>が急ならトレンドの勢いが強い、緩やかなら弱いと、<span class="giga-highlight"><span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span>の角度</span>から値動きの勢いを判断します。　</p>
+            <p>MA の<span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span>を見れば、トレンドの状態を視覚的に判断しやすいんですね。　</p>
+            <p>PC ならカラーチャートもきれいですし、特に色の決まりはありません。　ご自分で、どの MA を何色にするか、MT4 のベースカラーを変更して、見やすい、覚えやすい色を選ぶのも楽しい作業かと思います。　これから毎日、何年も見るものですから。　</p>
+        </div>
+    </div>
+    <p><br></p><p><br></p>
+
+    <script src="../js/scripts.js" defer></script> <!-- JavaScript 파일 링크 -->
+    
+</body>
+</html>

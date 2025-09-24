@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>프롬프트 모음집</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS 파일 링크 -->
+</head>
+<body>
+    <div class="prompt-container">
+        <h1>프롬프트 모음집</h1>
+        <input type="text" class="search-box" placeholder="프롬프트 검색..." onkeyup="searchPrompts()">
+
+        <div class="category-section">
+            <h2>프로젝트 관리</h2>
+
+            <!-- prompt1 섹션 시작 -->
+            <div class="prompt-section">
+                <!-- 내용 -->
+                <div class="prompt-header" onclick="togglePrompt(this)">
+                    <span>프로젝트 개요 프롬프트</span>
+                </div>
+                <div class="prompt-content">
+                    <pre class="markdown-section" id="prompt1"># 프로젝트 개요 프롬프트
+
+**역할 : ** 20년 이상의 경력을 가진 시니어 프로젝트 관리자
+
+**요청 : ** `[프로젝트 목표]`을 위한 `[프로젝트 내용]`의 개요 작성
+
+**필수 포함 내용 : **
+1. 프로젝트 배경 (`[배경을 적어주세요]`)
+2. 프로젝트 목표 및 마일스톤 (`[목표를 적어주세요]`)
+3. 프로젝트의 타임라인(`[프로젝트 시작,종료일을 적어주세요]`)
+4. 타겟 고객 (`[누구를 대상으로 하는지 적어주세요]`)
+
+**작성 스타일 : **
+- 깔끔하고 중학생도 이해할 수 있는 쉬운 단어 사용
+- 개조식 톤앤매너 유지 (예: "~했음", "~제고" 등으로 끝나는 보고서 말투)
+                    </pre>
+                    <button class="copy-button" onclick="copyPrompt('prompt2')">복사하기</button>
+                </div>
+            </div>
+            <!-- prompt1 섹션 끝 -->
+            <!-- prompt2 섹션 시작 -->
+                <div class="prompt-section">
+                    <!-- 내용 -->                  
+                    <div class="prompt-header" onclick="togglePrompt(this)">
+                        <span>홍보용 글 작성하기 (블로그, 보도자료)</span>
+                    </div>
+                    <div class="prompt-content">
+                        <pre class="markdown-section" id="prompt2"># 홍보용 글 작성하기 (블로그, 보도자료)
+
+너는 `회사/업계`의 시니어 `직무명`으로서 `[글 종류 기재 (ex-블로그,보도자료 등)]`을 작성해야해. 
+다음 예시를 참고해서 비슷한 톤앤매너로 새로운 주제의 글을 써보자.
+
+## 예시
+`[잘 쓴 글 예시 입력]`
+
+## 분석 및 새 글 작성 요청
+위의 예시 글을 잘 분석해서 톤앤매너와 글 양식을 파악했으면, 이제 `주제`에 관한 새로운 `[글(ex-블로그글,보도자료)]`를 작성해줘.
+
+## 제약조건
+- 예시 문체를 그대로 차용해 작성할 것
+- 주제를 반영한 매력적인 제목을 만들 것 (단, 주제와 똑같은 제목은 안됨)
+
+## 안내사항
+예시와 최대한 비슷한 문체와 어조를 유지하되, 주제에 맞는 새로운 내용으로 채워넣기 바란다. 그리고 제약조건도 잊지 말고 꼭 지켜줘.
+
+## 출력 형식
+자, 그럼 시작해볼까? 
+완성된 글은 <`글`></`글`> 태그로 감싸서 출력해줘
+                    </pre>
+                    <button class="copy-button" onclick="copyPrompt('prompt2')">복사하기</button>
+                </div>
+            </div>
+            <!-- prompt2 섹션 끝 -->
+
+        </div>
+
+    </div>
+
+    <script src="../js/scripts.js"></script> <!-- JavaScript 파일 링크 -->
+</body>
+</html>

@@ -1,0 +1,406 @@
+/* 테마 변수 */
+:root {
+    /* 라이트 모드 (기본) */
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --border-color: #e5e7eb;
+    --hover-color: #f3f4f6;
+    --accent-color: #1a73e8;
+    --top-bg-color: #e6f3ff;    /* 상단 배경색 - 하늘색 */
+    --bottom-bg-color: #fff5f7; /* 하단 배경색 - 핑크색 */
+}
+
+/* 다크 모드 */
+[data-theme="dark"] {
+    --bg-color: #1a1b26;
+    --text-color: #e2e8f0;
+    --border-color: #2f334d;
+    --hover-color: #2f334d;
+    --accent-color: #7aa2f7;
+}
+
+body {
+    margin: 0;
+    padding: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--top-bg-color);
+    color: var(--text-color);
+    transition: all 0.2s ease;
+}
+
+/* 메뉴 컨테이너 */
+.menu-container {
+    width: 100%;
+    padding: 0 12px;  /* 좌우 패딩만 적용 */
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: none;
+}
+
+/* 메인 메뉴 그룹 컨테이너 */
+.menu-container > .menu-item {
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin: 8px 0;  /* 상하 여백만 적용 */
+    padding: 8px 12px;  /* 패딩 조정 */
+    transition: all 0.2s ease;
+}
+
+/* 상단 메뉴 호버 효과 (핑크색으로) */
+.menu-container > .menu-item > .menu-toggle:hover,
+.menu-container > .menu-item > .submenu a:hover {
+    background-color: var(--bottom-bg-color);
+}
+
+/* 메인 메뉴 헤더 */
+.menu-container > .menu-item > .menu-toggle {
+    border: none;
+    box-shadow: none;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+/* 서브메뉴 컨테이너 */
+.menu-container > .menu-item > .submenu {
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+.menu-container > .menu-item > .submenu a {
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+/* 하단 영역 스타일 */
+.dropdown {
+    background-color: var(--bottom-bg-color);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.dropdown-toggle {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* 하단 메뉴 호버 효과 (하늘색으로) */
+.dropdown-toggle:hover,
+.dropdown-content a:hover {
+    background-color: var(--top-bg-color);
+}
+
+/* 드롭다운 컨텐츠 스타일 */
+.dropdown-content {
+    display: none;
+    padding: 8px;
+}
+
+.dropdown.open .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: var(--text-color);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+/* 메뉴 타이틀 */
+.menu-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color);
+    padding: 0 0 12px 0;
+    margin-bottom: 12px;
+}
+
+.menu-title img {
+    width: 100%;
+    height: auto;
+    max-width: 320px;
+    display: block;
+}
+
+/* 메뉴 리스트 */
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 메뉴 아이템 */
+.menu-item {
+    margin-top: 10px;
+}
+
+/* 메뉴 토글 (부모 메뉴) */
+.menu-toggle {
+    display: block;
+    font-size: 0.95em;
+    font-weight: 600;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    border-left: 3px solid #1a73e8;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+
+.menu-toggle:hover {
+    background-color: #fff5f7;  /* 핑크색 배경 */
+    border-left-color: #e84393;  /* 핑크색 강조선 */
+    box-shadow: 0 2px 8px rgba(232,67,147,0.10);
+}
+
+/* 서브메뉴 */
+.submenu {
+    list-style: none;
+    padding-left: 18px;
+    display: none;
+    margin-left: 5px;
+}
+
+.submenu li {
+    padding: 3px 0;
+}
+
+/* 서브메뉴 링크 스타일 */
+.submenu a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 13px;
+    transition: all 0.2s ease;
+    display: block;
+    padding: 3px 0;
+}
+
+.submenu a:hover {
+    background-color: #fff5f7;  /* 핑크색 배경 */
+    color: #e84393;  /* 핑크색 텍스트 */
+    transform: translateX(2px);
+    text-decoration: none;
+}
+
+/* 서브메뉴 그룹 스타일 */
+.submenu-group {
+    color: #666;
+    font-size: 0.85em;  /* 2단계 메뉴 크기 */
+    padding: 8px 15px 4px;
+    margin-top: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    position: relative;
+    letter-spacing: 0.3px;
+}
+
+/* 트리 구조 라인 - 서브메뉴 그룹 */
+.submenu-group::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 0;
+    height: 100%;
+    border-left: 1px solid #dadce0;
+}
+
+.submenu-group::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    width: 10px;
+    border-top: 1px solid #dadce0;
+}
+
+/* 트리 구조 - 일반 항목 */
+.submenu li:not(.submenu-group) {
+    padding-left: 25px;
+    font-size: 0.85em;  /* 일반 메뉴 항목 크기 */
+    position: relative;
+}
+
+.submenu li:not(.submenu-group)::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    width: 12px;
+    border-top: 1px solid #dadce0;
+}
+
+.submenu li:not(.submenu-group)::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: -4px;
+    height: calc(100% + 4px);
+    border-left: 1px solid #dadce0;
+}
+
+/* 각 그룹의 마지막 항목 처리 */
+.submenu li:not(.submenu-group):last-child::after {
+    height: 50%;
+}
+
+/* 아이콘 스타일링 */
+.mm_icon-01 {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.icon-24px {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.icon-waveon {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+/* 스크롤바 스타일링 */
+body::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바 너비 */
+}
+
+body::-webkit-scrollbar-track {
+    background: #f8f9fa;  /* 스크롤바 트랙 배경 - 더 연한 회색 */
+    border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgba(26, 115, 232, 0.4);  /* 스크롤바 색상 - 반투명 블루 */
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: rgba(26, 115, 232, 0.6);  /* 호버시 약간 진해지는 블루 */
+}
+
+/* 2단계 메뉴 스타일링 */
+.menu-container .level-2 {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3c4043;
+    background-color: #e6f3ff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin: 4px 0;
+    border-left: 3px solid #1a73e8;  /* 파란색 강조선 */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.menu-container .level-2:hover {
+    background-color: #f8f9fa;
+    border-left-color: #174ea6;
+    transform: translateX(2px);
+}
+
+/* 2단계 하위 메뉴 컨테이너 */
+.menu-container .level-2-content {
+    margin-left: 20px;
+    position: relative;
+    display: none;  /* 기본적으로 숨김 */
+}
+
+.menu-container .level-2-content.show {
+    display: block;  /* .show 클래스가 있을 때 표시 */
+}
+
+/* 2단계 하위 메뉴 연결선 */
+.menu-container .level-2-content::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-left: 1px solid rgba(26, 115, 232, 0.3);  /* 연한 파란색 라인 */
+}
+
+/* 2단계 하위 메뉴 아이템 */
+.menu-container .level-2-content a {
+    position: relative;
+    padding-left: 20px;
+    margin: 4px 0;
+}
+
+.menu-container .level-2-content a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 12px;
+    border-top: 1px solid rgba(26, 115, 232, 0.3);
+}
+
+.hide {
+    display: none !important;
+}
+
+.logo-img {
+    width: 90%;
+    height: auto;
+}
+
+.lang-toggle-btn,
+.theme-toggle-btn {
+    padding: 5px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    background: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.theme-toggle-btn {
+    margin-left: 10px;
+}
+
+/* 서브메뉴 그룹 링크 스타일 */
+.submenu-group a:hover {
+    color: #e84393;  /* 핑크색 텍스트 */
+}
+
+/* X 아이콘 스타일 */
+.menu-title .close-icon {
+    background-color: #e6f3ff;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.menu-title .close-icon:hover {
+    background-color: #cce4ff;
+}
+

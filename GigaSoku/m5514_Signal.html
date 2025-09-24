@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移動平均線の並び</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS 파일 링크 -->
+    
+</head>
+<body onload="InitializeStaticMenu();">
+    <div id="STATICMENU">
+        <ul>
+            <li>
+                <img src="../image/icon/navi-01.gif" width="32" height="32" />
+                <strong>　Connect</strong>
+            </li>
+            <li>
+                <img src="../image/icon/gigabook.png" alt="Arrow" class="icon-24px" />
+                <a href="../main/m5000_Giga.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈👈ギガ速FX_index</a>
+            </li>
+            <div class="divider-dotted"></div>
+            <li>
+                <a href="../main/m5001_signal-card.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈Signal Card 20</a>
+                <p>#14_ <span class="concept">移動平均線の並び</span></p>
+            </li>
+            <div class="divider-dotted"></div>
+            <!-- 바로 전 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.back()" style="display: inline-block; position: relative; z-index: 1;">🔙 前のページへ戻る</a>
+            </li>            
+            <!-- 다음 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.forward()" style="display: inline-block; position: relative; z-index: 1;">🔜 次のページへ進む</a>
+            </li>    
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="signal-card">
+            <div class="card-header">
+                <div class="card-title"><a href="../main/m5000_Giga.html" target="_self">FX Signal（シグナル） #14</a></div>
+                <h1 class="card-main-title">移動平均線の並び</h1>
+            </div>
+            <div class="card-content">
+                <div class="rating-row">
+                    <span>重要度</span>
+                    <span class="star-rating">★★★☆☆</span>
+                </div>
+                <div class="rating-row">
+                    <span>頻出度</span>
+                    <span class="star-rating">★★★★★</span>
+                </div>
+                <div class="rating-row">
+                    <span>エントリー根拠</span>
+                    <span class="star-rating">★☆☆☆☆</span>
+                </div>
+                <div class="rating-row">
+                    <span>精度</span>
+                    <span class="star-rating">★★★☆☆</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="signal-description">
+            <p>平均値というのは期間が短いものほど、現在のレートの影響を受けやすくなります。　</p>
+            <p><span class="underline-dot-highlight sma-20">20sma</span> と <span class="underline-dot-highlight sma-75">75sma</span> なら、期間の短い <span class="underline-dot-highlight sma-20">20sma</span> のほうが現在のレートの動きにいち早く反応して、その値動きを追いかけるスピードも速くなります。　</p>
+            <p>そのため、期間の異なる MA を複数表示すると、その<span class="giga-highlight">並びの変化からもトレンドや勢いの状況を判断できる</span>のです。　</p>
+            <p>リオン式は ５分足チャートが執行時間足で、<span class="underline-dot-highlight sma-20">20sma</span>、<span class="underline-dot-highlight sma-75">75sma</span>、<span class="underline-dot-highlight sma-200">200sma</span> という、主に 3 つの期間の MA を使います。　基本的な見方としては次のようになります。　</p>
+            <ul>
+                <li class="important">上昇トレンドなら MA の並びは上から順に　20　>　75　>　200</li>
+                <li class="important">下降トレンドなら MA の並びは上から順に　200　>　75　>　20</li>
+            </ul>
+            <div class="note">
+                <ul>
+                    <li>　●　<span class="giga-highlight">上昇トレンドなら MA の並びは上から順に 20 ⇒ 75 ⇒ 200</span></li>
+                    <li>　●　<span class="giga-highlight">下降トレンドなら MA の並びは上から順に 200 ⇒ 75 ⇒ 20</span></li>
+                </ul>
+            </div>
+            <p>レート（ローソク足）が一番上にあって、その下で期間の短い <span class="underline-dot-highlight sma-20">20sma</span> がレートを追いかけ、<span class="underline-dot-highlight sma-20">20sma</span> の下に <span class="underline-dot-highlight sma-75">75sma</span>、<span class="underline-dot-highlight sma-75">75sma</span> の下に <span class="underline-dot-highlight sma-200">200sma</span> が位置している状態が上昇トレンド。　その逆が下降トレンドです。　</p>
+            
+            <h2>MA とローソク足の関係性</h2>
+            <p>日々、MA とローソク足をセットで見続けて行くと、MA の並びや<span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span>から「今、レートはこういう状況なんだ」と分かって来るようになります。　</p>
+            <p>そこで、文字だけで <span class="underline-dot-highlight sma-20">20sma</span> と <span class="underline-dot-highlight sma-75">75sma</span> の状態を説明して、その時のレートの位置やトレンド、勢いがイメージ出来るかどうか、<span class="giga-highlight">ドリル</span>を作ってみました。　</p>
+            <p><span class="underline-dot-highlight sma-20">20sma</span> と <span class="underline-dot-highlight sma-75">75sma</span> が以下のような並びと<span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span>にある時、ローソク足はどこにあって、現在はどんな状況にあるかをイメージしてみてください。　</p>
+
+            <ul>
+                <li>　●　<span class="giga-highlight">ドリル①</span>　 右肩上がりの <span class="underline-dot-highlight sma-20">20sma</span> が、その下の <span class="underline-dot-highlight sma-75">75sma</span> からどんどん離れて上昇。　</li>
+                <li>　●　<span class="giga-highlight">ドリル②</span>　 <span class="underline-dot-highlight sma-20">20sma</span> が、右肩上がりの <span class="underline-dot-highlight sma-75">75sma</span> の上で下落している。　</li>
+                <li>　●　<span class="giga-highlight">ドリル③</span>　 右肩上がりの <span class="underline-dot-highlight sma-75">75sma</span> を <span class="underline-dot-highlight sma-20">20sma</span> が上から下に抜けた後、上昇に転じている。　</li>
+                <li>　●　<span class="giga-highlight">ドリル④</span>　 右肩下がりの <span class="underline-dot-highlight sma-75">75sma</span> を <span class="underline-dot-highlight sma-20">20sma</span> が上に抜けた後、また割り込んだ。　</li>
+                <li>　●　<span class="giga-highlight">ドリル⑤</span>　 右肩下がりの <span class="underline-dot-highlight sma-75">75sma</span> の下で <span class="underline-dot-highlight sma-20">20sma</span> が上向きに転じた。　</li>
+                <li>　●　<span class="giga-highlight">ドリル⑥</span>　 右肩下がりの <span class="underline-dot-highlight sma-75">75sma</span> の下で、いったん上向きに転換した <span class="underline-dot-highlight sma-20">20sma</span> が再度下向きになった。　</li>
+            </ul>
+            <p>それぞれのレートの位置と、その時の状況についての解説は図2-18のようになります。　</p>
+
+            <h2><span class="important">図2-18 </span>移動平均線ドリル①から⑥の答え</h2>
+            <div class="strategy-image"></div>
+                <img src="../image/kindle/giga-soku/m6514_a.png"  alt="図2-18 移動平均線ドリル①から⑥の答え" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+                <p class="image-caption"><span class="important">図2-18 </span>移動平均線ドリル①から⑥の答え</p>
+            </div>
+
+            <ul>
+                <li>　●　<span class="giga-highlight">ドリル①の答え</span>　➡　</span>レートの上昇が勢い良く続いている。　</li>
+                <li>　●　<span class="giga-highlight">ドリル②の答え</span>　➡　</span>上昇トレンドが小休止している（「押し目」と呼ばれる）。　</li>
+                <li>　●　<span class="giga-highlight">ドリル③の答え</span>　➡　</span><span class="highlight">ドリル②</span>よりさらに下落して、レートが<span class="underline-dot-highlight sma-75">75sma</span>を下抜けた後に反転上昇。　</li>
+                <li>　●　<span class="giga-highlight">ドリル④の答え</span>　➡　</span>下降トレンド継続中にいったん大きく上昇して<span class="underline-dot-highlight sma-75">75sma</span>を上抜けたものの再度下落。　</li>
+                <li>　●　<span class="giga-highlight">ドリル⑤の答え</span>　➡　</span>下降トレンドが小休止して、レートが一時的に反転上昇中（「戻り」や「戻り目」と呼ぶ）。　</li>
+                <li>　●　<span class="giga-highlight">ドリル⑥の答え</span>　➡　</span>下降トレンドの中でいったんレートが上昇したものの、再度下降トレンドが加速。　</li>
+            </ul>
+            <p>このように期間の違う MA の<span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span>や並びの変化だけでも、レートの現在の位置や値動きの状況が分かります。　</p>
+        </div>
+    </div>
+    <p><br></p><p><br></p>
+
+    <div class="divider-dotted"></div>
+    <div class="strategy-image"></div>
+        <img src="../image/kindle/giga-soku/draw/2-14-01.png"  alt="2-14-01" style="max-width: 60%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+        <img src="../image/kindle/giga-soku/draw/2-14-02.png"  alt="2-14-02" style="max-width: 60%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+        <img src="../image/kindle/giga-soku/draw/2-14-03.png"  alt="2-14-03" style="max-width: 60%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+    </div>
+
+    <div class="strategy-image"></div>
+        <img src="../image/kindle/giga-soku/draw/2-14-04.png"  alt="2-14-04" style="max-width: 60%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+        <img src="../image/kindle/giga-soku/draw/2-14-05.png"  alt="2-14-05" style="max-width: 60%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+        <img src="../image/kindle/giga-soku/draw/2-14-06.png"  alt="2-14-06" style="max-width: 60%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+        <p class="image-caption"><span class="important">図2-18 </span>移動平均線 ドリル①から⑥ の答え   내가 다시 정리</p>
+    </div>
+    <p><br></p><p><br></p>
+    
+    <script src="../js/scripts.js" defer></script> <!-- JavaScript 파일 링크 -->
+    
+</body>
+</html>

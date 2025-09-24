@@ -1,0 +1,72 @@
+.
+├── 0323-bk
+├── 5m-Scalping
+├── DayTrader
+│   └── eBook
+├── GigaSoku
+├── HTML
+│   ├── 5m-Scalping
+│   ├── DayTrader
+│   ├── GigaSoku
+│   ├── Test-Claude
+│   ├── TrackRecord
+│   ├── bottom
+│   ├── css
+│   ├── docs
+│   ├── file
+│   ├── hBook
+│   ├── image
+│   ├── js
+│   ├── main
+│   ├── search-server
+│   ├── top
+│   └── 【public】_WebPage
+├── Test-Claude
+├── TrackRecord
+│   ├── Failed
+│   ├── NY-High-Over
+│   ├── NY-Low_to_High
+│   ├── NY-M_to_High
+│   └── TK-Open
+├── bottom
+├── css
+├── docs
+│   ├── artis_docs
+│   ├── flask_docs
+│   └── obsidian_docs
+├── file
+├── hBook
+├── image
+│   ├── Gen-AI
+│   ├── HighLow_image
+│   ├── JunFX
+│   ├── R-Hunt
+│   ├── R-X-chart
+│   ├── R-Y-chart
+│   ├── R-lecture
+│   ├── Trend_icon
+│   ├── TurnTrading_Card
+│   ├── VisionBoard
+│   ├── artis-ai
+│   ├── book
+│   ├── cm-chart
+│   ├── docs
+│   ├── favicon
+│   ├── icon
+│   ├── kindle
+│   ├── logo
+│   ├── oikawa
+│   ├── word
+│   └── 講座plus
+├── js
+├── lab
+│   └── books
+├── main
+├── search-server
+├── top
+├── webclipper
+│   └── 20250531
+└── 【public】_WebPage
+    └── artisAsset
+
+70 directories

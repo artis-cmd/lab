@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캔들차트 복기 파일명 생성기 & 해석기</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-size: 1.6em;
+        }
+        .input-section, .interpreter-section {
+            background-color: #eaf1f6;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid #d0e4f0;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap; /* Added for responsiveness */
+        }
+        .input-group label {
+            flex: 0 0 120px; /* Adjusted label width */
+            font-weight: bold;
+            color: #4a677e;
+        }
+        .input-group input[type="text"],
+        .input-group select {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            margin-right: 10px;
+            min-width: 100px; /* Adjusted min-width */
+        }
+        .input-group input[type="text"]:focus,
+        .input-group select:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+        .input-group .time-input {
+            width: 80px; /* Specific width for time */
+            min-width: 80px;
+        }
+        .input-group .analysis-input {
+            flex: 1;
+            min-width: 150px; /* Adjust for analysis fields */
+            margin-right: 5px; /* Less margin between analysis fields */
+        }
+        .input-group .analysis-input:last-child {
+            margin-right: 0;
+        }
+        .input-group.full-width {
+            flex-wrap: wrap;
+        }
+        .input-group.full-width input[type="text"] {
+            flex: 1;
+            width: auto;
+        }
+
+        /* Radio button styles */
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-right: 10px;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #e9ecef;
+            min-height: 40px;
+            align-items: center;
+        }
+        .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: normal;
+            color: #333;
+            padding: 5px 8px;
+            border-radius: 3px;
+            transition: background-color 0.2s ease;
+        }
+        .radio-label:hover {
+            background-color: #e9ecef;
+        }
+        .radio-label input[type="radio"] {
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        .radio-label span {
+            font-size: 0.95em;
+        }
+
+        /* Datepicker specific styles */
+        .ui-datepicker {
+            font-size: 0.9em;
+        }
+
+        .filename-preview {
+            background-color: #d7e7f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            font-size: 1.1em;
+            font-family: 'Courier New', Courier, monospace;
+            color: #0056b3;
+            word-break: break-all;
+            position: relative;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+        }
+        .copy-preview-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.2s ease;
+        }
+        .copy-preview-button:hover {
+            background-color: #218838;
+        }
+
+        .filename-options {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .copy-message {
+            margin-top: 10px;
+            text-align: center;
+            color: #27ae60;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .copy-message.show {
+            opacity: 1;
+        }
+        p {
+            margin-top: 25px;
+            font-size: 0.95em;
+            color: #555;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            border-radius: 5px;
+        }
+        .note {
+            font-size: 0.85em;
+            color: #777;
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border: 1px dashed #aed6f1;
+            border-radius: 8px;
+        }
+        .interpreter-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0fff0; /* Light green for success */
+            border: 1px solid #c2e0c6;
+            border-radius: 8px;
+            color: #216c2a;
+            font-size: 1em;
+            word-break: break-all;
+            white-space: pre-wrap; /* Preserve line breaks */
+            max-height: 300px; /* Limit height */
+            overflow-y: auto; /* Add scroll if content overflows */
+        }
+        .interpreter-result p {
+            margin: 5px 0;
+            padding: 0;
+            background-color: transparent;
+            border: none;
+            font-size: 1em; /* Reset paragraph font size */
+        }
+        .interpreter-result strong {
+            color: #004d00;
+        }
+        .interpreter-result.error {
+            background-color: #fff0f0;
+            border-color: #e0c2c2;
+            color: #cc0000;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .input-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .input-group label {
+                margin-bottom: 5px;
+            }
+            .input-group input[type="text"],
+            .input-group select {
+                width: calc(100% - 24px); /* Full width minus padding and border */
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            .input-group .time-input {
+                width: calc(100% - 24px); /* Full width minus padding and border */
+            }
+            .input-group .analysis-input {
+                width: calc(100% - 24px); /* Full width minus padding and border */
+                margin-right: 0;
+            }
+            .input-group.full-width input[type="text"] {
+                width: calc(100% - 24px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>캔들차트 복기 파일명 생성기 & 해석기</h1>
+        <p>
+            아래 입력란에 정보를 입력하여 맞춤 파일명을 생성하세요. 
+            생성된 파일명은 자동으로 업데이트되며, **[클립보드에 복사]** 버튼을 클릭하면 됩니다.
+        </p>
+
+        <h2>1. 파일명 구성 요소 입력</h2>
+        <div class="input-section">
+            <div class="input-group">
+                <label for="datepicker">날짜:</label>
+                <input type="text" id="datepicker" placeholder="날짜 선택">
+                <label for="time">시간:</label>
+                <input type="text" id="time" placeholder="HHMM (예: 1030)" maxlength="4" class="time-input">
+            </div>
+            <div class="input-group">
+                <label>시장 세션:</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="marketSession" value="TK" checked>
+                        <span>도쿄 (TK)</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="marketSession" value="LD">
+                        <span>런던 (LD)</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="marketSession" value="NY">
+                        <span>뉴욕 (NY)</span>
+                    </label>
+                </div>
+                <label for="symbol">종목명:</label>
+                <select id="symbol">
+                    <option value="XAUUSD" selected>XAUUSD</option>
+                    <option value="GBPAUD">GBPAUD</option>
+                    <option value="USDJPY">USDJPY</option>
+                    <option value="GBPJPY">GBPJPY</option>
+                    <option value="EURUSD">EURUSD</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="tradeStage">매매 단계:</label>
+                <select id="tradeStage">
+                    <option value="">선택 안 함</option>
+                    <option value="1-진입직전">1-진입직전</option>
+                    <option value="2-매매중">2-매매중</option>
+                    <option value="3-청산후">3-청산후</option>
+                </select>
+                <label for="tradeDirection">매매 방향:</label>
+                <select id="tradeDirection">
+                    <option value="">선택 안 함</option>
+                    <option value="Buy">Buy</option>
+                    <option value="Sell">Sell</option>
+                    <option value="Range">Range</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>분석 내용:</label>
+                <input type="text" id="analysis1" placeholder="예: SZDP (지지선돌파)" class="analysis-input">
+                <input type="text" id="analysis2" placeholder="예: KHS (강한상승)" class="analysis-input">
+                <input type="text" id="analysis3" placeholder="예: MSSJ (매수시점)" class="analysis-input">
+            </div>
+        </div>
+
+        <h2>2. 생성된 파일명 미리보기 & 복사</h2>
+        <p>
+            아래에서 원하는 파일명 양식의 **[클립보드에 복사]** 버튼을 클릭하여 복사하세요.
+        </p>
+        <div class="filename-options">
+            <div class="filename-preview-item">
+                <div class="filename-preview" id="preview-full"></div>
+                <button class="copy-preview-button" data-template="full">클립보드에 복사</button>
+            </div>
+            <div class="filename-preview-item">
+                <div class="filename-preview" id="preview-L1"></div>
+                <button class="copy-preview-button" data-template="L1">클립보드에 복사</button>
+            </div>
+            <div class="filename-preview-item">
+                <div class="filename-preview" id="preview-simplified"></div>
+                <button class="copy-preview-button" data-template="simplified">클립보드에 복사</button>
+            </div>
+        </div>
+        <p class="copy-message" id="copyMessage">복사되었습니다!</p>
+
+        ---
+
+        <h2>3. 파일명 해석기</h2>
+        <p>
+            복기된 이미지의 파일명을 아래 입력란에 붙여넣고 **[해석하기]** 버튼을 클릭하면, 
+            파일명에 담긴 정보를 상세하게 해석해 드립니다.
+        </p>
+        <div class="interpreter-section">
+            <div class="input-group full-width">
+                <input type="text" id="filenameToInterpret" placeholder="여기에 파일명을 붙여넣으세요.">
+                <button class="copy-button" onclick="interpretFilename()">해석하기</button>
+            </div>
+            <div class="interpreter-result" id="interpretationResult">
+                <p>파일명을 입력하고 '해석하기' 버튼을 눌러주세요.</p>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>참고:</strong><br>
+            * **L1** 레이아웃은 '1시간/15분/5분/1분 4분할 차트'를 의미합니다.<br>
+            * **시장 세션**은 선택 시 파일명에 약자(TK, LD, NY)로 포함됩니다.<br>
+            * **매매 단계**는 선택 시 파일명에 `1-진입직전`, `2-매매중`, `3-청산후` 형태로 포함됩니다.<br>
+            * **매매 방향**은 선택 시 파일명에 `_Buy`, `_Sell`, `_Range` 형태로 포함됩니다.<br>
+            * **분석 내용**은 입력된 내용들을 언더바(`_`)로 연결합니다. (예: '지지선돌파_강한상승_매수시점')<br>
+            * 모든 필드를 채우지 않아도 파일명은 생성되지만, 명확한 복기를 위해 모든 정보를 입력하는 것을 권장합니다.
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script>
+        $(function() {
+            // Datepicker initialization
+            $("#datepicker").datepicker({
+                dateFormat: 'yymmdd', // YYYYMMDD format
+                showOn: 'focus', // Show calendar on focus
+                onSelect: function() {
+                    generateFilename();
+                }
+            });
+
+            // Set current date as default for datepicker
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+            const dd = String(today.getDate()).padStart(2, '0');
+            $("#datepicker").val(`${yyyy}${mm}${dd}`);
+            
+            // Set current time (HHMM) as default
+            const hh = String(today.getHours()).padStart(2, '0');
+            const mi = String(today.getMinutes()).padStart(2, '0');
+            $("#time").val(`${hh}${mi}`);
+
+            const timeInput = document.getElementById('time');
+            const marketSessionRadios = document.querySelectorAll('input[name="marketSession"]');
+            const tradeStageSelect = document.getElementById('tradeStage'); 
+            const tradeDirectionSelect = document.getElementById('tradeDirection'); 
+            const symbolSelect = document.getElementById('symbol'); 
+            const analysis1Input = document.getElementById('analysis1');
+            const analysis2Input = document.getElementById('analysis2');
+            const analysis3Input = document.getElementById('analysis3');
+
+            const previewFull = document.getElementById('preview-full');
+            const previewL1 = document.getElementById('preview-L1');
+            const previewSimplified = document.getElementById('preview-simplified');
+            const copyMessage = document.getElementById('copyMessage');
+            const interpretationResult = document.getElementById('interpretationResult');
+            const filenameToInterpretInput = document.getElementById('filenameToInterpret');
+
+
+            // Dictionaries for interpretation
+            const marketSessionMap = {
+                'TK': '도쿄 (Tokyo)',
+                'LD': '런던 (London)',
+                'NY': '뉴욕 (New York)'
+            };
+
+            const tradeStageMap = {
+                '1-진입직전': '1단계: 진입 직전 (매매 계획 수립)',
+                '2-매매중': '2단계: 매매 중 (상황 변화 및 대응)',
+                '3-청산후': '3단계: 청산 후 (결과 및 교훈)'
+            };
+
+            const tradeDirectionMap = {
+                'Buy': '매매 방향: 매수 (Buy)',
+                'Sell': '매매 방향: 매도 (Sell)',
+                'Range': '매매 방향: 보합 (Range)'
+            };
+
+            const layoutMap = {
+                'L1': '레이아웃: L1 (1시간/15분/5분/1분 4분할 차트)',
+                'H1M15M5M1': '레이아웃: H1/M15/M5/M1 4분할 차트 (포괄형 기본)'
+            };
+
+            // CUSTOM ANALYSIS ABBREVIATIONS - You can add more here!
+            const customAnalysisMap = {
+                'SZDP': '지지선돌파',
+                'KHS': '강한상승',
+                'MSSJ': '매수시점',
+                'JHDRS': '저항돌파실패',
+                'HDC': '하락다이버전스',
+                'SNSJ': '손절시점',
+                'EJB': '이중바닥',
+                'TJ': '추세전환',
+                'IKZ': '익절완료',
+                // Add your own custom abbreviations here:
+                // 'YOUR_ABBR': 'Your full meaning',
+            };
+
+            // Generate Filename
+            function generateFilename() {
+                const date = $("#datepicker").val(); // Already in YYYYMMDD
+                const time = timeInput.value.replace(/[^0-9]/g, '').padEnd(4, '0'); // Only numbers, pad to 4 digits
+                
+                const marketSession = document.querySelector('input[name="marketSession"]:checked').value.trim();
+                const marketSessionPart = `_${marketSession}`;
+                
+                const tradeStage = tradeStageSelect.value.trim(); 
+                const tradeStagePart = tradeStage ? `_${tradeStage}` : ''; 
+                
+                const tradeDirection = tradeDirectionSelect.value.trim(); 
+
+                const symbol = symbolSelect.value.trim(); 
+                const symbolPart = symbol || '종목명'; 
+
+                const analysisParts = [
+                    analysis1Input.value.trim().replace(/[^a-zA-Z0-9가-힣_ -]/g, '').replace(/ /g, ''),
+                    analysis2Input.value.trim().replace(/[^a-zA-Z0-9가-힣_ -]/g, '').replace(/ /g, ''),
+                    analysis3Input.value.trim().replace(/[^a-zA-Z0-9가-힣_ -]/g, '').replace(/ /g, '')
+                ].filter(part => part !== ''); 
+
+                // Prepend trade direction to analysis parts if it exists
+                const finalAnalysisParts = [];
+                if (tradeDirection) { // Use tradeDirection, not tradeDirectionPart
+                    finalAnalysisParts.push(tradeDirection); 
+                }
+                finalAnalysisParts.push(...analysisParts);
+
+                const analysis = finalAnalysisParts.length > 0 ? finalAnalysisParts.join('_') : '분석내용';
+
+                // Construct base name
+                const baseName = `${date}_${time}${marketSessionPart}${tradeStagePart}_${symbolPart}`;
+                
+                // Full template
+                const fullFilename = `${baseName}_H1M15M5M1_${analysis}.png`;
+                previewFull.textContent = fullFilename;
+
+                // L1 template
+                const L1Filename = `${baseName}_L1_${analysis}.png`;
+                previewL1.textContent = L1Filename;
+
+                // Simplified template
+                const simplifiedFilename = `${baseName}_${analysis}.png`;
+                previewSimplified.textContent = simplifiedFilename;
+            }
+
+            // Copy to Clipboard Function
+            function copyToClipboard(text) {
+                navigator.clipboard.writeText(text).then(() => {
+                    copyMessage.classList.add('show');
+                    setTimeout(() => {
+                        copyMessage.classList.remove('show');
+                    }, 1500);
+                }).catch(err => {
+                    console.error('클립보드 복사 실패:', err);
+                    alert('클립보드 복사에 실패했습니다. 수동으로 복사해주세요: ' + text);
+                });
+            }
+
+            // Interpret Filename Function
+            window.interpretFilename = function() { // Make it global for onclick
+                const filename = filenameToInterpretInput.value.trim();
+                if (!filename) {
+                    interpretationResult.innerHTML = '<p style="color:red;">해석할 파일명을 입력해주세요.</p>';
+                    interpretationResult.classList.add('error');
+                    return;
+                }
+
+                // Remove .png/.jpg etc. and split by '_'
+                const parts = filename.replace(/\.(png|jpg|jpeg|gif|bmp)$/i, '').split('_');
+                
+                let interpretation = [];
+                let currentIndex = 0;
+
+                // 1. Date (YYYYMMDD)
+                if (parts[currentIndex] && parts[currentIndex].length === 8 && !isNaN(parts[currentIndex])) {
+                    const date = parts[currentIndex];
+                    interpretation.push(`<strong>날짜:</strong> ${date.substring(0, 4)}년 ${date.substring(4, 6)}월 ${date.substring(6, 8)}일`);
+                    currentIndex++;
+                } else {
+                    interpretation.push(`<strong>날짜:</strong> <span style="color:red;">[날짜 형식 오류 또는 누락]</span>`);
+                }
+
+                // 2. Time (HHMM)
+                if (parts[currentIndex] && parts[currentIndex].length === 4 && !isNaN(parts[currentIndex])) {
+                    const time = parts[currentIndex];
+                    interpretation.push(`<strong>시간:</strong> ${time.substring(0, 2)}시 ${time.substring(2, 4)}분`);
+                    currentIndex++;
+                } else {
+                     interpretation.push(`<strong>시간:</strong> <span style="color:red;">[시간 형식 오류 또는 누락]</span>`);
+                }
+
+                // 3. Market Session (e.g., _TK_ or _LD_ or _NY_) and Trade Stage (e.g., _1-진입직전_)
+                // These might be combined with symbol, so need to be careful
+                let marketSessionFound = false;
+                let tradeStageFound = false;
+
+                if (parts[currentIndex]) {
+                    const combinedPart = parts[currentIndex];
+                    let remainingPart = combinedPart;
+
+                    // Check for Market Session (e.g., TK, LD, NY)
+                    for (const abbr in marketSessionMap) {
+                        if (remainingPart.startsWith(abbr)) {
+                            interpretation.push(`<strong>시장 세션:</strong> ${marketSessionMap[abbr]}`);
+                            remainingPart = remainingPart.substring(abbr.length); // Remove the market session part
+                            marketSessionFound = true;
+                            break;
+                        }
+                    }
+
+                    // Check for Trade Stage (e.g., 1-진입직전, 2-매매중)
+                    for (const stageAbbr in tradeStageMap) {
+                        // Ensure it's not trying to match part of the symbol
+                        if (remainingPart.startsWith(stageAbbr) && (remainingPart.length === stageAbbr.length || remainingPart.charAt(stageAbbr.length) === '_')) {
+                            interpretation.push(`<strong>매매 단계:</strong> ${tradeStageMap[stageAbbr]}`);
+                            remainingPart = remainingPart.substring(stageAbbr.length); // Remove the trade stage part
+                            tradeStageFound = true;
+                            break;
+                        }
+                    }
+                    
+                    if (remainingPart.startsWith('_')) { // If there's still a leading underscore, remove it
+                        remainingPart = remainingPart.substring(1);
+                    }
+
+                    // The rest should be the symbol, or it's just the symbol from the start
+                    // If market session or trade stage was found, this part must be symbol
+                    if (marketSessionFound || tradeStageFound || remainingPart) {
+                         interpretation.push(`<strong>종목명:</strong> ${remainingPart || parts[currentIndex]}`); // If remainingPart is empty, it means symbol was the whole part
+                         currentIndex++;
+                    } else if (parts[currentIndex]) { // If no specific pattern found, assume it's part of symbol or next component
+                        interpretation.push(`<strong>종목명:</strong> ${parts[currentIndex]}`);
+                        currentIndex++;
+                    }
+                } else {
+                    interpretation.push(`<strong>시장 세션/매매 단계/종목명:</strong> <span style="color:red;">[정보 누락]</span>`);
+                }
+
+
+                // 4. Layout (e.g., L1, H1M15M5M1)
+                if (parts[currentIndex]) {
+                    const layoutPart = parts[currentIndex];
+                    if (layoutMap[layoutPart]) {
+                        interpretation.push(`<strong>레이아웃:</strong> ${layoutMap[layoutPart]}`);
+                        currentIndex++;
+                    } else if (layoutPart.match(/^[HhMm][0-9]+([HhMm][0-9]+)*$/)) { // Basic check for H1M15M5M1 format
+                        interpretation.push(`<strong>레이아웃:</strong> ${layoutPart} (포괄형 기본)`);
+                        currentIndex++;
+                    } else {
+                        // If it doesn't match a known layout, it might be the start of analysis
+                        // This case is for simplified layout where L1/H1M... is omitted
+                        // So, we don't increment currentIndex here and let analysis handle it
+                    }
+                }
+
+                // 5. Analysis (Direction + Custom Abbreviations)
+                let analysisFound = false;
+                if (parts[currentIndex]) {
+                    let fullAnalysis = [];
+                    // Check for trade direction first
+                    if (tradeDirectionMap[parts[currentIndex]]) {
+                        fullAnalysis.push(tradeDirectionMap[parts[currentIndex]]);
+                        currentIndex++; // Move to next part for custom analysis
+                    }
+
+                    while (currentIndex < parts.length) {
+                        const analysisAbbr = parts[currentIndex];
+                        if (customAnalysisMap[analysisAbbr]) {
+                            fullAnalysis.push(`${analysisAbbr} (${customAnalysisMap[analysisAbbr]})`);
+                            analysisFound = true;
+                        } else {
+                            fullAnalysis.push(`${analysisAbbr} (사전 미등록 약어)`);
+                        }
+                        currentIndex++;
+                    }
+
+                    if (fullAnalysis.length > 0) {
+                        interpretation.push(`<strong>분석 내용:</strong> ${fullAnalysis.join(', ')}`);
+                    } else if (!analysisFound) {
+                        interpretation.push(`<strong>분석 내용:</strong> <span style="color:orange;">[분석 내용 없음 또는 형식 오류]</span>`);
+                    }
+                } else {
+                    interpretation.push(`<strong>분석 내용:</strong> <span style="color:orange;">[분석 내용 없음]</span>`);
+                }
+
+                interpretationResult.innerHTML = interpretation.map(p => `<p>${p}</p>`).join('');
+                interpretationResult.classList.remove('error'); // Remove error style if successful
+            };
+
+            // Event Listeners
+            timeInput.addEventListener('input', generateFilename);
+            marketSessionRadios.forEach(radio => {
+                radio.addEventListener('change', generateFilename);
+            });
+            tradeStageSelect.addEventListener('change', generateFilename); 
+            tradeDirectionSelect.addEventListener('change', generateFilename); 
+            symbolSelect.addEventListener('change', generateFilename); 
+            analysis1Input.addEventListener('input', generateFilename);
+            analysis2Input.addEventListener('input', generateFilename);
+            analysis3Input.addEventListener('input', generateFilename);
+
+            document.querySelectorAll('.copy-preview-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const templateType = button.dataset.template;
+                    let filenameToCopy = '';
+                    if (templateType === 'full') {
+                        filenameToCopy = previewFull.textContent;
+                    } else if (templateType === 'L1') {
+                        filenameToCopy = previewL1.textContent;
+                    } else if (templateType === 'simplified') {
+                        filenameToCopy = previewSimplified.textContent;
+                    }
+                    copyToClipboard(filenameToCopy);
+                });
+            });
+
+            // Initial setup
+            generateFilename(); // Generate initial filename on load
+        });
+    </script>
+</body>
+</html>

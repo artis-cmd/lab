@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캔들차트 복기 파일명 생성기 & 해석기</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="../css/capture-name.css">
+</head>
+<body>
+    <div class="container">
+        <h2>1. 파일명 구성 요소 입력</h2>
+        <div class="input-section">
+            <div class="input-group">
+
+                <label for="datepicker">날짜:</label>
+                <input type="text" id="datepicker" placeholder="날짜 선택">
+                <label for="time">시간:</label>
+                <input type="text" id="time" placeholder="HHMM (예: 1030)" maxlength="4" class="time-input">
+
+                <label for="symbol">종목명:</label>
+                <select id="symbol">
+                    <option value="XAUUSD" selected>XAUUSD</option>
+                    <option value="GBPAUD">GBPAUD</option>
+                    <option value="USDJPY">USDJPY</option>
+                    <option value="GBPJPY">GBPJPY</option>
+                    <option value="EURUSD">EURUSD</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>시장 세션:</label>
+                <div class="radio-group compact">
+                    <label class="radio-label">
+                        <input type="radio" name="marketSession" value="TK" checked>
+                        <span>도쿄 (TK)</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="marketSession" value="LD">
+                        <span>런던 (LD)</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="marketSession" value="NY">
+                        <span>뉴욕 (NY)</span>
+                    </label>
+                </div>
+                <label>매매 단계:</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="tradeStage" value="복기" checked>
+                        <span>복기</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="tradeStage" value="진입전">
+                        <span>진입전</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="tradeStage" value="매매중">
+                        <span>매매중</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="tradeStage" value="결제후">
+                        <span>결제후</span>
+                    </label>
+                </div>
+            </div>
+            <div class="input-group trade-tools-group">
+                <label for="tradeDirection">매매 방향:</label>
+                <select id="tradeDirection" class="compact">
+                    <option value="">선택 안 함</option>
+                    <option value="Range">Range</option>
+                    <option value="Sell">Sell</option>
+                    <option value="Buy">Buy</option>
+                </select>
+                <label>사용툴:</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="usedTool" value="FT5" checked>
+                        <span>Forex Tester 5</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="usedTool" value="TV">
+                        <span>TradingView</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="usedTool" value="MT4">
+                        <span>Meta Trader 4</span>
+                    </label>
+                </div>
+                <label>매매 이력:</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="trackRecord" value="tR0" checked>
+                        <span>None</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="trackRecord" value="tR1">
+                        <span>TrackRecord</span>
+                    </label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Trend & Dow Theory :</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="trendDow" value="Range" checked>
+                        <span>None Trend ⚠️</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="trendDow" value="UpTrend">
+                        <span>UpTrend 📈</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="trendDow" value="DownTrend">
+                        <span>DownTrend 📉</span>
+                    </label>
+                </div>
+                <label for="smaAnalysis">SMA 관련:</label>
+                <select id="smaAnalysis">
+                    <option value="">선택 안 함</option>
+                    <option value="뭉탱이MA_Support▲">뭉탱이MA_Support▲</option>
+                    <option value="뭉탱이MA_Resistance▼">뭉탱이MA_Resistance▼</option>
+                    <option value="파빨_Resistance">파빨_Resistance</option>
+                    <option value="빨파_Support">빨파_Support</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="roundNumber">Round Number:</label>
+                <select id="roundNumber">
+                    <option value="">선택 안 함</option>
+                    <option value="RN-Resistance">RN-Resistance ▼</option>
+                    <option value="RN-Support">RN-Support ▲</option>
+                    <option value="RN-서포레지전환">RN-서포레지전환</option>
+                    <option value="RN-와리가리">RN-와리가리</option>
+                </select>
+                <label>진입/청산 조건:</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="entryExit" value="시나리오">
+                        <span>시나리오</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="entryExit" value="금액">
+                        <span>금액</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="entryExit" value="위치">
+                        <span>위치</span>
+                    </label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="priceAction">Price Action:</label>
+                <select id="priceAction">
+                    <option value="">선택 안 함</option>
+                    <option value="하락확인후진입">하락확인 후 진입</option>
+                    <option value="5분_음2확인">5분_음2확인</option>
+                    <option value="고점만들고트라이">고점 만들고 트라이</option>
+                    <option value="장대봉핀바영향권">장대봉(핀바)의 영향권</option>
+                    <option value="말좆">말좆</option>
+                    <option value="1분_위꼬리군단">1분_위꼬리군단</option>
+                    <option value="5분_위꼬리음봉">5분_위꼬리음봉</option>
+                    <option value="1분_하락펀치">1분_하락펀치</option>
+                    <option value="1분_위꼬리음봉">1분_위꼬리음봉</option>
+                    <option value="5분_위꼬리군단">5분_위꼬리군단</option>
+                    <option value="1분_음2확인">1분_음2확인</option>
+                    <option value="200s-240s샌드위치">200s-240s샌드위치</option>
+                </select>
+                <label for="maArrangement">이평선 배열과 각도:</label>
+                <select id="maArrangement">
+                    <option value="">선택 안 함</option>
+                    <option value="이평타고올라오는형태">이평타고 올라오는 형태</option>
+                    <option value="미묘한상위이평">미묘한 상위 이평</option>
+                    <option value="상위이평의도움">상위 이평의 도움</option>
+                    <option value="이평수렴하고Range">이평 수렴하고 Range</option>
+                    <option value="5분_s20윗머리누르기">5분_s20의 윗머리 누르기</option>
+                    <option value="1분_s20아래">1분_s20아래</option>
+                    <option value="20s오름+240내림">20s오름+240내림</option>
+                    <option value="20s오름+240살짝오름">20s오름+240살짝오름</option>
+                    <option value="240s되돌림">240s되돌림</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>기타 기술 분석:</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="technical" value="기술분석01">
+                        <span>기술분석01</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="technical" value="기술분석02">
+                        <span>기술분석02</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="technical" value="기술분석03">
+                        <span>기술분석03</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="technical" value="기술분석04">
+                        <span>기술분석04</span>
+                    </label>
+                </div>
+                <label for="failureAnalysis">실패 이유 분석:</label>
+                <select id="failureAnalysis">
+                    <option value="">선택 안 함</option>
+                    <option value="못기다림">못기다림</option>
+                    <option value="진입늦음">진입늦음</option>
+                    <option value="손절후전환">손절후전환</option>
+                    <option value="진입빠름">진입빠름</option>
+                    <option value="진입OK">진입OK</option>
+                    <option value="연속진입">연속진입</option>
+                    <option value="본절못함">본절못함</option>
+                    <option value="익절빠름">익절빠름</option>
+                    <option value="익절OK">익절OK</option>
+                    <option value="손절늦음">손절늦음</option>
+                    <option value="양방향다털림">양방향다털림</option>
+                    <option value="본절OK">본절OK</option>
+                    <option value="익절늦음">익절늦음</option>
+                </select>
+            </div>
+        </div>
+
+        <h2>2. 생성된 파일명 미리보기 & 복사</h2>
+        <div class="preview-section">
+            <div class="preview-content">
+                <div class="filename-options">
+                    <div class="filename-preview-item">
+                        <div class="filename-preview" id="preview-L1"></div>
+                        <button class="copy-preview-button" data-template="L1">클립보드에 복사</button>
+                    </div>
+                </div>
+                <p class="copy-message" id="copyMessage">복사되었습니다!</p>
+            </div>
+        </div>
+
+        ---
+
+        <h2>3. 파일 관리</h2>
+        <div class="file-management-section">
+            <div class="file-management-layout">
+                <!-- 왼쪽: 원본 폴더 및 파일 목록 -->
+                <div class="source-section">
+                    <div class="folder-selection">
+                        <label for="folderInput">원본 폴더 선택:</label>
+                        <div class="folder-controls">
+                            <input type="file" id="folderInput" webkitdirectory directory multiple>
+                            <button id="selectFolderBtn" class="folder-btn">폴더 선택</button>
+                        </div>
+                    </div>
+                    
+                    <div class="file-list-container">
+                        <h3>선택된 폴더의 파일들</h3>
+                        <div id="fileList" class="file-list">
+                            <p class="no-files">폴더를 선택해주세요.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 오른쪽: 저장 폴더 및 파일명 변경 -->
+                <div class="destination-section">
+                    <div class="folder-selection">
+                        <label for="outputFolderInput">저장 폴더 선택:</label>
+                        <div class="folder-controls">
+                            <input type="text" id="outputFolderInput" placeholder="저장할 폴더명을 입력하세요">
+                            <button id="selectOutputFolderBtn" class="folder-btn">폴더 선택</button>
+                        </div>
+                        <span id="outputFolderPath" class="folder-path">저장 폴더가 선택되지 않았습니다.</span>
+                    </div>
+                    
+                    <div class="file-rename-section">
+                        <h3>파일명 변경</h3>
+                        <div class="rename-preview">
+                            <p><strong>현재 생성된 파일명:</strong></p>
+                            <div id="renamePreview" class="rename-preview-text"></div>
+                        </div>
+                        <div class="rename-controls">
+                            <button id="renameBtn" class="rename-btn" disabled>선택된 파일 이름 변경</button>
+                            <button id="uploadToArtisBtn" class="artis-upload-btn" disabled>🚀 artisAsset에 저장</button>
+                            <p id="renameStatus" class="rename-status"></p>
+                            <p id="uploadStatus" class="upload-status"></p>
+                        </div>
+                        
+                        <!-- 스프레드시트 로그 설정 -->
+                        <div class="spreadsheet-log-section">
+                            <h4>📊 스프레드시트 로그 설정</h4>
+                            <div class="spreadsheet-config">
+                                <div class="config-group">
+                                    <label for="spreadsheetId">스프레드시트 ID: 1m6iWoFV-TQklJg7sycK9P0bwC227Q2noBLZJleOrgsc</label>
+                                    <input type="text" id="spreadsheetId" placeholder="스프레드시트 URL에서 추출한 ID">
+                                </div>
+                                <div class="config-group">
+                                    <label for="sheetName">시트 이름: Sheet1</label>
+                                    <input type="text" id="sheetName" placeholder="Sheet1" value="Sheet1">
+                                </div>
+                                <div class="config-group">
+                                    <label>
+                                        <input type="checkbox" id="enableLogging" checked>
+                                        파일명 변경 로그 기록
+                                    </label>
+                                </div>
+                                <button id="testConnectionBtn" class="test-btn">연결 테스트</button>
+                                <p id="connectionStatus" class="connection-status">연결 상태: 미확인</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        ---
+
+        <h2>4. 파일명 해석기</h2>
+        <p>
+            복기된 이미지의 파일명을 아래 입력란에 붙여넣고 **[해석하기]** 버튼을 클릭하면, 
+            파일명에 담긴 정보를 상세하게 해석해 드립니다.
+        </p>
+        <div class="interpreter-section">
+            <div class="input-group full-width">
+                <input type="text" id="filenameToInterpret" placeholder="여기에 파일명을 붙여넣으세요.">
+                <button class="copy-button" onclick="interpretFilename()">해석하기</button>
+            </div>
+            <div class="interpreter-result" id="interpretationResult">
+                <p>파일명을 입력하고 '해석하기' 버튼을 눌러주세요.</p>
+            </div>
+        </div>
+
+        ---
+
+        <h2>5. artisAsset 분석 리포트 템플릿 설정</h2>
+        <p>
+            차트 분석 시 생성되는 리포트의 구조를 설정할 수 있습니다. 
+            프리셋을 선택하거나 커스텀 템플릿을 직접 설정하세요.
+        </p>
+        
+        <div class="template-section">
+            <div class="template-controls">
+                <div class="input-group">
+                    <label for="templatePreset">템플릿 프리셋:</label>
+                    <select id="templatePreset" onchange="loadPresetTemplate()">
+                        <option value="">프리셋 선택</option>
+                        <option value="basic">기본 (3단계)</option>
+                        <option value="detailed">상세 (7단계)</option>
+                        <option value="simple">간단 (3단계)</option>
+                        <option value="custom">커스텀</option>
+                    </select>
+                </div>
+                <div class="button-group">
+                    <button onclick="loadCurrentTemplate()" class="action-btn">현재 템플릿 불러오기</button>
+                    <button onclick="saveTemplate()" class="action-btn">템플릿 저장</button>
+                    <button onclick="testTemplate()" class="test-btn">템플릿 미리보기</button>
+                </div>
+            </div>
+            
+            <div class="template-editor">
+                <label for="templateEditor">리포트 템플릿 (JSON 형식):</label>
+                <textarea id="templateEditor" rows="15" placeholder="리포트 템플릿을 JSON 형식으로 입력하세요..."></textarea>
+            </div>
+            
+            <div class="template-preview" id="templatePreview">
+                <h4>📋 템플릿 미리보기</h4>
+                <div id="previewContent">템플릿을 선택하거나 입력 후 '미리보기' 버튼을 클릭하세요.</div>
+            </div>
+            
+            <div class="template-status">
+                <p id="templateStatus" class="connection-status">템플릿 상태: 미확인</p>
+            </div>
+        </div>
+
+        <div class="note">
+            <h3>📋 참고사항</h3>
+            <ul>
+                <li><strong>날짜</strong>는 YYYYMMDD 형식으로 입력되며, 자동으로 요일 정보(a=월요일, b=화요일, c=수요일, d=목요일, e=금요일, f=토요일, g=일요일)가 추가됩니다.</li>
+                <li><strong>L1</strong> 레이아웃은 '1시간/15분/5분/1분 4분할 차트'를 의미합니다.</li>
+                <li><strong>시장 세션</strong>은 선택 시 파일명에 약자(TK, LD, NY)로 포함됩니다.</li>
+                <li><strong>매매 단계</strong>는 선택 시 파일명에 <code>복기</code>, <code>진입전</code>, <code>매매중</code>, <code>결제후</code> 형태로 포함됩니다.</li>
+                <li><strong>매매 방향</strong>은 선택 시 파일명에 <code>_Buy</code>, <code>_Sell</code>, <code>_Range</code> 형태로 포함됩니다.</li>
+                <li><strong>사용툴</strong>은 선택 시 파일명에 <code>_FT5</code>, <code>_TV</code>, <code>_MT4</code> 형태로 포함됩니다.</li>
+                <li><strong>매매 이력</strong>은 선택 시 파일명에 <code>_tR0</code>(없음), <code>_tR1</code>(있음) 형태로 포함됩니다.</li>
+                <li><strong>분석 내용</strong>은 입력된 내용들을 언더바(<code>_</code>)로 연결합니다. (예: <code>지지선돌파_강한상승_매수시점</code>)</li>
+                <li>모든 필드를 채우지 않아도 파일명은 생성되지만, 명확한 복기를 위해 모든 정보를 입력하는 것을 권장합니다.</li>
+                <li><strong>리포트 템플릿</strong>은 차트 분석 시 생성되는 리포트의 구조를 정의합니다. JSON 형식으로 섹션과 항목을 설정할 수 있습니다.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="../js/CapName.js"></script>
+</body>
+</html>

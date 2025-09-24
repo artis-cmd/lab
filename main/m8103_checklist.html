@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <link rel="icon" href="../image/favicon/x-As.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../image/favicon/x-As.ico" type="image/x-icon">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m8103 ✅ CheckList </title>
+    <link rel="stylesheet" href="../css/checklist.css">  <!-- ✅ 외부 CSS 파일 연결 -->
+    <!-- Google API 스크립트 -->
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client"></script>
+    <!-- 애플리케이션 스크립트 -->
+    <script src="../js/sheets.js"></script>
+    <script src="../js/checklist.js"></script>
+    <script>
+        // API 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+          console.log('DOM loaded, initializing APIs...');
+          handleClientLoad();
+          handleGisLoad();
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+        console.log("DOM fully loaded, initializing...");
+
+        const bgColorSelect = document.getElementById('bgColorSelect');
+        const trendImageContainer = document.getElementById('trendImageContainer');
+        const trendImage = document.getElementById('trendImage');
+
+        if (!bgColorSelect || !trendImageContainer || !trendImage) {
+            console.error("필수 요소를 찾을 수 없습니다. (bgColorSelect, trendImageContainer, trendImage)");
+            return;
+        }
+
+        bgColorSelect.addEventListener('change', function () {
+            console.log(`선택된 색상: ${this.value}`);
+
+            switch (this.value) {
+                case '#A72461': // 방향없는 Range
+                    trendImage.src = '../image/icon/trend/Range_s.png';
+                    trendImageContainer.style.display = 'block';
+                    break;
+                case '#9ACD32': // 매수 우세 - Bull
+                    trendImage.src = '../image/icon/trend/UTrend_s.png';
+                    trendImageContainer.style.display = 'block';
+                    break;
+                case '#F08080': // 매도 우세 - Bear
+                    trendImage.src = '../image/icon/trend/DTrend_s.png';
+                    trendImageContainer.style.display = 'block';
+                    break;
+                case '#4D3E3E': // 안하는게 낫다
+                    trendImage.src = '../image/icon/trend/NoTrade_s.png';
+                    trendImageContainer.style.display = 'block';
+                break;
+                default:
+                    trendImageContainer.style.display = 'none';
+                    break;
+            }
+        });
+    });
+
+    </script>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="left-controls">
+            <div class="logo-title">
+              <img src="../image/icon/checklist02.png" alt="Trade CheckList Logo" class="logo-image">
+            </div>
+            <div class="control-group">
+                <!-- Google 로그인/로그아웃 버튼 -->
+                <button id="authorize_button" onclick="handleAuthClick()">Log in</button>
+                <button id="signout_button" onclick="handleSignoutClick()">Log out</button>
+            </div>
+            <button id="loadFromSheetButton" onclick="loadItemsFromSheet()" class="load-button">시트에서 가져오기</button>
+
+            <!-- 트렌드 이미지 표시 영역 추가 -->
+            <div id="trendImageContainer" class="trend-image-container" style="display: none;">
+                <img id="trendImage" src="" alt="Trend Image">
+            </div>
+        </div>
+        <div class="right-controls">
+            <div class="select-container">
+                <!-- 색상 변경 & 폭 조절 기능을 위한 셀렉트 박스 -->
+                <div class="control-group">
+                    <strong>🎯Trade TYPE : </strong>
+                    <select id="bgColorSelect">
+                        <option value="white">------ 未選択 ------</option>
+                        <option value="#A72461">방향없는 Range</option>
+                        <option value="#9ACD32">매수 우세 - Bull</option>
+                        <option value="#F08080">매도 우세 - Bear</option>
+                        <option value="#4D3E3E">안하는게 낫다</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <strong>🎯CheckList Width ↔️ :</strong>
+                    <select id="widthSelect">
+                        <option value="300px">S (300px)</option>
+                        <option value="480px">M (480px)</option>
+                        <option value="560px" selected>L (560px)</option>
+                        <option value="640px">XL (640px)</option>
+                        <option value="720px">XXL (720px)</option>
+                    </select>
+                </div>
+                
+                <div class="button-group">
+                    <button id="resetButton" class="reset-button">🔄 초기화</button>
+                    <a href="https://colorhunt.co/palette/f6d6d6f6f7c4a1eebd7bd3ea" target="_blank" class="button">색상 참조</a>
+                </div>
+    
+                <div class="button-group">
+                    <a href="https://docs.google.com/spreadsheets/d/1eviEguoA1ly8QRk68bRD4cmRIzFnSSqGmbIdky29qwk/edit?gid=0#gid=0" target="_blank"><img src="../image/icon/spreadsheet48px.png" alt="Arrow" class="icon-24px">Spread Sheet
+                        <img src="../image/icon/arrow64px.png" alt="Arrow" class="icon-24px"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>✅ Check List(s) </h2>
+    
+    <div class="container">
+        <div class="checklist-box">
+            <h2>⚠️ Strategy CheckList</h2>
+            <form id="form1">
+                <input type="text" id="input1" placeholder="Add item..." required>
+                <button type="submit">Add</button>
+            </form>
+            <ul id="list1"></ul>
+        </div>
+
+        <div class="checklist-box">
+            <h2>🕵️ Risk CheckList</h2>
+            <form id="form2">
+                <input type="text" id="input2" placeholder="Add item..." required>
+                <button type="submit">Add</button>
+            </form>
+            <ul id="list2"></ul>
+        </div>
+
+        <div class="checklist-box">
+            <h2>🧠 Mental CheckList</h2>
+            <form id="form3">
+                <input type="text" id="input3" placeholder="Add item..." required>
+                <button type="submit">Add</button>
+            </form>
+            <ul id="list3"></ul>
+        </div>
+    </div>
+
+    <!-- <hr style="border: 0; height: 2px; background-color: #00A2FF; margin: 30px 0 20px 0;"> -->
+    <hr class="shadow-line">
+
+    <!-- 이동된 항목을 표시하는 영역 - 카테고리별로 분리 -->
+    <h2 id="checked-items-header">☑️ Checked item(s) 🎪</h2>
+        <div class="container" id="checkedItemsContainer">
+        <div class="checklist-box checked-box">
+            <h2>⚠️ Strategy Checked</h2>
+            <ul id="checkedList1"></ul>
+        </div>
+
+        <div class="checklist-box checked-box">
+            <h2>🕵️ Risk Checked</h2>
+            <ul id="checkedList2"></ul>
+        </div>
+
+        <div class="checklist-box checked-box">
+            <h2>🧠 Mental Checked</h2>
+            <ul id="checkedList3"></ul>
+        </div>
+    </div>
+
+<div class="footer-space"></div>
+
+</body>
+</html>

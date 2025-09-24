@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giga3-01 to 09</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS 파일 링크 -->
+    
+</head>
+
+<body onload="InitializeStaticMenu();">
+    <div id="STATICMENU">
+        <ul>
+            <img src="../image/icon/navi-01.gif" width="32" height="32" /><strong>　Connect</strong>
+            <li><img src="../image/icon/gigabook.png" alt="Arrow" class="icon-24px">
+
+                <a href="../main/m5000_Giga.html" target="bottom-frame" onclick="console.log('링크 클릭됨')">👈👈ギガ速FX_index</a>
+            <div class="divider-dotted"></div>
+            <li>第3章　➡　なぜ高値圏からの「ドカン」をギガ速でハントできるのか？</li>
+            <div class="divider-dotted"></div>
+            <!-- 바로 전 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.back()" style="display: inline-block; position: relative; z-index: 1;">🔙 前のページへ戻る</a>
+            </li>
+            <!-- 다음 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.forward()" style="display: inline-block; position: relative; z-index: 1;">🔜 次のページへ進む</a>
+            </li>
+        </ul>
+    </div>
+
+    <p><a name="#Giga3-01" id="Giga3-01"></a></p>
+    <div class="divider-dotted"></div>
+    <div class="content">
+        <h1>3-01_【FX】MT4に表示されている時間について</h1>
+        <div class="signal-description">
+            <p>第３章では本書の核心<span class="giga-highlight">「リオン式 <span class="concept-zone">Zone</span> トレード」</span>について解説していきます。　まずは、リオン式に使う<span class="giga-highlight">Rionチャートの構成</span>です。　</p>
+            <p>Rionチャートは実際にトレードする際に使いやすくて、見やすいことを一番に考えて作ったチャートです。　</p>
+            <p>Rionチャートは <span class="giga-highlight"></span>4本の SMA、3本の上位足 SMA、キリ番を示すラインなどで構成されています。　</p>
+            <p>MT4 を使えば、ご自分で同じものを設定することも出来ます。　</p>
+            <p>標準<span class="tooltip">搭載<span class="tooltiptext">[とうさい]<br>탑재</span></span>されている <span class="giga-highlight">SMAのインジケーター</span>の他、<span class="giga-highlight">マルチタイムフレーム (MTF) 分析に必要な上位足 SMA</span>を表示するインジケーター、キリ番を示してくれるインジケーターなどをインターネット上から無料・有料で入手します。　</p>
+            <p>そして、SMA や 上位足 SMA の期間を、これから紹介する Rion チャートの設定に合わせれば、同じチャートを作ることが出来ます。　</p>
+            <p>本書をご購入頂いた方は、QRコードから LINE 登録すると、<span class="giga-highlight">MT4 </span>に実装できる<span class="giga-highlight"></span>「Rion Chart」をダウンロードするための設定方法が確認できます。　</p>
+            <p>手順通りに設定すると、<span class="giga-highlight">リオンが使っているチャートと同じものをMT4 上に表示 </span>できます。　</p>
+            <p>もちろん、<span class="giga-highlight">自前で設定することも可能</span>です。　</p>
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/Giga3-01a.png" alt="QR" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+            </div>
+            <p>上の QR コードで LINE の「リオン @FXism」にアクセスの上、「友だち追加」をクリックすると </p>
+            <p>Rionチャートを無料でダウンロードするまでの手続きが記載されているのでご参照ください。　</p>
+            <p>なお発行元の出版社、書店は上記サービスや自前の設定に対する問い合わせには回答できません。　</p>
+            <p>ご不明な点は support@fxism.jp (FXism 運営事務局) までメールにてお問い合わせください。　</p>
+            <p>また、サービス運営や問い合わせ対応は、予告なく終了することもあります。　あらかじめ、ご了承ください。　</p>
+            <p>まずは MT4をネット上からダウンロードすることになりますが、開発元のメタクオーツ社から MT4をダウンロードしようとすると、</p>
+            <p>自動的に「メタトレーダー5 (MT5)」という上位バージョンに置き換えられてしまいます。　</p>
+            <p>新たに MT4を PC にインストールしてトレードする場合は、MT4を取引ツールに使える国内もしくは海外の FX会社で口座開設してください。　</p>
+            <p>その FX会社が提供してくれる MT4をダウンロード出来ます。　</p>
+            <p>ちなみに FX会社によって、その時々のレートは微妙に違うので、レートを元に描画する SMAや上位足 SMAの位置にもズレが生じます。　</p>
+            <p>私と同じ値動きや MA の配置を見たい場合は海外 FX 会社の<span class="highlight">「AXIORY (アキシオリー)」</span>で口座を開設して、<span class="giga-highlight">MT4　PC版</span>をダウンロードしてください。　</p>
+            <p>ただし、MT4 には上位足 SMA やキリ番を表示するインジケーターは標準装備されていません。　</p>
+            <p>ネット上に無料・有料の MT4 向けインジケーターが多数提供されているので、ご自分でインストールしてください。　</p>
+            <p>Rionチャート自体はそれほど複雑なものではないので、自前でも比較的簡単に設定できます。　</p>
+        </div>
+    </div>    
+    <p><br></p><p><br></p><p><br></p>
+
+    <p><a name="#Giga3-02" id="Giga3-02"></a></p>
+    <div class="divider-dotted"></div>
+    <div class="content">
+        <h1>3-02_【FX】MT4に表示されている時間について</h1>
+        <div class="signal-description">
+            <p>リオンのトレード時間は速い時で 30分て 1時間以内、最長で 4 ～ 5 時間です。　実際にトレードを行うのは５分足チャート。　</p>
+            <p>５分間でローソク足 1本が次々と生まれる ５分足チャートが「執行時間足」と呼ばれるチャートになります　(<span class="important">図3-1</span>)。　</p>
+            <p></p>
+            <p>表示する ５分足チャートの SMA は、</p>
+            <div class="note">
+                <ul>
+                    <li><strong>●　20本 (100分 SMA、PC などで表示されるチャートのカラーではベビービピンク)</strong>　👉　<span class="underline-dot-highlight sma-20">20sma</span></li>
+                    <li><strong>●　75本(375分[6時間 15分] SMA パープル)</strong>　👉　<span class="underline-dot-highlight sma-75">75sma</span></li>
+                    <li><strong>●　200本 (1000 分 [16時間 40分] SMA ディープピンク)</strong>　👉　<span class="underline-dot-highlight sma-200">200sma</span></li>
+                    <li><strong>●　240本 (1200分[20時間] SMA ブルー)</strong>　👉　<span class="underline-dot-highlight sma-240">240sma</span></li>
+                </ul>
+            </div>
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/Giga3-02a.png" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+            </div>
+            <p class="image-caption">図3-1 RionチャートのSMA、MTF設定</p>
+
+            <div class="strategy-image">
+                <img src="../image/R-Hunt/Hunt0_lecture/Hunt0_lecture-10.png" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+            </div>
+
+        </div>
+    </div>   
+    <p><br></p><p><br></p><p><br></p>
+
+    <p><a name="#Giga3-03" id="Giga3-03"></a></p>
+    <div class="divider-dotted"></div>
+    <div class="content">
+        <h1>3-03_【FX】４時間足、日足、週足の <span class="underline-dot-highlight sma-20">20sma</span> も MTF 表示</h1>
+        <div class="signal-description">
+            <p>Rion チャートには 5分足由来の移動平均線の他に、<span class="important">図3-1 </span>にも<span class="tooltip">示した<span class="tooltiptext">[しめした]</span></span>ように<span class="giga-highlight">時間軸の長い上位時間足の SMAも表示</span>されています。　</p>
+            <p>週足一日足つ ４時間足つ １時間足と時間軸を落として行って (MT4 のデフォルトには入っていますが、私は1５分足、30分足チャートは見ません)、現在の値動きが、より大きな時間軸ではどんな方向性や勢いの中で起こっているかを確かめます。　</p>
+            <p>月初めには月足チャートも確認します。　</p>
+            <p>マルチタイムフレーム分析は英語の頭文字をとって<span class="giga-highlight">「MTF 分析」</span>と呼ばれています。　リオン式 <span class="concept-zone">Zone</span> トレードでは、５分足チャート上に、先ほどの 4本の SMA に加え、<span class="giga-highlight">４時間足、日足、週足の <span class="underline-dot-highlight sma-20">20sma</span> という 3本のMTF</span>を表示しています。　</p>
+            <p><span class="underline-dot-highlight sma-20">20sma</span> はどの時間軸でも中期的なトレンド判断に使える重要な MA の期間で、リオン式では<span class="giga-highlight">「ミドル」</span>と呼んでいます。　</p>
+            <p>ローソク足が <span class="underline-dot-highlight sma-20">20sma</span> より上にあれば上昇トレンド、下にあれば下降トレンド、その境界線にあって、<span class="giga-highlight">上昇・下降トレンドを分ける境目</span>としての判断に<span class="giga-highlight">「ミドル」</span>を使います。　</p>
+            <p><strong>●　<span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">１時間足ミドル</span></span> (カラーチャートではブルー)</strong></p>
+            <p><span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">１時間足ミドル</span></span>に関しては、MTF のインジケーターで表示するのではなく、５分足チャートの <span class="underline-dot-highlight sma-240">240sma</span> で代用しています。　</p>
+            <p></p>
+            <p>１時間足の <span class="underline-dot-highlight sma-20">20sma</span> は ５分足チャートの <span class="underline-dot-highlight sma-240">240sma</span> (=　5分 x 240本　=　1200分　=　60分 (1時間) x 20本) になります。　</p>
+            <p>そのため、<span class="underline-dot-highlight mtf-1h">１時間足ミドル</span>だけは、1 時間ごとにしか更新されないカクカクと段差がある線ではなく、曲線で描画され5 分ごとに更新されていきます。　</p>
+            <p>これに加えて MTF は、</p>
+            <div class="note-pink">
+                <ul>
+                    <li><strong>●　<span class="underline-dot-highlight mtf-4h">４時間足ミドル</span> (４時間足 <span class="underline-dot-highlight sma-20">20sma</span> = 80時間移動平均線 オレンジ)</strong></li>
+                    <li><strong>●　<span class="underline-dot-highlight mtf-1d">日足ミドル</span> (日足 <span class="underline-dot-highlight sma-20">20sma</span> = 20日移動平均線 クリムゾンレッド)</strong></li>
+                    <li><strong>●　<span class="underline-dot-highlight mtf-1w">週足ミドル</span> (週足 <span class="underline-dot-highlight sma-20">20sma</span> = 20週移動平均線 グレー)</strong></li>
+                </ul>
+            </div>
+            <p>の 3本です。　</p>
+            <p></p>
+            <p>この 3本は、各上位時間足の設定期間が経過しないと更新されないので、５分足チャート上ではカクカクと階段状になっています。　</p>
+            <p>こうした上位足ミドルは５分足チャートに現れる時、<span class="giga-highlight">強いサポート (支持帯) やレジスタンス (抵抗帯) として</span>機能します。　</p>
+            <p>ある時はローソク足が下がって行く場面で超強力な守護神として君陶し、下落を阻み、下ヒゲを量産。　</p>
+            <p>ある時は力強くローソク足の頭を抑える傘になって、ショーターを守ってくれます (ここにサボテンや上ヒゲの長いローソク足が重なるとなお良し)。　</p>
+            <p>是非、  <span class="SR-line">Support / Resistance Line</span>などといっしょに活用してくださいね。　</p>
+        </div>
+    </div>
+    <p><br></p><p><br></p><p><br></p>
+
+    <p><a name="#Giga3-04" id="Giga3-04"></a></p>
+    <div class="divider-dotted"></div>
+    <div class="content">
+        <h1>3-04_【FX】1.70、1.71 などキリ番も点線表示</h1>
+        <div class="signal-description">
+            <p>Rion チャートでは<span class="giga-highlight">「キリ番」と呼ばれるグレーの点線</span>が、キリの良いレート、100 Pips ごとに引かれる設定になっています。　</p>
+            <p>私のメイン通貨ペアは<span class="important-black"> ポンドオージー（GBPAUD）</span><img src="../image/icon/flag/파호_icon_s.png" class="align-middle">で、レートは「1 ポンド 1.77425 豪ドル」というように小数点第 5位まで表示されます。　</p>
+            <p>小数点第 4位、すなわち 0.0001 豪ドルが 1pips です。　</p>
+            <p>例えば、1 ボンド 1.77425 豪ドルで<span class="important-black"> ポンドオージー（GBPAUD）</span><img src="../image/icon/flag/파호_icon_s.png" class="align-middle">をショートして、1.76425 で買い戻せば、「1.77425　～　1.76425 = 0.01 豪ドル」、すなわち 100pips の下落幅が利益になります。　</p>
+            <p><span class="giga-highlight">「キモノトレーダーはラウンドナンバー (キリ番) がお好き」</span>(多分、語尾に【[笑] がついている) と控換された時代を経て、</p>
+            <p>昔ほど強力ではないですが、<span class="important-black"> ドル円（USDJPY）</span><img src="../image/icon/flag/달엔_icon_s.png" class="align-middle">だと 1 ドル 100 円、110 円、140 円、150 円といった 10 円単位の大キリ番がニュースになるほど絶大な影響力を持ちます。　</p>
+            <p>普通のキリ番である 138 円や 142 円といった1円単位のレートも意識されやすくなります。　</p>
+            <p><span class="important-black"> ユーロドル（EURUSD）</span><img src="../image/icon/flag/유달_icon_s.png" class="align-middle">や<span class="important-black"> ポンドドル（GBPUSD）</span><img src="../image/icon/flag/파달_icon_s.png" class="align-middle">など「1. 〇〇」といった取引単位の場合、<span class="giga-highlight">小数点 第2位で終わる レートがキリ番</span>です。　</p>
+            <p><span class="important-black"> ポンドオージー（GBPAUD）</span><img src="../image/icon/flag/파호_icon_s.png" class="align-middle">なら、「1.71」、「1.78」、「1.82」といったレートがキリ番です。　</p>
+            <p>ラウンドナンバーにはグレーの点線が引かれる設定になっていますので、ここが「キリ番ですよ」と教えてくれます。　</p>
+            <p>ラウンドナンバーも SMA や MTF、トレンドラインや  <span class="SR-line">Support / Resistance Line</span>同様に、レートが反転するサポートや跳ね返されるレジスタンスになりやすく、</p>
+            <p>「何で、ここで止まっつたの? あ、キリ番だったんだり❕」</p>
+            <p>と気づかずに<span class="tooltip">慌てる<span class="tooltiptext">[あわてる]<br>不用意なために平静さを失い、まごまごする。<br>非常に急ぐ<br>당황하다</span></span>ことが過去に結構ありましたので、100pips ごとに線を入れることにしました。　</p>
+            <p>このように <span class="giga-highlight">SMA　4本 (<span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">１時間足ミドル</span></span>を含む) と MTF　3本、計7本の移動平均線とキリ番を ５分足チャートに表示</span>して、その<span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span>や並び、現在のレートとの位置関係を見ることで、</p>
+            <p>トレンドの方向性や値動きの勢いを見て行く。　それがリオン式トレードのエントリー前のメソッドです。　</p>
+        </div>
+    </div>
+    <p><br></p><p><br></p><p><br></p>
+
+    <p><a name="#Giga3-05" id="Giga3-05"></a></p>
+    <div class="divider-dotted"></div>
+    <div class="content">
+        <h1>3-05_【FX】MT4に表示されている時間について</h1>
+        <div class="signal-description">
+            <p>MT4 のチャートに表示される時間は <span class="giga-highlight">「グリニッジ標準時 (GMT)」</span> を基準に設定されています。　</p>
+            <p>グリニッジ標準時はイギリス・ロンドンにあるグリニッジ天文台で観測した太陽を元に算出された国際標準時です。　</p>
+            <p><span class="giga-highlight">ロンドン市場の冬時間 (毎年１０月最終日曜日から ３月最終日曜日) </span> と同じになります。　</p>
+            <p>私が利用している海外 FX会社 「AXIORY」のMT4 では、 <span class="giga-highlight">ニューヨーク (NY) 市場の引け値 (終値) </span> がちょうどその日の終わりになるよう、</p>
+            <p>チャートの時間が「グリニッジ標準時 (GMT) + ３」 (米国が夏時間の時) に設定されています。　</p>
+            <p><span class="giga-highlight"></span>「GMT + ３」 とは、グリニッジ標準時プラス ３時間という意味です。　</p>
+            <p></p>
+            <p>NY市場 が クローズする時間は <span class="giga-highlight">「NYC (ニューヨーク・クローズ)」</span> と呼ばれ、FX市場の １日の区切りと見なされています。　</p>
+            <p><span class="giga-highlight">米国が冬時間 ( １１月第１日曜日 - ３月第２日曜日) </span>の時は日本時間の AM７時、</p>
+            <p><span class="giga-highlight">夏時間 (サマータイム : ３月第 ２日曜日 - １１月第 １日曜日) </span>の時は AM６時が NYC になります。</p>
+            <p>私が利用している海外FX 会社「AXIORY」の MT4 チャートでは、この NYC がその翌営業日の「０時」に設定されています。</p>
+            <p></p>
+            <p>そのため、チャート上に表示された時間が示す日本時間は、</p>
+            <p>●　米国が夏時間の時は <span class="giga-highlight">チャート上の時間　+　６時間</span></p>
+            <p>●　米国が冬時間の時は <span class="giga-highlight">チャート上の時間　+　７時間</span></p>
+            <p>になります。</p>
+            <p>表示時間から日本時間を計算するのが面倒な方は <span class="giga-highlight">時計機能があるインジケーター</span> を MT4 に入れて、チャート上に日本時間を表示することも出来ます。</p>
+            <p>私はもう慣れてしまい、かえって混乱するのでそのまま使っています。</p>
+            <p></p>
+            <p>「AXIORY」の MT4 上の時間で、リオンが主にトレードする TYO時間の朝７時、夕方１６時は、</p>
+            <p>●　<span class="giga-highlight">夏時間の時は １時から １０時（６時間を足すと日本時間）</span></p>
+            <p>●　<span class="giga-highlight">冬時間の時は ０時から ９時（７時間を足すと日本時間）</span></p>
+            <p>です。</p>
+        </div>
+
+        <div class="signal-description">
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/Giga3-05.png" alt="MT4에 표시되는 시간" style="max-width: 40%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+            </div>
+
+            <div class="divider-dotted"></div>
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/Giga3-05a.png" alt="MT4_일본시간표시" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+            </div>
+            <p>MT4 <span class="giga-highlight">일본시간 표시 인디케이터</span> 사용중</p>
+        </div>
+    </div>    
+    <p><br></p><p><br></p><p><br></p>
+
+    <p><a name="#Giga3-06" id="Giga3-06"></a></p>
+    <div class="divider-dotted"></div>
+    <div class="content">
+        <h1>3－06_【FX】上位時間足から5分足へのエントリールートマップ</h1>
+        <div class="signal-description">
+            <p>５分足チャートを見る前に、私が毎朝のルーティンにしているのが、週足、日足、４時間足、１時間足の順番で下位に落としてチャートを見て行く<span class="giga-highlight">環境認識</span>です。　</p>
+            <p><span class="giga-highlight">ー番重要視しているのは ４時間足</span>で、直近の値動きの<span class="tooltip">傾向<span class="tooltiptext">[けいこう]<br>ある方向・態度に傾くこと。<span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span>。特に、左翼思想に傾くこと。<br>추세</span></span>やサポート、レジスタンスとなっている<span class="giga-highlight">高値・安値、<span class="tooltip">揉み合い<span class="tooltiptext">[もみあい] <br> 相場が小刻みに高下を繰り返すこと</span></span> <span class="concept-zone">Zone</span> </span>をまず探します。　</p>
+            <p>そして、そのサポートやレジスタンスを元に５分足チャートでの人売買戦略を練り込んで行く形になります。　</p>
+            <p>４時間足で見つけられなければ日足、 週足、 時には 月足まで確認します。　日に何度も確認して重要なラインが人迫つていないかを提握しておきます。　</p>
+            <p>上位時間の  <span class="SR-line">Support / Resistance Line</span>は、より強力なので「気づかなかった」では済まされません。　</p>
+            <p>月足などは、見る方も少ないとは思いますが、そこが<span class="giga-highlight">月足レベルの重要な<span class="tooltip">節目<span class="tooltiptext">[ふしめ]<br>木材や竹の、節のある所。また比喩的に、物事の区切りとなる（大事な）所。<br>고비</span></span></span>と気づかずに安易にポジション</p>
+            <p>を取って大幅に逆行される、利確が遅れて利益が「全消え」、といった<span class="tooltip">事態<span class="tooltiptext">[じたい]<br>事の有様・成行き。<br>사태</span></span>にならないように 1日 1 回、または週 1 回でも良いので月足も見て、一番近い安値や高値くらいは把握しておきましょう。　</p>
+            <p>私が一番エントリーの基準に使うことが多い <span class="giga-highlight">４時間足は、1日で 6本分変化</span>します。　1日の中でも状況が変わって、位置が変動するので何度も戻って、４時間足を確認します。　</p>
+            <p>１時間足の  <span class="SR-line">Support / Resistance Line</span>は「エントリー根拠としては若干絞い」と思っていますので、<span class="giga-highlight">１時間足は主に利確の目安</span>に使っています。　</p>
+            <p>より精密に見るために、４時間足で見つけた高値を １時間足でも見て、ダブルトップなどのチャートパターンを見つける、という使い方もします。　</p>
+            <p>例えば、次の<span class="important">図3-2 </span>は日本時間 2022年 10月 18日朝 6時時点の<span class="important-black"> ポンドオージー（GBPAUD）</span><img src="../image/icon/flag/파호_icon_s.png" class="align-middle">の １時間足、４時間足、日足チャートを並べたものです。　</p>
+            <p>図を見ると、１時間足の SMA や MTE の<span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span>が全て右肩上がりであることから<span class="giga-highlight">順調な上昇トレンド</span>が続いていることが分かります。　</p>
+            <p>しかし、１時間足チャートをよく見ると、<span class="giga-highlight">直近高値ライン A</span>をNY 時間の開始直後にブレイクしましたが、TYO（東京）時間開始直前にはローソク足がそのラインの下まで割り込んでいます。　</p>
+            <p>高値ライン A を超えた大陽線とその直後の大陰線が天井打ちを<span class="tooltip">示唆<span class="tooltiptext">[しさ]<br>直接的に指し示すのではなく、間接的にそれと判断されるような形で（多分に断片的に）手がかりを提供すること。<br>제안</span></span>する<span class="giga-highlight">「<span class="tooltip">はらみ足<span class="tooltiptext">[はらみあし]<br><img src="../image/icon/はらみ足.png"  width="444" height="135"></span></span>」</span>になっていて、そこから直近高値ラインの下までずるずると下落。　</p>
+            <p><span class="important">図3-2 </span>　１時間足、４時間足、日足など上位足チャートを使った環境認識</p>
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/Giga3-06a.png" alt="MT4_일본시간표시" style="max-width: 50%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+            </div>
+
+            <p>直近の上昇局面でつけた安値同士を結んだ<span class="giga-highlight">サポートライン B を下に割り込み</span>そうになっています。　</p>
+            <p>４時間足に目を移すと、SMA が全て右肩上がりで、<span class="underline-dot-highlight sma-20">20sma</span> > <span class="underline-dot-highlight sma-75">75sma</span> > <span class="underline-dot-highlight mtf-1d">日足ミドル</span>の順に並んでいることから、上昇トレンドが継続中です。　</p>
+            <p>長らく横ばい相場が続いた後には、大陽線 a が出現して急騰しています。　</p>
+            <p>ただ、その後の上ヒゲ高値bで1.82 (豪ドル、以下略します) ラインにタッチしたものの、結局、1.81 を割り込んで終わっています。　</p>
+            <p></p>
+            <p>この上ヒゲの長い陽線 b が、先ほどの １時間足で見た「陰の<span class="tooltip">はらみ足<span class="tooltiptext">[はらみあし]<br><img src="../image/icon/はらみ足.png"  width="444" height="135"></span></span>」を含む値動きになります。　<span class="giga-highlight">1.81 ラインが上昇を抑えるレジスタンス</span>になっている、と考えることが出来そうです。　</p>
+            <p>このまま 1.81 ラインを上抜け出来ない状況で TYO（東京）時間が始まりそうですので、ショートエントリーのチャンスが来るかも、という見方が出来ます。　</p>
+            <p></p>
+            <p>よりワイドな日足を見ると、<span class="important-black"> ポンドオージー（GBPAUD）</span><img src="../image/icon/flag/파호_icon_s.png" class="align-middle">は<span class="tooltip">最先端<span class="tooltiptext">[さいせんたん]<br>最も進んでいる部分や最新技術や知識<br>최첨단</span></span>の 3日間で <span class="giga-highlight"><span class="underline-dot-highlight sma-200">200sma</span>、<span class="underline-dot-highlight sma-240">240sma</span> をようやく上抜けた</span>ばかり。　</p>
+            <p>まだ <span class="underline-dot-highlight sma-200">200sma</span>、<span class="underline-dot-highlight sma-240">240sma</span> は右肩下がりです。　</p>
+            <p>ここ 15日間ほど (日足ローソク 15 本分) はかなり急ピッチに反転上昇してきたものの、日足の直近ローソク足 3 本のうち 2 本は長い上ヒゲをつけて終わっています。　</p>
+            <p>これは上昇力低下の<span class="tooltip">兆し<span class="tooltiptext">[きざし]<br>物事が起こることを予想させるようなしるし。<br>징후</span></span>と考えることが出来るでしょう。　</p>
+            <p>以上、１時間足、４時間足、日足を見た上での環境認識は、下降トレンドからの急速な戻しが続いたものの、1.81 ～ 1.82 ラインを抜け切れず反転上昇の勢いが失速している、ということ。　</p>
+            <ul>
+                <li><strong>●　上昇が続いて来たが、高値更新が出来ていない</strong></li>
+                <li><strong>●　上位時間足での環境認識後の TYO（東京）時間で、下値に迫った １時間足のサポートライン B を割り込んで下げる可能性がありそう</strong></li>
+                <li><strong>●　当面の下値目標は １時間足に表<span class="tooltip">示した<span class="tooltiptext">[しめした]</span></span><span class="underline-dot-highlight mtf-4h">４時間足ミドル</span>あたり</strong></li>
+            </ul>
+            <p>といった感じで上位時間足を見て行きます。　</p>
+            <p><br></p><p><br></p><p><br></p>
+        </div>
+    </div>    
+
+    <p><a name="#Giga3-07" id="Giga3-07"></a></p>
+    <div class="divider-dotted"></div>
+    <div class="content">
+        <h1>3－07_【FX】リバースタッチでショートして約 43.9万円の利益</h1>
+        <div class="signal-description">
+            <p>その環境認識を使って実際に 2022年 10月 18日の TYO（東京）時間開始後にトレードした時の ５分足チャートが<span class="important">図3-3 </span>になります。　</p>
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/Giga3-07a.png" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+            </div>
+            <p class="image-caption">図3-3　: リオン式ショートトレードの<span class="tooltip">実践<span class="tooltiptext">[じっせん] <br>実際の情況のもとでそれを行うこと。<br>실천</span></span>例</p>
+            <p>TYO（東京）時間開始直後から、<span class="giga-highlight"><span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">１時間足ミドル</span></span></span>の下をじりじりと下げて行き、上値の MA が上昇を抑え込む形になっている点を確認。　</p>
+            <p>１時間足チャートに引いた上昇トレンドライン B を割り込んだ後、非常にきれいに<span class="giga-highlight">リバースタッチして下がったところ</span> (①)、</p>
+            <p>そこから上昇して<span class="giga-highlight">再び下がった地点</span> (②) でショートを各6.66ロット (各66.6万通貨) 入れました。　</p>
+            <p>そして、1.80 を割り込んで下がったものの再び戻したところで利益確定。　①で 37.6pips、②で 34.5pips を獲得。　</p>
+            <p>合計約 70pips x 66.6 万 x この日の豪<span class="important-black"> ドル円（USDJPY）</span><img src="../image/icon/flag/달엔_icon_s.png" class="align-middle">レート約 94円で約 43.9万円の利益になりました。　</p>
+            <p>ポイントをクローズアップすると<span class="important">図3-4 </span>のようになります。　</p>
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/Giga3-07b.png" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+            </div>
+            <p class="image-caption">図3-4　: 上位足トレンドラインを使って５分足チャートのエントリーポイントを探す</p>
+            <p>エントリーから利益確定までの時間は 50分程度。　</p>
+            <p>１時間足のサポートライン割れやその後、2度にわたるリバースタッチ (2度目は上ヒゲでタッチ) を ５分足チャートで確認しながらのトレードでした。　</p>
+            <p>MT4 なら上位時間足に引いたトレンドラインを 5分足上でも確認できます。　</p>
+            <p>リオン式 <span class="concept-zone">Zone</span> トレードでは、上位時間足のトレンドライン割り込みをショートエントリーのポイントによく使います。　</p>
+        </div>
+    </div>   
+    <p><br></p><p><br></p>
+
+    <p><a name="#Giga3-08" id="Giga3-08"></a></p>
+    <div class="divider-dotted"></div>
+    <div class="content">
+        <h1>3－08_【FX】下降トレンド継続中の戻り売りの注意点とは？</h1>
+        <div class="signal-description">
+            <p>ショートでエントリーする場合、当然、<span class="giga-highlight">大きな時間軸で下げトレンドが続いているほうが成功しやすく</span>なります。　</p>
+            <p>初心者の方でも入りやすい場面と言いたいところですが、注意点もあるので紹介しましょよう。　</p>
+            <p><span class="important">図3-5 </span>は日本時間の 2022年 9月 16日　朝 6時時点の<span class="important-black"> ポンドオージー（GBPAUD）</span><img src="../image/icon/flag/파호_icon_s.png" class="align-middle">の日足チャートです。　</p>
+            <p> </p>
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/Giga3-08a.png" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+            </div>
+            <p class="image-caption">図3-5　:日足チャートで現在の局面を環境認識する方法</p>
+            <p>ほぼ全ての SMA、MTFが右肩下がりであることや<span class="underline-dot-highlight mtf-1w">週足ミドル</span>が一番上にあることから、強い下降トレンドであることが分かります。　</p>
+             <p><span class="tooltip">最先端<span class="tooltiptext">[さいせんたん]<br>最も進んでいる部分や最新技術や知識<br>최첨단</span></span>のローソク足の 1 本前には<span class="giga-highlight">上ヒゲの長い陽線 a </span>が出現。　この陽線 a が反転上昇のピークだったとすると、下降トレンド回帰も考えられます。　</p>
+            <p>大きな時間軸で下降トレンドが継続中の時は、反転上昇後の<span class="giga-highlight">下降トレンド回帰を狙った「戻り売り」</span>を狙うトレーダーが多いのではないかな、と考えます。　</p>
+            <p>ただし、日足チャートは強い下降トレンドではあるものの、<span class="giga-highlight">より時間軸の短い ４時間足、１時間足が上昇トレンドになっている時</span>は一時的に上げの勢いが強くなります。　</p>
+            <ul>
+                <li><strong>●　１時間足や４時間足で<span class="giga-highlight">レートの戻りを邪魔（じゃま）するようなレジスタンス</span>を見つける</strong></li>
+                <li><strong>●　次に５分足チャートのローソク足が上位時間足のレジスタンスに<span class="tooltip">跳ね<span class="tooltiptext">[はね] 、跳ね返される　<br> ⇒ 依頼や要求に取り合ってもらえないこと。<br> はね返される</span></span>返されて、<span class="giga-highlight">反転下落したところを狙う</span></strong></li>
+            </ul>
+            <p>といった手順を踏むと、比較的安全な戻り売りが出来るでしょう。　</p>
+        </div>
+    </div>   
+    <p><br></p><p><br></p>
+
+    <p><a name="#Giga3-09" id="Giga3-09"></a></p>
+    <div class="divider-dotted"></div>
+    <div class="content">
+        <h1>3－09_【FX】１時間足、４時間足で戻りの失速を確認する</h1>
+        <div class="signal-description">
+            <p>次の<span class="important">図3-6 </span>は先ほどの日足チャートの<span class="tooltip">最先端<span class="tooltiptext">[さいせんたん]<br>最も進んでいる部分や最新技術や知識<br>최첨단</span></span>の値動きを １時間足、４時間足チャートに表<span class="tooltip">示した<span class="tooltiptext">[しめした]</span></span>ものです。　</p>
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/Giga3-09a.png" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+            </div>
+            <p class="image-caption">図3-6　: １時間足、４時間足も使って環境認識をする方法</p>
+            <p>日足チャートで見た上ヒゲの長い陽線 a の高値がちょうど <span class="giga-highlight">１時間足チャートの高値 A</span>、<span class="giga-highlight">４時間足チャートの高値 A</span> です。　</p>
+            <p>その後、１時間足チャートの下落過程では <span class="underline-dot-highlight mtf-4h">４時間足ミドル</span>がサポートになり、少し上昇したところで TYO（東京）時間の 2022年 9月 16日　朝6時を迎えています。　</p>
+            <p>４時間足で見ると、 <span class="important">①</span> の <span class="concept-zone">Zone</span> で<span class="giga-highlight">長い上ヒゲが 3本連続</span>していて、上昇の勢いが <span class="tooltip">鈍って<span class="tooltiptext">[にぶって]<br>にぶくなる。 するどさがなくなる。</span></span> いることが分かります。　</p>
+            <p>しかし、直近4時間の<span class="tooltip">最先端<span class="tooltiptext">[さいせんたん]<br>最も進んでいる部分や最新技術や知識<br>최첨단</span></span>のローソク足 a は、その上ヒゲ連発 <span class="concept-zone">Zone</span> ①の値幅の中で<strong>逆行高</strong>しています。　</p>
+            <p>ただ、日足チャートの陽線 a の長い上ヒゲの先端 = １時間足、４時間足の高値 A はかなり強力なレジスタンスになりそうです。　</p>
+            <p><img src="../image/icon/arrow003.gif">　<span class="highlight">高値ライン A に到達するまで、じっくり戻りを待って、さらに ５分足でもチャートパターンが出るかどうか待つ。　二重にも三重にもとにかく待ちます。</span>　</p>
+            <p>高値ライン A に到達するためには、その前に立ちはだかる<span class="giga-highlight"> １時間足の上ヒゲ a や b の高値を<span class="tooltip">突破<span class="tooltiptext">[とっぱ]<br>돌파</span></span>する必要</span>があります。　</p>
+            <p>これらの上ヒゲが４時間足では 3本の上ヒゲ <span class="concept-zone">Zone</span> ①に集約されているという状況になっています。　</p>
+            <p>上位時間足から見た環境認識をまとめると、</p>
+            <ul>
+                <li><strong>●　日足チャートで下降トレンドが明確な中、１時間足、４時間足で戻りを試したものの、<span class="giga-highlight">高値 A を更新できず</span>下げている</strong></li>
+                <li><strong>●　<span class="giga-highlight">１時間足の上ヒゲ a や b の高値ラインを超えられない時</span>は、少しフライング気味だが、下降トレンド回帰を狙ったショートエントリーが狙える</strong></li>
+            </ul>
+            <p>といった感じになります。　</p>
+            <p><span class="important">図3-7 </span>は今紹介した日足、４時間足、１時間足の値動きの後、TYO（東京）時間が始まって以降の ５分足チャートです。　</p>
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/Giga3-09b.png" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+            </div>
+            <p class="image-caption">図3-7　: リオン式ソーントレード ショートトレードの<span class="tooltip">実践<span class="tooltiptext">[じっせん] <br>実際の情況のもとでそれを行うこと。<br>실천</span></span>例</p>
+            <p>朝6時から　約 2時間は上昇が続いていましたが、①のポイントで陽線と陰線が連続して上昇が止まっています。　</p>
+            <p>この<span class="giga-highlight">①のポイントは１時間足で見た、直近の上ヒゲ b の高値ライン</span>になります。　</p>
+            <p>ただ、<img src="../image/icon/arrow003.gif">　<span class="highlight">この陽線　⇒　陰線ではまだショート出来ません。</span>　</p>
+            <div class="note-pink">
+                <img src="../image/icon/sunRise.gif"> <strong> Trade Tip</strong><BR>
+                <p>成功率を上げたいのなら、ローソク足が<span class="giga-highlight"><span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">１時間足ミドル</span></span>を割り込んで全体が下降トレンド</span>になってからショートするべき。　</p>
+                <p>それがリオン式トレードの比較的安全なショートエントリーの判断基準です。　</p>
+                <p>とにかく初心者さんには「<span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">１時間足ミドル</span></span>には逆らわないようにしましょう」と推奨しています。　</p>   
+            </div>
+            
+            <p>１時間足の上ヒゲ高値ライン b にタッチした後、2時間ほど下落　⇒　横ばい　⇒　再度下落という右肩下がりの動きが続きました。　</p>
+            <p>そして、約 2 時間半後の 11時 25分になって<span class="giga-highlight">待ちに待った <span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">１時間足ミドル</span></span>を割り込む動き</span>が <span class="important">②</span> の <span class="concept-zone">Zone</span> で起こりました。　</p>
+            <p><span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">１時間足ミドル</span></span>を勢いよく下に抜けた<span class="giga-highlight">大陰線 a でエントリー</span>します。　</p>
+            <p>損切りの目安は 5分足の <span class="underline-dot-highlight sma-20">20sma</span> の上にローソク足が乗ったところ。　</p>
+            <p>その下値に位置する <span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">１時間足ミドル</span></span>の上に乗って上値の <span class="underline-dot-highlight sma-20">20sma</span> を目指すようなら、「<span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">１時間足ミドル</span></span>下抜けでショート」というエントリー根拠が完全に切れたことになります。　</p>
+            <p>下落した後、③のポイントで上ヒゲcが<span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">１時間足ミドル</span></span>に裏からリバースタッチして<span class="tooltip">反落<span class="tooltiptext">[はんらく]<br>반락</span></span>するのを確認してからファーストエントリーでも良いですし、</p>
+            <p>もっと上からショートを入れていて既にプラスになっている状態でしたら、③を追撃のポイントにも出来ます。　</p>
+            <p>その後は下にあった <span class="underline-dot-highlight mtf-4h">４時間足ミドル</span>にタッチしたところで利益確定するか、もう少し値動きの様子を見て、</p>
+            <p><span class="underline-dot-highlight mtf-4h">４時間足ミドル</span>を割り込んだ後、横ばいで<span class="tooltip">推移<span class="tooltiptext">[すいい]<br>추이</span></span>した ④ の <span class="concept-zone">Zone</span> あたりまでを目標にします。　</p>
+            <p>ただ、「何か、この動き気持ち悪い」と思ったら、どの位置でも早めに逃げてしまう時もあります。　</p>
+            <p>大陰線 a の <span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">１時間足ミドル</span></span>割れでエントリーして ④ の <span class="concept-zone">Zone</span> で利益確定したとすると、<span class="giga-highlight">獲得 pips は 約 34 pips</span> になります。　</p>
+            <p>この戻り売りの例では、</p>
+            <div class="note-pink">
+                <img src="../image/icon/sunRise.gif"> <strong> Trade Tip</strong><BR>
+                <p><strong>●　<span class="giga-highlight">上位時間足の長い上ヒゲの高値</span>などから、戻りを <span class="tooltip">阻む<span class="tooltiptext">[はばむ]<br>막다</span></span> Resistance（レジスタンス）になりそうなラインを探す</strong></p>
+                <p><strong>●　<span class="giga-highlight">ローソク足が<span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">
+                    １時間足ミドル</span></span>より下</span>にある時なら比較的安全で、下げトレンドが継続しやすい</strong></p>
+                <p><strong>●　<span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">１時間足ミドル</span></span>を割り込む大陰線や、その後、<span class="underline-dot-highlight mtf-1h"><span class="underline-dot-highlight mtf-1h">
+                    １時間足ミドル</span></span>に下から<span class="giga-highlight">リバースタッチ</span>したところなどがショートエントリーしやすい</strong></p>
+                <p><strong>●　利益確定は、<span class="giga-highlight">エントリーポイントの下にある上位足 MA</span> (この場合は <span class="underline-dot-highlight mtf-4h">
+                    ４時間足ミドル</span>) が<span class="giga-highlight">第一目標</span>になる</strong></p>
+            </div>
+            <p>という一連の流れを紹介しました。　</p>
+            <p>戻り売りは、１時間足、４時間足のトレンドが上向きである状態の時には簡単にひっくり返されて失敗する可能性があります。　</p>
+            <p>その半面、大きな時間軸で下降トレンドが鮮明だった場合、上位時間足の Resistance（レジスタンス）が機能すれば、大きな下落幅を獲れることも珍しくありません。　</p>
+            <p>コツコツ勝つってドカンと勝つことも可能ですので、リオン式の天井トライが怖いという方は、この戻り売りからチャレンジしてみてください。　</p>
+        </div>
+    </div>   
+    <p><br></p><p><br></p>
+
+    <script src="../js/scripts.js" defer></script> <!-- JavaScript 파일 링크 -->
+
+</body>
+</html>
+
+

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m5001_signal-card</title>
+    <link rel="stylesheet" href="../css/styles.css">        <!-- CSS 파일 링크 -->
+    
+</head>
+
+<body onload="InitializeStaticMenu();">
+    <div id="STATICMENU">
+        <ul>
+            <img src="../image/icon/navi-01.gif" width="32" height="32" /><strong>　Connect</strong>
+            <div class="divider-dotted"></div>
+            <!-- 바로 전 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.back()" style="display: inline-block; position: relative; z-index: 1;">🔙 前のページへ戻る</a>
+            </li>
+            <!-- 다음 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.forward()" style="display: inline-block; position: relative; z-index: 1;">🔜 次のページへ進む</a>
+            </li>
+        </ul>
+    </div>
+
+    <hr class="divider">
+    <div class="container">
+        <div class="card-grid">
+            <!-- 여기에 모든 카드 요소들이 들어갑니다 -->
+            <div class="card" id="signal-01">
+                <div class="card-left">Signal 01</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5501_Signal.html" target="main-frame">直近の高値・安値</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                </div>
+            </div>
+
+            <div class="card" id="signal-02">
+                <div class="card-left">Signal 02</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5502_Signal.html" target="main-frame">過去の高値ライン・安値ライン</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                </div>
+            </div>        
+
+            <div class="card" id="signal-03">
+                <div class="card-left">Signal 03</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5503_Signal.html" target="main-frame">キリの良いレート（キリ番）</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★</span><span class="star-empty">★★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                </div>
+            </div>  
+    
+            <div class="card" id="signal-04">
+                <div class="card-left">Signal 04</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5504_Signal.html" target="main-frame">UpTrend SupportLine、<br>DownTrend ResistanceLine</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                </div>
+            </div>          
+    
+            <div class="card" id="signal-05">
+                <div class="card-left">Signal 05</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5505_Signal.html" target="main-frame">レンジ相場の上限・下限</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                </div>
+            </div>  
+
+            <div class="card" id="signal-06">
+                <div class="card-left">Signal 06</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5506_Signal.html" target="main-frame">  <span class="SR-line">Support / Resistance Line</span>（リバースタッチ）</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★★★</span><span class="star-empty"></span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                </div>
+            </div>  
+
+            <div class="card" id="signal-07">
+                <div class="card-left">Signal 07</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5507_Signal.html" target="main-frame">トレンドラインのサポートレジスタンス転換</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★</span><span class="star-empty">★★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                </div>
+            </div>  
+
+            <div class="card" id="signal-08">
+                <div class="card-left">Signal 08</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5508_Signal.html" target="main-frame">CandleStick (ローソク足)</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★★</span><span class="star-empty"></span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                </div>
+            </div>  
+    
+            <div class="card" id="signal-09">
+                <div class="card-left">Signal 09</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5509_Signal.html" target="main-frame">ローソク足のライン突き抜け</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                </div>
+            </div>  
+
+            <div class="card" id="signal-10">
+                <div class="card-left">Signal 10</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5510_Signal.html" target="main-frame">上ヒゲ、下ヒゲ</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                </div>
+            </div>  
+    
+            <div class="card" id="signal-11">
+                <div class="card-left">Signal 11</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5511_Signal.html" target="main-frame">サボテンショート（SS）</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                </div>
+            </div>  
+
+            <div class="card" id="signal-12">
+                <div class="card-left">Signal 12</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5512_Signal.html" target="main-frame">移動平均線（Moving Average）</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★★</span><span class="star-empty"></span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                </div>
+            </div>
+            <div class="card" id="signal-13">
+                <div class="card-left">Signal 13</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5513_Signal.html" target="main-frame">移動平均線の<span class="tooltip">傾き<span class="tooltiptext">[かたむき]<br>기울기</span></span>（かたむき）</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★★</span><span class="star-empty"></span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                </div>
+            </div>
+            <div class="card" id="signal-14">
+                <div class="card-left">Signal 14</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5514_Signal.html" target="main-frame">移動平均線の並び</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★★</span><span class="star-empty"></span></div>
+                    <div class="card-right-row"><span class="star-rating">★</span><span class="star-empty">★★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                </div>
+            </div>
+
+            <div class="card" id="signal-15">
+                <div class="card-left">Signal 15</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5515_Signal.html" target="main-frame">ローソク足の<br>移動平均線タッチ、超え、割れ</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                </div>
+            </div>
+            <div class="card" id="signal-16">
+                <div class="card-left">Signal 16</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5516_Signal.html" target="main-frame">上位足移動平均線<br>タッチ、割れ、超え</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★★★</span><span class="star-empty"></span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★★</span><span class="star-empty"></span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                </div>
+            </div>
+            <div class="card" id="signal-17">
+                <div class="card-left">Signal 17</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5517_Signal.html" target="main-frame">移動平均線の<br>集束＆拡散</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★★★</span><span class="star-empty"></span></div>
+                    <div class="card-right-row"><span class="star-rating">★</span><span class="star-empty">★★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                </div>
+            </div>
+            <div class="card" id="signal-18">
+                <div class="card-left">Signal 18</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5518_Signal.html" target="main-frame">Chart Pattern</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★</span><span class="star-empty">★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                </div>
+            </div>
+
+            <div class="card" id="signal-19">
+                <div class="card-left">Signal 19</div>
+                <div class="card-center">
+                    <a href="../GigaSoku/m5519_Signal.html" target="main-frame">複数のSignalが重なる</a>
+                </div>
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★★★</span><span class="star-empty"></span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★★</span><span class="star-empty"></span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★★</span><span class="star-empty"></span></div>
+                </div>
+            </div>
+            <div class="card" id="signal-20">
+                <div class="card-left">Signal 20</div>
+
+                <div class="card-center">
+                    <a href="../GigaSoku/m5520_Signal.html" target="main-frame">エグジットポイント<br>（Exit Point）の設定</a>
+                </div>
+
+                <div class="card-right-1">
+                    <div class="card-right-row">重要度</div>
+                    <div class="card-right-row">頻出度</div>
+                    <div class="card-right-row">エントリー根拠</div>
+                    <div class="card-right-row">精度</div>
+                </div>
+                <div class="card-right-2">
+                    <div class="card-right-row"><span class="star-rating">★★★★★</span><span class="star-empty"></span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★★★</span><span class="star-empty"></span></div>
+                    <div class="card-right-row"><span class="star-rating">★★★</span><span class="star-empty">★★</span></div>
+                    <div class="card-right-row"><span class="star-rating">★★</span><span class="star-empty">★★★</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="divider">
+    
+    <script src="../js/scripts.js" defer></script>          <!-- JavaScript 파일 링크 -->
+    
+</body>
+</html>

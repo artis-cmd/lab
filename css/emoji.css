@@ -1,0 +1,231 @@
+/* === emoji.css (수정본) === */
+
+/* 🔹 전체 레이아웃 */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* 🔹 상단 메뉴 스타일 */
+.top-menu-container {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 20px;
+}
+
+.top-menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.top-menu a {
+    text-decoration: none;
+    color: #495057;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.top-menu a:hover {
+    background-color: #e9ecef;
+    color: #228be6;
+}
+
+/* 🔹 페이지 제목 */
+.page-title {
+    text-align: left;
+    margin-left: 20px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* 기존 CSS에 추가 */
+.page-title h2 {
+    font-size: 28px; /* 원하는 크기로 조정 */
+}
+
+/* 🔹 검색창 */
+.search-container {
+    position: relative;
+    width: 420px;  /* 최대 너비를 420px */
+    margin: 20px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.search-box {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* 🔹 검색 지우기 버튼 */
+.clear-button {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #666;
+    padding: 5px;
+}
+
+.clear-button:hover {
+    color: #333;
+}
+
+/* 🔹 검색 결과 */
+.search-result-count {
+    width: 420px;  /* 검색창과 동일한 너비 적용 */
+    margin: 10px 20px;
+    padding: 8px 12px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    color: #495057;
+    font-size: 14px;
+}
+
+/* 검색어가 없을 때의 안내 메시지 스타일 */
+#searchEmoji::placeholder {
+    color: #adb5bd;
+}
+
+/* 🔹 이모지 컨테이너 (💡 가로 정렬 유지) */
+.emoji-container {
+    display: flex; /* flex 컨테이너 설정 */
+    flex-wrap: wrap; /* 줄바꿈 허용 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* 📌 ✅ 수정된 부분 */
+    gap: 10px;
+    
+    margin: 20px;
+}
+
+/* 🔹 이모지 개별 아이템 */
+.emoji-item {
+    display: flex; /* 필터링을 위해 flex인지 확인 --> 필터링된 요소가 나타나도록 */
+
+    align-items: center;
+    justify-content: center;
+    
+    flex-direction: column;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ccc;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+
+    text-align: center; /* 텍스트도 가운데 정렬 */
+
+}
+
+.emoji-item.hidden {
+    display: none !important;
+}
+
+.emoji-item:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.emoji {
+
+    margin-bottom: 5px;
+    text-align: center;
+
+    font-size: 24px; /* 이모지 크기 조정     font-size: 2rem; */
+    line-height: 1; /* 줄 높이 조정 */
+}
+
+.emoji-name {
+    font-size: 11px;
+    text-align: center;
+    color: #666;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 🔹 반응형 디자인 */
+@media (max-width: 768px) {
+    .emoji-container {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+}
+
+/* 모바일 화면에서 4개씩 보이도록 설정 */
+@media screen and (max-width: 768px) {
+  .emoji-grid,
+  .emoji-container {  /* m8106용 클래스 추가 */
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .emoji-item {
+    padding: 10px;
+  }
+
+  /* m8106 특정 스타일 조정 */
+  .emoji-category {
+    margin: 10px 5px;
+  }
+}
+
+.popup-message {
+    position: fixed;
+    bottom: 600px; /* 기존 20px → 80px로 높이 조정 */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(57, 255, 20, 0.9); /* 형광 연두색 */
+    color: #000; /* 글씨 색은 검정 */
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    display: none; /* 기본적으로 숨김 */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
+}
+
+
+/* 3초 후 사라지는 애니메이션 */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.category-section {
+    display: block;
+}
+
+.category-section.hidden {
+    display: none;
+}
+
+.emoji-count {
+    font-size: 0.9em;
+    color: #666;
+    margin-left: 10px;
+}
+
+.hide {
+  display: none !important;
+}

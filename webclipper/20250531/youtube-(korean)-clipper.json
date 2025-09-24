@@ -1,0 +1,58 @@
+{
+	"schemaVersion": "1.0.0",
+	"name": "YouTube (Korean)",
+	"behavior": "create",
+	"noteContentFormat": "**📅 Saved On :** {{time|date:\"YYYY-MM-DD HH:mm:ss\"}}\n\n![](https://i.ytimg.com/vi/{{url|replace:\"https://www.youtube.com/watch?v=\",\"\"}}/hqdefault.jpg)\n\n## 🧠 내용 설명\n{{\"이 영상의 내용을 강의 형식으로 쉽게 설명해주세요. (한국어로)\"}}\n\n---\n\n### 🔗 References\n{{\"이 영상에 관련된 참고 링크를 마크다운 형식으로 정리해주세요.\"}}\n\n### 📚 Suggested Notes\n- [[관련 주제 노트1]]\n- [[관련 주제 노트2]]\n\n---\n\n> [!info]- 원본 인용\n{{content|blockquote}}\n\n---\n\n## 📝 Transcript - 유튜브 전체 자막\n{{\"이 유튜브 영상의 전체 자막을 타임스탬프 없이 한국어로 정리해 주세요.\"}}\n\n",
+	"properties": [
+		{
+			"name": "title",
+			"value": "{{title}}",
+			"type": "text"
+		},
+		{
+			"name": "channel",
+			"value": "{{schema:@VideoObject:author}}",
+			"type": "text"
+		},
+		{
+			"name": "published",
+			"value": "{{schema:@VideoObject:uploadDate|date:\\\"YYYY-MM-DD\\\"}}",
+			"type": "date"
+		},
+		{
+			"name": "language",
+			"value": "{{\\\"이 영상의 주요 언어를 ISO 639-1 코드로 알려주세요 (예: ko, ja, en).\\\"}}",
+			"type": "text"
+		},
+		{
+			"name": "description",
+			"value": "{{schema:@VideoObject:description}}",
+			"type": "text"
+		},
+		{
+			"name": "youtube_url",
+			"value": "{{url|split:\\\"&\\\"|first}}",
+			"type": "text"
+		},
+		{
+			"name": "duration",
+			"value": "{{\\\"이 영상의 길이를 hh:mm:ss 형식으로 변환해 주세요 (예: 00:12:34).\\\"}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "{{\\\"이 노트와 관련된 주제를 중복 없이, 의미가 겹치지 않도록 신중하게 선별해서 콤마로 구분하여 한국어로 작성해 주세요. 각 태그는 간결하고 대표성 있는 하나의 개념으로 표현해 주세요. 예: 음성합성, AI클로닝, 음성기술\\\"}}",
+			"type": "multitext"
+		},
+		{
+			"name": "clipdate",
+			"value": "{{time|date:\\\"YYYY-MM-DDTHH:mm:ssZ\\\"}}",
+			"type": "date"
+		}
+	],
+	"triggers": [
+		"https://www.youtube.com"
+	],
+	"noteNameFormat": "{{title}}",
+	"path": "00. Inbox/02. Youtube"
+}

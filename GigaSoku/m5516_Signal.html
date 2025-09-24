@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上位足移動平均線タッチ、割れ、超え</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS 파일 링크 -->
+    
+</head>
+<body onload="InitializeStaticMenu();">
+    <div id="STATICMENU">
+        <ul>
+            <li>
+                <img src="../image/icon/navi-01.gif" width="32" height="32" />
+                <strong>　Connect</strong>
+            </li>
+            <li>
+                <img src="../image/icon/gigabook.png" alt="Arrow" class="icon-24px" />
+                <a href="../main/m5000_Giga.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈👈ギガ速FX_index</a>
+            </li>
+            <div class="divider-dotted"></div>
+            <li>
+                <a href="../main/m5001_signal-card.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈Signal Card 20</a>
+                <p>#16_ <span class="concept">上位足移動平均線タッチ、割れ、超え</span></p>
+            </li>
+            <div class="divider-dotted"></div>
+            <!-- 바로 전 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.back()" style="display: inline-block; position: relative; z-index: 1;">🔙 前のページへ戻る</a>
+            </li>            
+            <!-- 다음 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.forward()" style="display: inline-block; position: relative; z-index: 1;">🔜 次のページへ進む</a>
+            </li>    
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="signal-card">
+            <div class="card-header">
+                <div class="card-title"><a href="../main/m5000_Giga.html" target="_self">FX Signal（シグナル） #16</a></div>
+                <h1 class="card-main-title">上位足移動平均線タッチ、割れ、超え</h1>
+            </div>
+            <div class="card-content">
+                <div class="rating-row">
+                    <span>重要度</span>
+                    <span class="star-rating">★★★★★</span>
+                </div>
+                <div class="rating-row">
+                    <span>頻出度</span>
+                    <span class="star-rating">★★☆☆☆</span>
+                </div>
+                <div class="rating-row">
+                    <span>エントリー根拠</span>
+                    <span class="star-rating">★★★★☆</span>
+                </div>
+                <div class="rating-row">
+                    <span>精度</span>
+                    <span class="star-rating">★★★★☆</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="signal-description">
+            <p>大きな時間軸で、今、レートがどんな状況にあるか、時間の枠を広げて 「 <span class="giga-highlight">認識</span> 」 する分析法を 「 <span class="giga-highlight">マルチタイムフレーム分析</span>（Multiple Time Frame：略して <span class="giga-highlight">MTF 分析</span>）」 や <span class="giga-highlight">「環境認識」</span> と呼びます。　</p>
+            <p>MT4 ならインジケーターを使うことで、５分足チャート上に、より時間軸の長い<span class="giga-highlight">上位足チャートの MA</span> を表示できます。　</p>
+            <p>標準<span class="tooltip">搭載<span class="tooltiptext">[とうさい]<br>탑재</span></span>されていませんが、上位足 MA を表示できる無料・有料のインジケーターをネットから入手できます。　</p>
+            <p>通常、チャートの時間足を変えた場合は、いつしょに MA もその時間足で期間設定した MA になってしまいます。　例えば、５分足チャートを 1 分足にした場合、<span class="underline-dot-highlight sma-20">20sma</span> は「1 分足にとっての <span class="underline-dot-highlight sma-20">20sma</span>（20 分間の終値の平均値）」になります。　</p>
+            <p>MTF インジケーターを使用することで、チャートの時間軸を何に変えても、常に同じ位置に表示されるようになります。　</p>
+            <p>私の Rion チャートをはじめ、上位足 MA を表<span class="tooltip">示した<span class="tooltiptext">[しめした]</span></span>チャートには、カクカクと階段のような段差のあるラインが出現します。　</p>
+
+            <p>これが MTF で表示させた上位足の MA で、Rion チャートの場合は </p>
+            <p><span class="underline-dot-highlight mtf-1w">週足 ＝ グレー</span>、</p>
+            <p><span class="underline-dot-highlight mtf-1d">日足 ＝ クリムゾンレッド</span>、</p>
+            <span class="underline-dot-highlight mtf-4h">４時間足 ＝ オレンジ</span> で、それぞれの <span class="underline-dot-highlight sma-20">20sma</span>（真ん中＝ミドル）が表示されます。　</p>
+            <p>YouTube 動画でも私は「ミドル」と表現していますが、「各時間軸における、現状の相場全体の大体の中間ライン」と思ってください。　</p>
+            <p>５分足チャートに ４時間足の <span class="underline-dot-highlight sma-20">20sma</span> を表<span class="tooltip">示した<span class="tooltiptext">[しめした]</span></span>場合、４時間足の MA の平均値が更新されるのは 4 時間に 1 回。　</p>
+                <p><span class="border-highlight">「 ４時間足 × ６０分 ÷ ５ = ４８ 」</span> なので、５分足チャートのローソク足 48 本ごとに 1 回、MA の値が変化します。　</p>
+            <p><span class="important">図2-21 </span>は<span class="important-black"> ポンドオージー（GBPAUD）</span><img src="../image/icon/flag/파호_icon_s.png" class="align-middle">の １時間足チャートに ４時間足、日足、週足の<span class="giga-highlight">上位足 <span class="underline-dot-highlight sma-20">20sma</span> </span>を表<span class="tooltip">示した<span class="tooltiptext">[しめした]</span></span>ものです。　</p>
+
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/m6516_a.png"  alt="上位足MAに対するローソク足の反応を元に値動きを読む" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+                <p class="image-caption">図2-21 上位足MAに対するローソク足の反応を元に値動きを読む</p>
+            </div>
+
+            <p>１時間足チャート上に、日足、週足といった、大きな時間軸の <span class="underline-dot-highlight sma-20">20sma</span> が集結して、同一画面に登場するのは <span class="tooltip">稀な<span class="tooltiptext">[まれな]<br>드문</span></span> ことで、この集束が見られる時には大きな転換が起こる可能性があります。　</p>
+            <p>図2-21 をよく見ると、１時間足の値動きが日足の <span class="underline-dot-highlight sma-20">20sma</span> で下げ止まったり（①）、週足の <span class="underline-dot-highlight sma-20">20sma</span> に<span class="tooltip">跳ね<span class="tooltiptext">[はね] 、跳ね返される　<br> ⇒ 依頼や要求に取り合ってもらえないこと。<br> はね返される</span></span>返されたり（②）、<span class="giga-highlight">とても <span class="tooltip">効いている<span class="tooltiptext">[きいている]<br>効果や効能が表れていること</span></span> </span>ことが分かります。　</p>
+            <p>通常、どの通貨ペアも、５分足チャートを見てトレードしている投資家より、</p>
+            <p><span class="underline-dot-highlight mtf-1d">日足</span> や <span class="underline-dot-highlight mtf-1w">週足</span> を見てトレードしている投資家のほうが圧倒的に多くなります。　</p>
+            <p>上位足 MA は値動きを反転させてしまう時もあり、MA 付近でローソク足を引き留めて、長いレンジを作ることもあります。　</p>
+            <p>もし、何もなかったかのようにするっと通過するのなら、今までのトレンド方向が継続で、勢いはかなり強いことになります。　</p>
+            <p>このように、上位足 MA に対する <span class="giga-highlight">ローソク足のタッチ、 割れ、 超え</span> をよく見てください。　</p>
+            <p>第３章で紹介するリオン式 <span class="concept-zone">Zone</span> トレードでは、　</p>
+            <p><span class="underline-dot-highlight sma-240">１時間足</span>、<span class="underline-dot-highlight mtf-4h">４時間足</span>、<span class="underline-dot-highlight mtf-1d">日足</span>、
+                <span class="underline-dot-highlight mtf-1w">週足</span> の 20sma を ５分足チャート上に表示します。　</p>
+            <p>５分足チャート上に、
+                <span class="giga-highlight"> <span class="underline-dot-highlight mtf-1d">日足</span> や <span class="underline-dot-highlight mtf-1w">週足</span> の 20sma が 登場する頻度は少ない</span> ですが、</p>
+            <p><span class="underline-dot-highlight mtf-1d">日足 MA</span> も <span class="underline-dot-highlight mtf-1w">週足 MA</span> もとても重要なサポートライン、レジスタンスラインになります。　</p>
+        </div>
+        <p><br></p><p><br></p>
+
+
+        <div class="divider-dotted"></div>
+        <div class="signal-description"></div>
+            <h2>マルチタイムフレーム分析（MTF分析）とは</h2>
+            <p><span class="highlight">マルチタイムフレーム分析</span>（Multiple Time Frame：略して MTF 分析）は、大きな時間軸でレートの状況を「認識」する分析法です。　これは「環境認識」とも呼ばれます。　</p>
+
+            <h2>上位足MAの表示方法</h2>
+            <ul>
+                <li>MT4ではインジケーターを使用して、５分足チャート上に上位足チャートのMAを表示できます。　</li>
+                <li>標準<span class="tooltip">搭載<span class="tooltiptext">[とうさい]<br>탑재</span></span>されていませんが、無料・有料のインジケーターをネットから入手可能です。　</li>
+            </ul>
+
+            <div class="note">
+                <h3>MTFインジケーターの特徴</h3>
+                <p>チャートの時間軸を変更しても、常に同じ位置に上位足MAが表示されます。　</p>
+            </div>
+
+            <h2>Rionチャートの上位足MA表示</h2>
+            <ul>
+                <li>週足 = グレー</li>
+                <li>日足 = クリムゾンレッド</li>
+                <li>４時間足 = オレンジ</li>
+                <li>それぞれの<span class="underline-dot-highlight sma-20">20sma</span>（ミドル）が表示されます。　</li>
+            </ul>
+
+            <p>「ミドル」とは、各時間軸における相場全体の大体の中間ラインを意味します。　</p>
+
+            <h2>上位足MAの更新頻度</h2>
+            <p>例：５分足チャートに４時間足の<span class="underline-dot-highlight sma-20">20sma</span>を表<span class="tooltip">示した<span class="tooltiptext">[しめした]</span></span>場合</p>
+            <ul>
+                <li>更新頻度：4時間に１回</li>
+                <li>５分足チャートでは、ローソク足48本（4時間 × 60分 ÷ 5）ごとに１回更新</li>
+            </ul>
+
+            <h2>図2-21の解説</h2>
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/m6516_a.png"  alt="上位足MAに対するローソク足の反応を元に値動きを読む" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+            </div>
+            <p><span class="important-black"> ポンドオージー（GBPAUD）</span><img src="../image/icon/flag/파호_icon_s.png" class="align-middle">の１時間足チャートに４時間足、日足、週足の上位足<span class="underline-dot-highlight sma-20">20sma</span>を表示しています。　</p>
+
+            <h3>重要ポイント</h3>
+            <ol>
+                <li>大きな時間軸の<span class="underline-dot-highlight sma-20">20sma</span>が集結する場面は稀で、大きな転換の可能性があります。　</li>
+                <li>１時間足の値動きが日足の<span class="underline-dot-highlight sma-20">20sma</span>で下げ止まる（①）</li>
+                <li>週足の<span class="underline-dot-highlight sma-20">20sma</span>に跳ね返される（②）</li>
+            </ol>
+
+            <div class="important-box">
+                <h3>上位足MAの重要性</h3>
+                <ul>
+                    <li>日足や週足を見てトレードする投資家が多い</li>
+                    <li>値動きを反転させたり、長いレンジを作ることがある</li>
+                    <li>スムーズに通過する場合は、トレンドの継続と強い勢いを示す</li>
+                </ul>
+            </div>
+
+            <h2>リオン式 <span class="concept-zone">Zone</span> トレードでの活用</h2>
+            <p>５分足チャート上に１時間足、４時間足、日足、週足の<span class="underline-dot-highlight sma-20">20sma</span>を表示します。　</p>
+            <p class="highlight">日足や週足の<span class="underline-dot-highlight sma-20">20sma</span>は重要なサポート・レジスタンスラインとなりますが、５分足チャート上での出現頻度は低いです。　</p>
+        </div>
+    </div>
+    <p><br></p><p><br></p>
+
+    <script src="../js/scripts.js" defer></script> <!-- JavaScript 파일 링크 -->
+    
+</body>
+</html>

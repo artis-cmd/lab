@@ -1,0 +1,166 @@
+/* E:\OneDrive\HTML\css\search.css */
+
+
+/* 🔹 검색창 스타일 */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 왼쪽 정렬 */
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px; /* 왼쪽 여백 추가 */
+    width: 50%;  /* 💡 폭을 50%로 제한 */
+    max-width: 600px; /* 💡 최대 너비 제한 */
+    min-width: 300px; /* 💡 최소 너비 지정 */
+}
+
+.search-box {
+    width: 50%;
+    max-width: 380px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* 🔹 검색 결과 개수 & 메시지 표시 영역 스타일 */
+.result-summary {
+    text-align: left; /* 왼쪽 정렬 */
+    margin-bottom: 10px;
+    display: block; /* 블록 요소로 표시 */
+    visibility: visible; /* 보이도록 설정 */
+}
+
+/* 🔹 검색 결과 섹션 스타일 */
+.category-section {
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-left: 20px;
+    width: 70%;
+    max-width: 900px;
+    min-width: 240px;
+}
+
+/* 🔹 검색 결과 리스트 스타일 */
+#search-results {
+    list-style: none;
+    padding: 0;
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    max-height: 300px; /* 최대 높이 설정 */
+    overflow-y: auto; /* 스크롤바 추가 */
+    display: none; /* 기본적으로 숨김 */
+}
+
+
+#search-results.has-results {
+    display: block; /* 검색 결과가 있을 때 표시 */
+}
+
+#search-results li {
+    margin: 5px 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+#search-results li a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#search-results li a:hover {
+    text-decoration: underline;
+}
+
+/* 🔹 검색 결과 아이템 스타일 */
+.search-result-item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.search-result-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-result-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.result-filename {
+    margin-right: auto;
+}
+
+.open-file-link {
+    margin-left: 10px;
+    font-size: 14px;
+    color: blue;
+    text-decoration: underline;
+}
+
+.copy-path {
+    color: gray;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* 🔹 검색어 강조 스타일 */
+.search-keyword {
+    background-color: yellow;
+    font-weight: bold;
+    color: blue;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* 🔹 검색 결과가 없을 때 메시지 스타일 */
+.no-results {
+    color: red;
+}
+
+/* 상단 메뉴 스타일 */
+.top-menu-container {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.top-menu {
+    display: flex;
+    gap: 15px;
+}
+
+.top-menu a {
+    color: #2c3e50;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.top-menu a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* 🔹 페이지 제목 (왼쪽 정렬) */
+.page-title {
+    text-align: left;
+    margin-top: 80px; /* 메뉴 아래 여백 */
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-left: 20px; /* 왼쪽 여백 추가 */
+}

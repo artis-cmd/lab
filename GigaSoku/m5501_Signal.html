@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FX分析：直近の高値・安値</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS 파일 링크 -->
+    
+</head>
+<body onload="InitializeStaticMenu();">
+    <div id="STATICMENU">
+        <ul>
+            <li>
+                <img src="../image/icon/navi-01.gif" width="32" height="32" />
+                <strong>　Connect</strong>
+            </li>
+            <li>
+                <img src="../image/icon/gigabook.png" alt="Arrow" class="icon-24px" />
+                <a href="../main/m5000_Giga.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈👈ギガ速FX_index</a>
+            </li>
+            <div class="divider-dotted"></div>
+            <li>
+                <a href="../main/m5001_signal-card.html" target="bottom-frame" style="display: inline-block; position: relative; z-index: 1;">👈Signal Card 20</a>
+                <p>#01_ <span class="concept">直近の高値・安値</span></p>
+            </li>
+            <div class="divider-dotted"></div>
+            <!-- 바로 전 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.back()" style="display: inline-block; position: relative; z-index: 1;">🔙 前のページへ戻る</a>
+            </li>            
+            <!-- 다음 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.forward()" style="display: inline-block; position: relative; z-index: 1;">🔜 次のページへ進む</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="signal-card">
+            <div class="card-header">
+                <div class="card-title"><a href="../main/m5000_Giga.html" target="_self">FX Signal（シグナル） #01</a></div>
+                <h1 class="card-main-title">直近の高値・安値</h1>
+            </div>
+            <div class="card-content">
+                <div class="rating-row">
+                    <span>重要度</span>
+                    <span class="star-rating">★★☆☆☆</span>
+                </div>
+                <div class="rating-row">
+                    <span>頻出度</span>
+                    <span class="star-rating">★★★★☆</span>
+                </div>
+                <div class="rating-row">
+                    <span>エントリー根拠</span>
+                    <span class="star-rating">★★☆☆☆</span>
+                </div>
+                <div class="rating-row">
+                    <span>精度</span>
+                    <span class="star-rating">★★☆☆☆</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="signal-description">
+            <p>直近高値というのは、取引している時間軸の値動きの中で<span class="giga-highlight">最近つけた一番高い価格</span>のこと。　直近安値というのは<span class="giga-highlight">最近つけた一番低い価格</span>を指します。　</p>
+
+            <ul>
+                <li>直近高値を超えれば上昇の勢いは強い</li>
+                <li>直近高値を超えられないと上昇の勢いは弱い</li>
+            </ul>
+
+            <p>と判断します。　また、</p>
+
+            <ul>
+                <li>直近安値を割り込めば下降の勢いが強い</li>
+                <li>直近安値で反発すれば下落の勢いは弱い</li>
+            </ul>
+
+            <p>というのが基本的な判断になります（図2-3）。　</p>
+
+            <p>むろん、結果的には判断通りの値動きにならない「<span class="giga-highlight">フェイク</span>」（「ダマシ」とも言いますが、本書では「フェイク」と呼びます）の場合もあります。　</p>
+
+            <p>また、値動きが上昇トレンドになるためには、直近高値と直近安値が次々と切り上がって行く必要があります。　</p>
+
+            <div class="strategy-image">
+                <img src="../image/kindle/giga-soku/m6501_a.png" alt="図2-3 直近の高値・安値の基本戦略" style="max-width: 64%; cursor: pointer;" onclick="openImageInNewWindow(this.src)" />
+                <p class="image-caption">図2-3 直近の高値・安値の基本戦略</p>
+            </div>
+
+            <p>下降トレンドは直近の高値・安値をどんどん切り下げて行く動きです。　</p>
+            <p>横ばい相場は直近高値・安値の範囲内で上下動する動き。　</p>
+            <p>直近高値・安値は<span class="giga-highlight">トレンドを判断する上でも重要なアイテム</span>です。　</p>
+        </div>
+    </div>
+    <p><br></p><p><br></p>
+
+    <script src="../js/scripts.js" defer></script> <!-- JavaScript 파일 링크 -->
+
+</body>
+</html>

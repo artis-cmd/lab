@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>GitHub 백업 방법</title>
+    <link rel="stylesheet" href="gpt-style.css">
+</head>
+<body>
+    <h2>📁 GitHub 백업 및 공개/비공개 설정 방법</h2>
+
+    <h4>1. GitHub 저장소에 백업하는 방법</h4>
+    <ul>
+        <li><code>git init</code>으로 로컬 저장소 초기화</li>
+        <li><code>git remote add origin https://github.com/USERNAME/REPO.git</code> 연결</li>
+        <li><code>git add .</code> 전체 변경 파일 스테이징</li>
+        <li><code>git commit -m "commit message"</code> 커밋</li>
+        <li><code>git push origin main</code> GitHub로 업로드</li>
+    </ul>
+
+    <h4>2. 공개/비공개 설정 방법</h4>
+    <ul>
+        <li>GitHub 저장소 > Settings > General > Visibility 항목</li>
+        <li><strong>Public</strong> 선택 시 누구나 접근 가능</li>
+        <li><strong>Private</strong> 선택 시 로그인된 사용자만 접근 가능</li>
+        <li>변경 즉시 저장소 접근 권한이 반영됨</li>
+    </ul>
+
+    <h4>3. .bat 파일로 자동 백업</h4>
+    <ul>
+        <li>다음과 같이 <code>git-backup.bat</code> 파일 생성</li>
+        <pre><code>@echo off
+cd /d E:\OneDrive\HTML\html-server-api
+echo 🔄 변경사항 스테이징 중...
+git add .
+set /p msg=📝 커밋 메시지를 입력하세요: 
+git commit -m "%msg%"
+echo 🚀 GitHub로 푸시 중...
+git push origin main
+echo ✅ 완료! 창을 닫아주세요.
+pause</code></pre>
+        <li>더블클릭만 하면 자동 백업 완료!</li>
+    </ul>
+</body>
+</html>

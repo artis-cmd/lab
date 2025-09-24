@@ -1,0 +1,67 @@
+/* 전체 레이아웃 */
+/* Left-top.html과 Left-bottom.html 내부 스크롤 제거 */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;  /* 불필요한 스크롤 제거 */
+}
+
+h2 {
+    font-size: 18px;
+    color: black;
+    margin: 10px;
+}
+
+/* 왼쪽 프레임 (사이드바) */
+.left-frame {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 100vh;
+    transition: transform 0.3s ease-in-out;
+}
+
+.top-frame {
+    flex: 7;  /* 비율 조정 */
+    height: 70%;
+    overflow: hidden;
+}
+
+.bottom-frame {
+    flex: 3;  /* 비율 조정 */
+    height: 30%;
+    overflow: hidden;
+}
+
+.main-frame {
+    flex: 1;
+    width: calc(100% - 250px);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.left-frame.hidden {
+    transform: translateX(-100%);
+}
+
+/* 숨겨진 상태 */
+.hidden {
+    width: 0;
+    overflow: hidden;
+}
+
+
+
+/* 사이드바 토글 버튼 */
+#toggle-sidebar {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}

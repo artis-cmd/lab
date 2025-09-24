@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 온 팝업 및 상세 영역</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS 파일 링크 -->
+    
+
+</head>
+<body onload="InitializeStaticMenu();">
+    <div id="STATICMENU">
+        <ul>
+            <img src="../image/icon/navi-01.gif" width="32" height="32" /><strong>　Connect</strong>
+            <li><img src="../image/icon/gigabook.png" alt="Arrow" class="icon-24px">
+                <a href="../main/m5000_Giga.html" target="bottom-frame">👈👈ギガ速FX_index</a></li>
+            <div class="divider-dotted"></div>
+            <li>하늘도 감복 할 노력</li>
+            <div class="divider-dotted"></div>
+            <!-- 바로 전 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.back()" style="display: inline-block; position: relative; z-index: 1;">🔙 前のページへ戻る</a>
+            </li>
+            <!-- 다음 페이지로 가는 링크 추가 -->
+            <li>
+                <a href="javascript:history.forward()" style="display: inline-block; position: relative; z-index: 1;">🔜 次のページへ進む</a>
+            </li>
+        </ul>
+    </div>
+
+    <h1>【XAUUSD】Track Record</h1>
+    <ul class="link-list">
+        <li onmouseover="showPopup(event)" onmouseout="hidePopup()">
+            <a href="#" 
+                onclick="showDetail(event, 
+                    '<h4>첫 번째 상세 설명</h4>' +
+                    '<p>이것은 첫 번째 항목의 상세 설명입니다.</p>' +
+                    '<img src=\'../image/icon/Rion-face-01.png\' alt=\'첫 번째 이미지\'>'
+                )">
+                First 항목
+            </a>
+            <div class="popup"><p>첫 번째 popup 입니다<br>ポップアップ　표시</p></div>
+            
+        </li>
+        <li onmouseover="showPopup(event)" onmouseout="hidePopup()">
+            <a href="#" 
+                onclick="showDetail(event, 
+                    '<h4>XAUUSD 갤러리 - 일지 Format</h4>' +
+                    '<p>[XAUUSD] 20241205 London Buy</p>' +
+                    '<p><br></p>' +
+                    '<p>모두 스캘핑' +
+                    '<br>FB 61.8 까지만<br></p>' +
+                    '<p>----------------------</p>' +
+                    '<p>Buy #1<br>Open : 2001.11<br>Close : 2011.12<br>----------------------</p>' +
+                    '<p>Buy #2<br>Open : 2002.22<br>Close : 2022.22<br>----------------------</p>' +
+                    '<p>Buy #3<br>Open : 2003.33<br>Close : 2033.32<br>----------------------</p>'
+                    )">
+                    XAUUSD 갤러리 - 일지 Format
+            </a>
+            <div class="popup"><p>뇌동 방지의 일환으로 <br>XAUUSD 갤러리에 포지션을 공개합니다.</p></div>
+
+        </li>
+        <li onmouseover="showPopup(event)" onmouseout="hidePopup()">
+            <a href="#" 
+                onclick="showDetail(event, 
+                '<h4>XAUUSD 갤러리 - 일지 Format </h4>' +
+                '<p>이것은 333 번째 항목의 상세 설명입니다.</p>' +
+                '<img src=\'https://via.placeholder.com/400x200\' alt=\'세 번째 이미지\'>'
+                )">
+                세 번째 항목
+            </a>
+            <div class="popup"><p>여기에 <br>popup 이 3333 <br>ポップ<br>アップ　표시</p></div>
+        </li>
+    </ul>
+
+
+
+    <div id="detail-section">
+        <h3>상세 내용</h3>
+        <p>여기에 상세 설명이 표시됩니다.</p>
+    </div>
+
+    <script src="../js/scripts.js" defer></script> <!-- JavaScript 파일 링크 -->
+    
+</body>
+</html>

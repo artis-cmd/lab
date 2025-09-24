@@ -1,0 +1,903 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 40px;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    font-size: 14px; /* 기본 폰트 크기 축소 */
+}
+.container {
+    max-width: 1200px;
+    margin: 0;
+    background-color: #fff;
+    padding: 10px 20px 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin: 0 0 10px 0;
+    font-size: 1.8em; /* 제목 크기 축소 */
+}
+h2 {
+    color: #34495e;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 8px;
+    margin-top: 15px;
+    font-size: 1.2em; /* 부제목 크기 축소 */
+}
+
+/* Preview section layout */
+.preview-section {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 25px;
+    margin: 0 0 8px 0;
+    align-items: flex-start;
+}
+
+.preview-info {
+    flex: 1.2;
+    background-color: #f8f9fa;
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.preview-info p {
+    margin: 0;
+    font-size: 0.85em; /* 미리보기 텍스트 크기 축소 */
+    color: #555;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    line-height: 1.5;
+}
+
+.preview-content {
+    flex: 1;
+    width: 100%;
+}
+.input-section, .interpreter-section {
+    background-color: #eaf1f6;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #d0e4f0;
+}
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap; /* Added for responsiveness */
+}
+
+/* Special styling for the trade direction, used tool, and track record group */
+.input-group.trade-tools-group {
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+.input-group.trade-tools-group label {
+    flex: 0 0 auto;
+    margin-right: 8px;
+}
+
+.input-group.trade-tools-group select.compact {
+    flex: 0 0 120px;
+    margin-right: 20px;
+}
+
+.input-group.trade-tools-group .radio-group {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+/* Special styling for the first input group (symbol, date, time) */
+.input-group:first-child {
+    flex-wrap: nowrap;
+    gap: 15px;
+}
+.input-group label {
+    flex: 0 0 120px; /* Adjusted label width */
+    font-weight: bold;
+    color: #4a677e;
+}
+.input-group input[type="text"],
+.input-group select {
+    flex: 1;
+    padding: 8px 10px; /* 패딩 축소 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9em; /* 입력 필드 폰트 크기 축소 */
+    margin-right: 10px;
+    min-width: 100px; /* Adjusted min-width */
+}
+
+/* Autocomplete input styling */
+.input-group input[list] {
+    background-color: #ffffff;
+    cursor: text;
+}
+
+/* Compact select box for trade direction */
+.input-group select.compact {
+    flex: 0 0 auto;
+    min-width: 120px;
+    max-width: 180px;
+}
+
+/* Compact radio group for tools */
+.radio-group.tools-compact {
+    flex: 0 0 auto;
+    min-width: 300px;
+    max-width: 400px;
+    flex-wrap: nowrap;
+}
+.input-group input[type="text"]:focus,
+.input-group select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* Highlight unselected select boxes */
+.input-group select {
+    background-color: #ffffff;
+    color: #333;
+}
+
+.input-group select.unselected {
+    background-color: #dee2e6 !important;
+    color: #343a40 !important;
+    border-color: #6c757d !important;
+}
+.input-group .time-input {
+    width: 80px; /* Specific width for time */
+    min-width: 80px;
+}
+.input-group .analysis-input {
+    flex: 1;
+    min-width: 150px; /* Adjust for analysis fields */
+    margin-right: 5px; /* Less margin between analysis fields */
+}
+.input-group .analysis-input:last-child {
+    margin-right: 0;
+}
+.input-group.full-width {
+    flex-wrap: wrap;
+}
+.input-group.full-width input[type="text"] {
+    flex: 1;
+    width: auto;
+}
+
+/* Radio button styles */
+.radio-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-right: 10px;
+    background-color: #f8f9fa;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #e9ecef;
+    min-height: 40px;
+    align-items: center;
+}
+
+/* Compact radio group for market session */
+.radio-group.compact {
+    flex: 0 0 auto;
+    min-width: 200px;
+    max-width: 250px;
+}
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+    color: #333;
+    padding: 5px 8px;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+.radio-label:hover {
+    background-color: #e9ecef;
+}
+.radio-label input[type="radio"] {
+    margin-right: 5px;
+    cursor: pointer;
+}
+.radio-label span {
+    font-size: 0.85em; /* 라디오 버튼 텍스트 크기 축소 */
+}
+
+/* Checkbox styles */
+.checkbox-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-right: 10px;
+    background-color: #f8f9fa;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #e9ecef;
+    min-height: 40px;
+    align-items: center;
+}
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+    color: #333;
+    padding: 5px 8px;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+.checkbox-label:hover {
+    background-color: #e9ecef;
+}
+.checkbox-label input[type="checkbox"] {
+    margin-right: 5px;
+    cursor: pointer;
+}
+.checkbox-label span {
+    font-size: 0.85em; /* 체크박스 텍스트 크기 축소 */
+}
+
+/* Datepicker specific styles */
+.ui-datepicker {
+    font-size: 0.9em;
+}
+
+.filename-preview-item {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.filename-preview {
+    background-color: #e8f4fd;
+    padding: 10px 12px; /* 패딩 축소 */
+    border-radius: 8px;
+    margin-top: 0;
+    font-size: 0.95em; /* 파일명 미리보기 폰트 크기 축소 */
+    font-family: 'Courier New', Courier, monospace;
+    color: #1565c0;
+    word-break: break-all;
+    position: relative;
+    min-height: 30px; /* 높이 축소 */
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    border: 1px solid #90caf9;
+}
+.copy-preview-button {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 12px; /* 패딩 축소 */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8em; /* 버튼 폰트 크기 축소 */
+    font-weight: bold;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.copy-preview-button:hover {
+    background-color: #218838;
+}
+
+.filename-options {
+    display: grid;
+    gap: 12px;
+    margin-top: 12px;
+    background-color: #ffffff;
+    padding: 18px;
+    border-radius: 10px;
+    border: 2px solid #3498db;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.copy-message {
+    margin-top: 10px;
+    text-align: center;
+    color: #27ae60;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.copy-message.show {
+    opacity: 1;
+}
+p {
+    margin-top: 25px;
+    font-size: 0.85em; /* 일반 텍스트 크기 축소 */
+    color: #555;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #3498db;
+    border-radius: 5px;
+}
+.note {
+    font-size: 0.75em; /* 참고 사항 폰트 크기 축소 */
+    color: #777;
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f0f8ff;
+    border: 1px dashed #aed6f1;
+    border-radius: 8px;
+}
+.interpreter-result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0fff0; /* Light green for success */
+    border: 1px solid #c2e0c6;
+    border-radius: 8px;
+    color: #216c2a;
+    font-size: 0.9em; /* 해석 결과 폰트 크기 축소 */
+    word-break: break-all;
+    white-space: pre-wrap; /* Preserve line breaks */
+    max-height: 300px; /* Limit height */
+    overflow-y: auto; /* Add scroll if content overflows */
+}
+.interpreter-result p {
+    margin: 5px 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    font-size: 0.9em; /* 해석 결과 내 문단 폰트 크기 축소 */
+}
+.interpreter-result strong {
+    color: #004d00;
+}
+.interpreter-result.error {
+    background-color: #fff0f0;
+    border-color: #e0c2c2;
+    color: #cc0000;
+}
+
+/* Market session background colors */
+.session-tokyo {
+    background-color: #fff3cd !important; /* 노란색 */
+    transition: background-color 0.3s ease;
+}
+
+.session-london {
+    background-color: #d1ecf1 !important; /* 에메랄드색 */
+    transition: background-color 0.3s ease;
+}
+
+.session-newyork {
+    background-color: #e2d9f3 !important; /* 보라색 */
+    transition: background-color 0.3s ease;
+}
+
+/* Trend section background colors */
+.trend-range {
+    background-color: #e9ecef !important; /* 회색 (추세없음) */
+    transition: background-color 0.3s ease;
+}
+
+.trend-uptrend {
+    background-color: #d4edda !important; /* 연한 초록색 (상승추세) */
+    transition: background-color 0.3s ease;
+}
+
+.trend-downtrend {
+    background-color: #f8d7da !important; /* 연한 빨간색 (하락추세) */
+    transition: background-color 0.3s ease;
+}
+
+/* Trade direction select box colors */
+#tradeDirection.direction-range {
+    background-color: #e9ecef !important; /* 회색 (Range) */
+    color: #495057 !important;
+    border-color: #adb5bd !important;
+    transition: background-color 0.3s ease;
+}
+
+#tradeDirection.direction-buy {
+    background-color: #d4edda !important; /* 연한 초록색 (Buy) */
+    color: #155724 !important;
+    border-color: #c3e6cb !important;
+    transition: background-color 0.3s ease;
+}
+
+#tradeDirection.direction-sell {
+    background-color: #f8d7da !important; /* 연한 빨간색 (Sell) */
+    color: #721c24 !important;
+    border-color: #f5c6cb !important;
+    transition: background-color 0.3s ease;
+}
+
+/* 파일 관리 섹션 스타일 */
+.file-management-section {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.file-management-layout {
+    display: flex;
+    gap: 30px;
+    min-height: 400px;
+}
+
+.source-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.destination-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.folder-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.folder-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.folder-controls input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 200px;
+}
+
+.folder-controls input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.folder-selection label {
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.folder-path {
+    color: #666;
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.folder-selection input[type="file"] {
+    display: none;
+}
+
+.folder-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.folder-btn:hover {
+    background: #0056b3;
+}
+
+.file-list-container {
+    margin-bottom: 20px;
+}
+
+.file-list-container h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.file-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+}
+
+.no-files {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    margin: 0;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.file-item:hover {
+    background-color: #f8f9fa;
+}
+
+.file-item.selected {
+    background-color: #e3f2fd;
+    border-left: 4px solid #2196f3;
+}
+
+.file-item:last-child {
+    border-bottom: none;
+}
+
+.file-item .file-name {
+    flex: 1;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.file-item .file-size {
+    color: #666;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.file-rename-section {
+    border-top: 1px solid #dee2e6;
+    padding-top: 20px;
+}
+
+.file-rename-section h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+}
+
+.rename-preview {
+    background: #e8f5e8;
+    border: 1px solid #c3e6c3;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.rename-preview p {
+    margin: 0 0 8px 0;
+    color: #2d5a2d;
+}
+
+.rename-preview-text {
+    font-family: monospace;
+    font-size: 14px;
+    color: #1a4a1a;
+    word-break: break-all;
+}
+
+.rename-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rename-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.rename-btn:hover:not(:disabled) {
+    background: #218838;
+}
+
+.rename-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
+
+.rename-status {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.rename-status.success {
+    color: #28a745;
+}
+
+.rename-status.error {
+    color: #dc3545;
+}
+
+.artis-upload-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.artis-upload-btn:hover:not(:disabled) {
+    background: #0056b3;
+    transform: translateY(-1px);
+}
+
+.artis-upload-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.upload-status {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.upload-status.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.upload-status.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.upload-status.progress {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .input-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .input-group label {
+        margin-bottom: 5px;
+    }
+    .input-group input[type="text"],
+    .input-group select {
+        width: calc(100% - 24px); /* Full width minus padding and border */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .input-group .time-input {
+        width: calc(100% - 24px); /* Full width minus padding and border */
+    }
+    .input-group .analysis-input {
+        width: calc(100% - 24px); /* Full width minus padding and border */
+        margin-right: 0;
+    }
+    .input-group.full-width input[type="text"] {
+        width: calc(100% - 24px);
+    }
+    
+    .file-management-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .source-section,
+    .destination-section {
+        width: 100%;
+    }
+    
+    .folder-selection {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .folder-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .folder-path {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+    
+    .rename-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* 스프레드시트 로그 섹션 스타일 */
+.spreadsheet-log-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+}
+
+.spreadsheet-log-section h4 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-size: 16px;
+}
+
+.spreadsheet-config {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.config-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.config-group label {
+    font-weight: 500;
+    min-width: 120px;
+    margin: 0;
+}
+
+.config-group input[type="text"] {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 400px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.config-group input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.test-btn {
+    background: #17a2b8;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    align-self: flex-start;
+}
+
+.test-btn:hover {
+    background: #138496;
+}
+
+.connection-status {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.connection-status.connected {
+    color: #28a745;
+}
+
+.connection-status.error {
+    color: #dc3545;
+}
+
+.connection-status.unknown {
+    color: #6c757d;
+}
+
+/* 템플릿 설정 섹션 스타일 */
+.template-section {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.template-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.template-editor {
+    margin: 20px 0;
+}
+
+.template-editor label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.template-editor textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.4;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.template-preview {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 20px 0;
+    min-height: 200px;
+}
+
+.template-preview h4 {
+    margin: 0 0 15px 0;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.template-status {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.action-btn:hover {
+    background: #218838;
+} 

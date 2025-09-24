@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Mac에서 GitHub Pages에 HTML 푸시 매뉴얼</title>
+    <link rel="stylesheet" href="../../css/gpt-style.css">
+</head>
+<body>
+    <h2>📘 Mac에서 GitHub Pages에 HTML 푸시 매뉴얼</h2>
+
+    <h4>✅ 전제 조건</h4>
+    <ul>
+        <li>Git 설치 (`git --version`)</li>
+        <li>GitHub 저장소 생성 및 연결</li>
+        <li>로컬 디렉토리에 Git 초기화 혹은 clone 완료</li>
+    </ul>
+
+    <h4>📁 명령어</h4>
+    <pre>
+cd /Users/donghwankim/OneDrive/HTML
+
+git status
+
+git add .
+
+git commit -m "📝 HTML 문서 업데이트: "
+
+git push origin main
+    </pre>
+
+    <h4>🔷 Step 1. 작업 디렉토리로 이동</h4>
+    <pre>cd /Users/donghwankim/OneDrive/HTML</pre>
+
+    <img src="../../image/docs/artis_docs/github/SCR-20250612-lchl.png" alt="작업 디렉토리 이동" style="width:30% !important; height:auto;">
+
+    <h4>🔷 Step 2. 변경 사항 확인</h4>
+    <pre>git status</pre>
+
+    <img src="../../image/docs/artis_docs/github/SCR-20250612-lelb.png" alt="Git 상태 확인" style="width:30% !important; height:auto;">
+
+    <h4>🔷 Step 3. 변경 파일 추가</h4>
+    <pre>git add .</pre>
+
+    <img src="../../image/docs/artis_docs/github/SCR-20250612-leui.png" alt="변경 파일 추가" style="width:30% !important; height:auto;">
+
+    <h4>🔷 Step 4. 커밋</h4>
+    <pre>git commit -m "📝 HTML 문서 업데이트: 2025-06-12 02:56:14"</pre>
+
+    <img src="../../image/docs/artis_docs/github/SCR-20250612-lfkg.png" alt="커밋" style="width:30% !important; height:auto;">
+
+    <h4>🔷 Step 5. GitHub로 푸시</h4>
+    <pre>git push origin main</pre>
+
+    <h4>🔷 Step 6. GitHub Pages에서 확인</h4>
+    <pre>https://artis-cmd.github.io/lab/</pre>
+
+    <h4>🧼 캐시 제거</h4>
+    <ul>
+        <li>macOS: <code>Cmd + Shift + R</code></li>
+        <li>Windows: <code>Ctrl + Shift + R</code></li>
+    </ul>
+
+    <h4>🤖 자동화 스크립트 (선택)</h4>
+    <pre><code>#!/bin/zsh
+cd /Users/donghwankim/OneDrive/HTML || exit
+git add .
+git commit -m "📄 HTML 자동 푸시: $(date '+%Y-%m-%d %H:%M:%S')"
+git push origin main</code></pre>
+
+<br><br><br>
+
+</body>
+</html>
