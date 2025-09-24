@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub 푸시 가이드 - artisAsset</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/capture-name.css">
+    <style>
+        .github-guide {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .guide-section {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .guide-section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .step {
+            background: white;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .step h3 {
+            color: #2980b9;
+            margin-top: 0;
+        }
+        
+        .command-box {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        .project-tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            background: #e9ecef;
+            border: 1px solid #dee2e6;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+        }
+        
+        .tab.active {
+            background: #3498db;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-success { background: #28a745; }
+        .status-pending { background: #ffc107; }
+        .status-error { background: #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="github-guide">
+        <h1>🚀 GitHub 푸시 가이드</h1>
+        <p><strong>HTML과 artisAsset 프로젝트를 GitHub에 백업하는 방법</strong></p>
+        
+        <div class="project-tabs">
+            <div class="tab active" onclick="showTab('html')">📁 HTML 프로젝트</div>
+            <div class="tab" onclick="showTab('artisasset')">🤖 artisAsset 프로젝트</div>
+            <div class="tab" onclick="showTab('troubleshoot')">🔧 문제해결</div>
+        </div>
+        
+        <!-- HTML 프로젝트 탭 -->
+        <div id="html" class="tab-content active">
+            <div class="guide-section">
+                <h2>📁 HTML 프로젝트 GitHub 푸시</h2>
+                
+                <div class="step">
+                    <h3>1단계: GitHub 저장소 생성</h3>
+                    <p>GitHub에서 새 저장소를 생성합니다:</p>
+                    <ul>
+                        <li>저장소 이름: <code>html-trading-tools</code></li>
+                        <li>설명: <code>트레이딩 도구 및 artisAsset 연동 HTML 프로젝트</code></li>
+                        <li>Public 또는 Private 선택</li>
+                        <li><strong>README, .gitignore, license 추가하지 않음</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <h3>2단계: 원격 저장소 연결</h3>
+                    <p>생성된 GitHub 저장소 URL을 복사하고 연결합니다:</p>
+                    <div class="command-box">
+git remote add origin https://github.com/[사용자명]/html-trading-tools.git
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>3단계: 메인 브랜치로 푸시</h3>
+                    <p>현재 커밋을 GitHub에 푸시합니다:</p>
+                    <div class="command-box">
+git branch -M main<br>
+git push -u origin main
+                    </div>
+                </div>
+                
+                <div class="success">
+                    <strong>✅ HTML 프로젝트 백업 완료!</strong><br>
+                    모든 파일이 GitHub에 성공적으로 업로드되었습니다.
+                </div>
+            </div>
+        </div>
+        
+        <!-- artisAsset 프로젝트 탭 -->
+        <div id="artisasset" class="tab-content">
+            <div class="guide-section">
+                <h2>🤖 artisAsset 프로젝트 GitHub 푸시</h2>
+                
+                <div class="step">
+                    <h3>1단계: artisAsset 디렉토리로 이동</h3>
+                    <div class="command-box">
+cd "E:\GoogleDrive\My Drive\artisAsset"
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>2단계: Git 저장소 초기화</h3>
+                    <div class="command-box">
+git init<br>
+git add .<br>
+git commit -m "artisAsset 트레이딩 차트 분석 시스템 초기 커밋"
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>3단계: GitHub 저장소 생성 및 연결</h3>
+                    <p>GitHub에서 새 저장소 생성:</p>
+                    <ul>
+                        <li>저장소 이름: <code>artisasset-trading-system</code></li>
+                        <li>설명: <code>AI 기반 트레이딩 차트 분석 시스템</code></li>
+                        <li>Private 권장 (API 키 포함)</li>
+                    </ul>
+                    <div class="command-box">
+git remote add origin https://github.com/[사용자명]/artisasset-trading-system.git<br>
+git branch -M main<br>
+git push -u origin main
+                    </div>
+                </div>
+                
+                <div class="warning">
+                    <strong>⚠️ 주의사항:</strong><br>
+                    • .env 파일에 API 키가 포함되어 있으므로 Private 저장소 사용 권장<br>
+                    • 필요시 .gitignore에 .env 추가 고려
+                </div>
+            </div>
+        </div>
+        
+        <!-- 문제해결 탭 -->
+        <div id="troubleshoot" class="tab-content">
+            <div class="guide-section">
+                <h2>🔧 자주 발생하는 문제 해결</h2>
+                
+                <div class="step">
+                    <h3>문제 1: "fatal: bad object HEAD" 오류</h3>
+                    <p><strong>해결방법:</strong></p>
+                    <div class="command-box">
+Remove-Item -Recurse -Force .git<br>
+git init<br>
+git add .<br>
+git commit -m "프로젝트 초기 커밋"
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>문제 2: "fatal: could not parse HEAD" 오류</h3>
+                    <p><strong>해결방법:</strong></p>
+                    <div class="command-box">
+git checkout --orphan new-branch<br>
+git add .<br>
+git commit -m "새 브랜치로 초기 커밋"<br>
+git branch -D main<br>
+git branch -m main
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>문제 3: PowerShell에서 && 연산자 오류</h3>
+                    <p><strong>해결방법:</strong> PowerShell에서는 <code>;</code> 사용</p>
+                    <div class="command-box">
+# 잘못된 방법<br>
+git add . && git commit -m "메시지"<br><br>
+# 올바른 방법<br>
+git add .; git commit -m "메시지"
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>문제 4: 인증 오류</h3>
+                    <p><strong>해결방법:</strong></p>
+                    <ul>
+                        <li>GitHub Personal Access Token 사용</li>
+                        <li>Git Credential Manager 설치</li>
+                        <li>SSH 키 설정</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="guide-section">
+            <h2>📋 백업 상태 확인</h2>
+            <div class="step">
+                <h3>현재 상태</h3>
+                <p><span class="status-indicator status-success"></span> HTML 프로젝트: Git 커밋 완료</p>
+                <p><span class="status-indicator status-success"></span> artisAsset 프로젝트: Git 커밋 완료</p>
+            </div>
+            
+            <div class="step">
+                <h3>다음 단계</h3>
+                <ol>
+                    <li>GitHub에서 저장소 생성</li>
+                    <li>원격 저장소 연결</li>
+                    <li>푸시 실행</li>
+                    <li>백업 완료 확인</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="guide-section">
+            <h2>🌐 GitHub 저장소 정보</h2>
+            <div class="step">
+                <h3>생성할 저장소 목록</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <tr style="background: #f8f9fa;">
+                        <th style="border: 1px solid #dee2e6; padding: 10px; text-align: left;">프로젝트</th>
+                        <th style="border: 1px solid #dee2e6; padding: 10px; text-align: left;">저장소 이름</th>
+                        <th style="border: 1px solid #dee2e6; padding: 10px; text-align: left;">GitHub URL</th>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #dee2e6; padding: 10px;">HTML 프로젝트</td>
+                        <td style="border: 1px solid #dee2e6; padding: 10px;"><code>html-trading-tools</code></td>
+                        <td style="border: 1px solid #dee2e6; padding: 10px;"><code>https://github.com/[사용자명]/html-trading-tools</code></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #dee2e6; padding: 10px;">artisAsset 프로젝트</td>
+                        <td style="border: 1px solid #dee2e6; padding: 10px;"><code>artisasset-trading-system</code></td>
+                        <td style="border: 1px solid #dee2e6; padding: 10px;"><code>https://github.com/[사용자명]/artisasset-trading-system</code></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="step">
+                <h3>GitHub에서 확인할 사항</h3>
+                <div class="success">
+                    <h4>✅ 저장소 생성 후 확인사항:</h4>
+                    <ul>
+                        <li><strong>저장소 이름</strong>: 정확한 이름으로 생성되었는지 확인</li>
+                        <li><strong>설명</strong>: 프로젝트 설명이 올바르게 표시되는지 확인</li>
+                        <li><strong>Public/Private</strong>: 설정한 가시성이 올바른지 확인</li>
+                        <li><strong>README</strong>: 자동 생성되지 않았는지 확인 (수동으로 생성하지 않았으므로)</li>
+                    </ul>
+                </div>
+                
+                <div class="success">
+                    <h4>✅ 푸시 완료 후 확인사항:</h4>
+                    <ul>
+                        <li><strong>파일 업로드</strong>: 모든 파일이 정상적으로 업로드되었는지 확인</li>
+                        <li><strong>폴더 구조</strong>: 로컬과 동일한 폴더 구조인지 확인</li>
+                        <li><strong>커밋 히스토리</strong>: 커밋 메시지가 올바르게 표시되는지 확인</li>
+                        <li><strong>브랜치</strong>: main 브랜치가 기본 브랜치로 설정되었는지 확인</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="step">
+                <h3>🔗 GitHub 저장소 접속 방법</h3>
+                <div class="command-box">
+# 1. GitHub 웹사이트 접속<br>
+https://github.com<br><br>
+# 2. 로그인 후 저장소 목록 확인<br>
+https://github.com/[사용자명]?tab=repositories<br><br>
+# 3. 특정 저장소 직접 접속<br>
+https://github.com/[사용자명]/html-trading-tools<br>
+https://github.com/[사용자명]/artisasset-trading-system
+                </div>
+            </div>
+        </div>
+        
+        <div class="guide-section">
+            <h2>💡 유용한 Git 명령어</h2>
+            <div class="command-box">
+# 상태 확인<br>
+git status<br><br>
+# 변경사항 확인<br>
+git diff<br><br>
+# 커밋 히스토리<br>
+git log --oneline<br><br>
+# 원격 저장소 확인<br>
+git remote -v<br><br>
+# 강제 푸시 (주의!)<br>
+git push -f origin main
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // 모든 탭 비활성화
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // 선택된 탭 활성화
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        // 페이지 로드 시 현재 상태 표시
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('GitHub 푸시 가이드 페이지 로드 완료');
+        });
+    </script>
+</body>
+</html>
